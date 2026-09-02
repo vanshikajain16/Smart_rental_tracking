@@ -134,7 +134,11 @@ export default function CustomerDrilldown({ customerId, onBack }) {
             </table>
           )}
 
-          <ActivityFeed events={activity} showCustomer={false} />
+          <ActivityFeed
+            events={activity}
+            heading="Activity"
+            subtitle="This customer's events, most recent first."
+          />
         </>
       )}
     </div>

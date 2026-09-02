@@ -195,7 +195,7 @@ export default function DealerDashboard() {
         Click a column header to sort · click a row to drill in.
       </p>
 
-      <ActivityFeed events={activity} onPickCustomer={setSelected} />
+      <ActivityFeed events={activity} />
     </div>
   )
 }

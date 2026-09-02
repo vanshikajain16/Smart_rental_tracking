@@ -297,25 +297,37 @@ h3 { font-size: 13px; margin: 12px 0 6px; color: var(--muted); text-transform: u
   letter-spacing: .03em;
 }
 
-/* ---- dealer: activity feed ---- */
+/* ---- dealer: activity feed (read-only timeline) ----
+   Deliberately NOT the .alerts card / .pill look used by AlertsPanel: a
+   left-rule timeline with ringed dots so it reads as dealer-wide history. */
 .activity-feed { margin-top: 22px; }
-.af-head {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; flex-wrap: wrap;
+.af-timeline {
+  list-style: none; margin: 12px 0 0; padding: 0;
+  border-left: 2px solid var(--line);
 }
-.af-filters { display: inline-flex; gap: 6px; }
-.af-chip {
-  border: 1px solid var(--line); background: var(--panel); color: var(--muted);
-  border-radius: 12px; padding: 3px 10px; font-size: 12px; cursor: pointer;
+.af-timeline li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 88px 76px 1fr;
+  align-items: baseline; gap: 10px;
+  padding: 6px 0 6px 18px; font-size: 13px;
 }
-.af-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.af-list { list-style: none; margin: 8px 0 10px; padding: 0; }
-.af-list li {
-  display: flex; align-items: baseline; gap: 10px; padding: 7px 0;
-  border-top: 1px solid var(--line); font-size: 13px;
+.af-dot {
+  position: absolute; left: -10px; top: 3px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--muted); color: var(--muted);
+  font-size: 10px; line-height: 14px; text-align: center; font-weight: 700;
 }
-.af-list li:first-child { border-top: 0; }
-.af-date { color: var(--muted); flex: none; width: 84px; font-size: 12px; }
-.af-cust { flex: none; }
-.af-summary { color: var(--ink); }
-.chip.accent { background: #eef3fc; color: var(--accent); }
+.af-timeline li.af-high-risk .af-dot { border-color: var(--bad);    color: var(--bad); }
+.af-timeline li.af-flag      .af-dot { border-color: var(--warn);   color: var(--warn); }
+.af-timeline li.af-penalty   .af-dot { border-color: var(--bad);    color: var(--bad); }
+.af-timeline li.af-sms       .af-dot { border-color: var(--accent); color: var(--accent); }
+.af-date {
+  color: var(--muted); font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.af-type {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .03em;
+  color: var(--muted); font-weight: 600;
+}
+.af-msg { color: var(--ink); }

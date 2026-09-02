@@ -1,85 +1,48 @@
-import React, { useMemo, useState } from 'react'
+import React from 'react'
 
-const TYPE = {
-  high_risk: { label: 'High risk', cls: 'bad' },
-  flag: { label: 'Flag', cls: 'warn' },
-  penalty: { label: 'Penalty', cls: 'bad' },
-  sms_reminder: { label: 'Reminder', cls: 'accent' },
+// Dealer-wide activity feed - read-only, chronological (newest first from the
+// API). Deliberately a plain timeline, not the pill/card look AlertsPanel uses
+// for customer-specific alerts.
+const TYPE_META = {
+  high_risk: { icon: '⚠', cls: 'af-high-risk', label: 'High risk' },
+  flag: { icon: '⚑', cls: 'af-flag', label: 'Flag' },
+  penalty: { icon: '$', cls: 'af-penalty', label: 'Penalty' },
+  sms_reminder: { icon: '✉', cls: 'af-sms', label: 'Reminder' },
 }
-const PAGE = 40
 
-// Retroactive activity feed: a sorted-by-date reconstruction, not a live log.
-// `events` is already newest-first from the API: { date, type, customer_id, message }.
 export default function ActivityFeed({
-  events,
-  showCustomer = true,
-  onPickCustomer,
+  events = [],
+  heading = 'Dealer activity',
+  subtitle = 'Dealer-wide, most recent first — reconstructed from pipeline history.',
 }) {
-  const [type, setType] = useState('all')
-  const [limit, setLimit] = useState(PAGE)
-
-  const filtered = useMemo(
-    () => (type === 'all' ? events : events.filter((e) => e.type === type)),
-    [events, type]
-  )
-  const shown = filtered.slice(0, limit)
-
-  const types = ['all', ...Object.keys(TYPE).filter((k) =>
-    events.some((e) => e.type === k)
-  )]
-
   return (
     <section className="activity-feed">
-      <div className="af-head">
-        <h3>Activity feed</h3>
-        <div className="af-filters">
-          {types.map((k) => (
-            <button
-              key={k}
-              className={`af-chip${type === k ? ' active' : ''}`}
-              onClick={() => {
-                setType(k)
-                setLimit(PAGE)
-              }}
-            >
-              {k === 'all' ? 'All' : TYPE[k].label}
-            </button>
-          ))}
-        </div>
-      </div>
+      <h3>
+        {heading} <span className="count">{events.length}</span>
+      </h3>
+      <p className="tiny muted">{subtitle}</p>
 
-      {filtered.length === 0 ? (
+      {events.length === 0 ? (
         <p className="muted tiny">No activity on record.</p>
       ) : (
-        <>
-          <ul className="af-list">
-            {shown.map((e, i) => (
-              <li key={`${e.date}-${e.type}-${e.customer_id}-${i}`}>
-                <span className="af-date mono">{e.date}</span>
-                <span className={`chip ${TYPE[e.type]?.cls ?? ''}`}>
-                  {TYPE[e.type]?.label ?? e.type}
+        <ol className="af-timeline">
+          {events.map((e, i) => {
+            const m = TYPE_META[e.type] ?? { icon: '•', cls: '', label: e.type }
+            return (
+              <li
+                key={`${e.date}-${e.type}-${e.customer_id}-${i}`}
+                className={m.cls}
+              >
+                <span className="af-dot" aria-hidden="true">
+                  {m.icon}
                 </span>
-                {showCustomer && (
-                  <button
-                    className="link-btn mono af-cust"
-                    onClick={() => onPickCustomer?.(e.customer_id)}
-                  >
-                    {e.customer_id}
-                  </button>
-                )}
-                <span className="af-summary">{e.message}</span>
+                <time className="af-date">{e.date}</time>
+                <span className="af-type">{m.label}</span>
+                <span className="af-msg">{e.message}</span>
               </li>
-            ))}
-          </ul>
-          {limit < filtered.length && (
-            <button
-              className="link-btn"
-              onClick={() => setLimit((n) => n + PAGE)}
-            >
-              Show more ({filtered.length - limit} more)
-            </button>
-          )}
-        </>
+            )
+          })}
+        </ol>
       )}
     </section>
   )
