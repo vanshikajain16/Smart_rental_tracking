@@ -157,6 +157,7 @@ def test_customer_cannot_read_another_customers_data(client):
             headers={"Authorization": f"Bearer {tok}"},
         )
         assert r.status_code == 403, path
+        assert r.json()["detail"] == "you can only access your own data"
 
 
 def test_garbage_token_is_401(client):
@@ -169,3 +170,60 @@ def test_garbage_token_is_401(client):
 
 def test_dealer_routes_stay_open(client):
     assert client.get("/dealer/customers").status_code == 200
+
+
+# --------------------------------------------------------------------------- #
+# The five-point checklist for the customer-login task, in one walkthrough.
+# --------------------------------------------------------------------------- #
+def test_customer_auth_end_to_end(client):
+    # 1. signup succeeds for a real Customer ID
+    ok = client.post(
+        "/auth/signup",
+        json={"email": "me@example.com", "password": "s3cret-pass",
+              "customer_id": CID},
+    )
+    assert ok.status_code == 200
+
+    # 2. signup fails for a Customer ID not in customers.csv
+    bad = client.post(
+        "/auth/signup",
+        json={"email": "x@example.com", "password": "s3cret-pass",
+              "customer_id": "CUST_NOT_REAL"},
+    )
+    assert bad.status_code == 400
+
+    # 3. login returns a token
+    login = client.post(
+        "/auth/login",
+        json={"email": "me@example.com", "password": "s3cret-pass"},
+    )
+    assert login.status_code == 200
+    token = login.json()["access_token"]
+    assert token
+
+    # 4. no token -> 401
+    assert client.get(f"/customer/{CID}/assets").status_code == 401
+
+    # 5. another customer's valid token -> 403
+    other = client.post(
+        "/auth/signup",
+        json={"email": "other@example.com", "password": "s3cret-pass",
+              "customer_id": OTHER_CID},
+    )
+    assert other.status_code == 200
+    other_token = client.post(
+        "/auth/login",
+        json={"email": "other@example.com", "password": "s3cret-pass"},
+    ).json()["access_token"]
+    forbidden = client.get(
+        f"/customer/{CID}/assets",
+        headers={"Authorization": f"Bearer {other_token}"},
+    )
+    assert forbidden.status_code == 403
+
+    # sanity: own token still works
+    own = client.get(
+        f"/customer/{CID}/assets",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert own.status_code == 200

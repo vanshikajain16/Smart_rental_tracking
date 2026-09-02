@@ -35,7 +35,7 @@ def _authorize(path_customer_id: str, caller_id: str) -> None:
     if path_customer_id != caller_id:
         raise HTTPException(
             status_code=403,
-            detail="you can only view your own customer data",
+            detail="you can only access your own data",
         )
     _known_customer(path_customer_id)
 
