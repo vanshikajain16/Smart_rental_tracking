@@ -17,7 +17,7 @@ const COLUMNS = [
 const TIER_CLASS = { High: 'chip bad', Medium: 'chip warn', Low: 'chip good' }
 const TREND_MARK = { down: '▼', up: '▲', flat: '▬' }
 const TREND_CLASS = { down: 'trend down', up: 'trend up', flat: 'trend flat' }
-const TIER_FILTERS = ['all', 'High', 'Medium', 'Low']
+const TIER_FILTERS = ['all', 'Low', 'Medium', 'High']
 
 export default function DealerDashboard() {
   const [rows, setRows] = useState([])
@@ -47,15 +47,14 @@ export default function DealerDashboard() {
       .catch((e) => setError(e.message))
   }, [])
 
+  // risk-tier filter AND case-insensitive customer_id substring search;
+  // applied before the existing column sort (which is unchanged).
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return rows.filter((r) => {
       if (tier !== 'all' && r.risk_tier !== tier) return false
-      if (!q) return true
-      return (
-        r.customer_id.toLowerCase().includes(q) ||
-        (r.phone_number || '').toLowerCase().includes(q)
-      )
+      if (q && !r.customer_id.toLowerCase().includes(q)) return false
+      return true
     })
   }, [rows, tier, query])
 
@@ -124,7 +123,7 @@ export default function DealerDashboard() {
         <input
           className="search"
           type="search"
-          placeholder="Search customer or phone…"
+          placeholder="Search customer ID…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />

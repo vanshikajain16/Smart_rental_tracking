@@ -9,21 +9,23 @@ export default function DealerKpis({ rows, summary }) {
   let cards
   if (summary) {
     cards = [
-      { label: 'Customers', value: summary.total_customers },
-      { label: 'Assets on rent', value: summary.total_assets },
+      { label: 'Total Customers', value: summary.total_customers },
+      { label: 'Total Assets', value: summary.total_assets },
       {
-        label: 'Avg fleet health',
+        label: 'Avg Fleet Health',
         value: summary.avg_fleet_health_score ?? '—',
       },
-      { label: 'High risk', value: summary.high_risk_count, tone: 'bad' },
-      { label: 'Pending SMS', value: summary.pending_sms_count },
       {
-        label: 'Unpaid penalties',
+        label: 'High Risk Customers',
+        value: summary.high_risk_count,
+        tone: 'bad',
+      },
+      { label: 'Pending SMS Reminders', value: summary.pending_sms_count },
+      {
+        label: 'Unpaid Penalties',
         value: summary.unpaid_penalty_count,
         tone: 'warn',
       },
-      { label: 'Renewal risk', value: renewalRisk, tone: 'bad' },
-      { label: 'Health declining', value: declining, tone: 'warn' },
     ]
   } else {
     const withScore = rows.filter((r) => r.reliability_score != null)
