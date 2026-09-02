@@ -1,0 +1,1537 @@
+{
+  "meta": {
+    "trained_at": "2026-09-02T03:05:02+00:00",
+    "source": "data\\processed\\stage1_output.csv",
+    "n_rows": 826,
+    "date_min": "2025-01-01",
+    "date_max": "2025-12-20",
+    "as_of": "2025-12-20",
+    "month_index": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12"
+    ],
+    "fit_months": [
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11"
+    ],
+    "trimmed_leading_ramp": true,
+    "trimmed_partial_tail": true,
+    "month_days": 30.0,
+    "volume_bar": {
+      "min_checkouts": 15,
+      "min_nonzero_months": 6,
+      "min_span_months": 8
+    },
+    "holt_note": "Holt-Winters, seasonal=None (Holt's linear damped trend). Single-year history -> 12 monthly points -> seasonal fit infeasible; leading ramp-up + partial trailing month trimmed from the fit.",
+    "blend_note": "forecast.py blends the Holt projection 60/40 with the last-3-months recency rate to stay robust on 10-point fits."
+  },
+  "groups": {
+    "S001|Bulldozer": {
+      "method": "holt",
+      "n_checkouts": 25,
+      "n_checkouts_all_months": 31,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 2.5,
+      "recency_monthly_rate": 1.667,
+      "recent_3_months": [
+        2,
+        1,
+        2
+      ],
+      "monthly_counts": [
+        5,
+        4,
+        2,
+        3,
+        2,
+        1,
+        4,
+        4,
+        2,
+        1,
+        2,
+        1
+      ],
+      "fit_monthly_counts": [
+        4,
+        2,
+        3,
+        2,
+        1,
+        4,
+        4,
+        2,
+        1,
+        2
+      ],
+      "days_since_last_checkout": 15,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 1.7361,
+        "trend": -0.088
+      },
+      "fit": {
+        "rmse": 1.232,
+        "resid_std": 1.231
+      },
+      "trend_per_month": -0.07,
+      "forecast_next_3_months": [
+        1.67,
+        1.61,
+        1.56
+      ],
+      "method_reason": "25 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S001|Crane": {
+      "method": "holt",
+      "n_checkouts": 38,
+      "n_checkouts_all_months": 44,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 3.8,
+      "recency_monthly_rate": 4.0,
+      "recent_3_months": [
+        3,
+        5,
+        4
+      ],
+      "monthly_counts": [
+        6,
+        2,
+        4,
+        3,
+        2,
+        7,
+        4,
+        4,
+        3,
+        5,
+        4,
+        0
+      ],
+      "fit_monthly_counts": [
+        2,
+        4,
+        3,
+        2,
+        7,
+        4,
+        4,
+        3,
+        5,
+        4
+      ],
+      "days_since_last_checkout": 21,
+      "params": {
+        "alpha": 0.2,
+        "beta": 0.3,
+        "phi": 0.9
+      },
+      "state": {
+        "level": 4.4453,
+        "trend": 0.1397
+      },
+      "fit": {
+        "rmse": 1.714,
+        "resid_std": 1.621
+      },
+      "trend_per_month": 0.126,
+      "forecast_next_3_months": [
+        4.57,
+        4.68,
+        4.79
+      ],
+      "method_reason": "38 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S001|Excavator": {
+      "method": "holt",
+      "n_checkouts": 31,
+      "n_checkouts_all_months": 38,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 3.1,
+      "recency_monthly_rate": 2.667,
+      "recent_3_months": [
+        5,
+        2,
+        1
+      ],
+      "monthly_counts": [
+        6,
+        3,
+        2,
+        6,
+        2,
+        3,
+        4,
+        3,
+        5,
+        2,
+        1,
+        1
+      ],
+      "fit_monthly_counts": [
+        3,
+        2,
+        6,
+        2,
+        3,
+        4,
+        3,
+        5,
+        2,
+        1
+      ],
+      "days_since_last_checkout": 13,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.1,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.4903,
+        "trend": -0.0362
+      },
+      "fit": {
+        "rmse": 1.703,
+        "resid_std": 1.615
+      },
+      "trend_per_month": -0.029,
+      "forecast_next_3_months": [
+        2.46,
+        2.44,
+        2.42
+      ],
+      "method_reason": "31 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S001|Grader": {
+      "method": "holt",
+      "n_checkouts": 21,
+      "n_checkouts_all_months": 27,
+      "nonzero_months": 7,
+      "span_months": 9,
+      "hist_monthly_rate": 2.1,
+      "recency_monthly_rate": 1.333,
+      "recent_3_months": [
+        1,
+        0,
+        3
+      ],
+      "monthly_counts": [
+        4,
+        0,
+        4,
+        5,
+        2,
+        0,
+        4,
+        2,
+        1,
+        0,
+        3,
+        2
+      ],
+      "fit_monthly_counts": [
+        0,
+        4,
+        5,
+        2,
+        0,
+        4,
+        2,
+        1,
+        0,
+        3
+      ],
+      "days_since_last_checkout": 7,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.5367,
+        "trend": 0.0859
+      },
+      "fit": {
+        "rmse": 2.227,
+        "resid_std": 2.216
+      },
+      "trend_per_month": 0.069,
+      "forecast_next_3_months": [
+        2.61,
+        2.66,
+        2.7
+      ],
+      "method_reason": "21 checkouts over 7/10 active fit months (span 9) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S002|Bulldozer": {
+      "method": "holt",
+      "n_checkouts": 21,
+      "n_checkouts_all_months": 32,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 2.1,
+      "recency_monthly_rate": 1.333,
+      "recent_3_months": [
+        1,
+        2,
+        1
+      ],
+      "monthly_counts": [
+        9,
+        2,
+        4,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        2,
+        1,
+        2
+      ],
+      "fit_monthly_counts": [
+        2,
+        4,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        2,
+        1
+      ],
+      "days_since_last_checkout": 15,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.3,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 1.5933,
+        "trend": -0.0315
+      },
+      "fit": {
+        "rmse": 1.187,
+        "resid_std": 1.116
+      },
+      "trend_per_month": -0.025,
+      "forecast_next_3_months": [
+        1.57,
+        1.55,
+        1.53
+      ],
+      "method_reason": "21 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S002|Crane": {
+      "method": "holt",
+      "n_checkouts": 36,
+      "n_checkouts_all_months": 46,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 3.6,
+      "recency_monthly_rate": 2.667,
+      "recent_3_months": [
+        2,
+        4,
+        2
+      ],
+      "monthly_counts": [
+        7,
+        4,
+        4,
+        6,
+        5,
+        2,
+        3,
+        4,
+        2,
+        4,
+        2,
+        3
+      ],
+      "fit_monthly_counts": [
+        4,
+        4,
+        6,
+        5,
+        2,
+        3,
+        4,
+        2,
+        4,
+        2
+      ],
+      "days_since_last_checkout": 11,
+      "params": {
+        "alpha": 0.3,
+        "beta": 0.3,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.8455,
+        "trend": -0.1971
+      },
+      "fit": {
+        "rmse": 1.514,
+        "resid_std": 1.41
+      },
+      "trend_per_month": -0.158,
+      "forecast_next_3_months": [
+        2.69,
+        2.56,
+        2.46
+      ],
+      "method_reason": "36 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S002|Excavator": {
+      "method": "holt",
+      "n_checkouts": 24,
+      "n_checkouts_all_months": 29,
+      "nonzero_months": 9,
+      "span_months": 10,
+      "hist_monthly_rate": 2.4,
+      "recency_monthly_rate": 3.0,
+      "recent_3_months": [
+        2,
+        5,
+        2
+      ],
+      "monthly_counts": [
+        4,
+        1,
+        3,
+        4,
+        5,
+        1,
+        1,
+        0,
+        2,
+        5,
+        2,
+        1
+      ],
+      "fit_monthly_counts": [
+        1,
+        3,
+        4,
+        5,
+        1,
+        1,
+        0,
+        2,
+        5,
+        2
+      ],
+      "days_since_last_checkout": 18,
+      "params": {
+        "alpha": 0.8,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.5148,
+        "trend": 0.1529
+      },
+      "fit": {
+        "rmse": 2.205,
+        "resid_std": 2.166
+      },
+      "trend_per_month": 0.122,
+      "forecast_next_3_months": [
+        2.64,
+        2.74,
+        2.81
+      ],
+      "method_reason": "24 checkouts over 9/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S002|Grader": {
+      "method": "holt",
+      "n_checkouts": 19,
+      "n_checkouts_all_months": 24,
+      "nonzero_months": 8,
+      "span_months": 9,
+      "hist_monthly_rate": 1.9,
+      "recency_monthly_rate": 1.333,
+      "recent_3_months": [
+        1,
+        3,
+        0
+      ],
+      "monthly_counts": [
+        4,
+        3,
+        4,
+        1,
+        1,
+        4,
+        2,
+        0,
+        1,
+        3,
+        0,
+        1
+      ],
+      "fit_monthly_counts": [
+        3,
+        4,
+        1,
+        1,
+        4,
+        2,
+        0,
+        1,
+        3,
+        0
+      ],
+      "days_since_last_checkout": 0,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 0.9474,
+        "trend": -0.0879
+      },
+      "fit": {
+        "rmse": 1.437,
+        "resid_std": 1.412
+      },
+      "trend_per_month": -0.07,
+      "forecast_next_3_months": [
+        0.88,
+        0.82,
+        0.78
+      ],
+      "method_reason": "19 checkouts over 8/10 active fit months (span 9) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S003|Bulldozer": {
+      "method": "holt",
+      "n_checkouts": 24,
+      "n_checkouts_all_months": 29,
+      "nonzero_months": 8,
+      "span_months": 10,
+      "hist_monthly_rate": 2.4,
+      "recency_monthly_rate": 3.0,
+      "recent_3_months": [
+        1,
+        6,
+        2
+      ],
+      "monthly_counts": [
+        5,
+        4,
+        0,
+        2,
+        5,
+        0,
+        1,
+        3,
+        1,
+        6,
+        2,
+        0
+      ],
+      "fit_monthly_counts": [
+        4,
+        0,
+        2,
+        5,
+        0,
+        1,
+        3,
+        1,
+        6,
+        2
+      ],
+      "days_since_last_checkout": 29,
+      "params": {
+        "alpha": 0.2,
+        "beta": 0.2,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.7059,
+        "trend": 0.0123
+      },
+      "fit": {
+        "rmse": 2.563,
+        "resid_std": 2.436
+      },
+      "trend_per_month": 0.01,
+      "forecast_next_3_months": [
+        2.72,
+        2.72,
+        2.73
+      ],
+      "method_reason": "24 checkouts over 8/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S003|Crane": {
+      "method": "holt",
+      "n_checkouts": 32,
+      "n_checkouts_all_months": 36,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 3.2,
+      "recency_monthly_rate": 3.333,
+      "recent_3_months": [
+        5,
+        2,
+        3
+      ],
+      "monthly_counts": [
+        4,
+        2,
+        5,
+        2,
+        3,
+        3,
+        3,
+        4,
+        5,
+        2,
+        3,
+        0
+      ],
+      "fit_monthly_counts": [
+        2,
+        5,
+        2,
+        3,
+        3,
+        3,
+        4,
+        5,
+        2,
+        3
+      ],
+      "days_since_last_checkout": 27,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.4152,
+        "trend": 0.0448
+      },
+      "fit": {
+        "rmse": 1.254,
+        "resid_std": 1.225
+      },
+      "trend_per_month": 0.036,
+      "forecast_next_3_months": [
+        3.45,
+        3.48,
+        3.5
+      ],
+      "method_reason": "32 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S003|Excavator": {
+      "method": "holt",
+      "n_checkouts": 19,
+      "n_checkouts_all_months": 26,
+      "nonzero_months": 8,
+      "span_months": 8,
+      "hist_monthly_rate": 1.9,
+      "recency_monthly_rate": 1.333,
+      "recent_3_months": [
+        3,
+        1,
+        0
+      ],
+      "monthly_counts": [
+        6,
+        0,
+        2,
+        1,
+        2,
+        3,
+        3,
+        4,
+        3,
+        1,
+        0,
+        1
+      ],
+      "fit_monthly_counts": [
+        0,
+        2,
+        1,
+        2,
+        3,
+        3,
+        4,
+        3,
+        1,
+        0
+      ],
+      "days_since_last_checkout": 1,
+      "params": {
+        "alpha": 0.8,
+        "beta": 0.3,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 0.211,
+        "trend": -0.6559
+      },
+      "fit": {
+        "rmse": 1.214,
+        "resid_std": 1.171
+      },
+      "trend_per_month": -0.525,
+      "forecast_next_3_months": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "method_reason": "19 checkouts over 8/10 active fit months (span 8) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S003|Grader": {
+      "method": "holt",
+      "n_checkouts": 24,
+      "n_checkouts_all_months": 29,
+      "nonzero_months": 8,
+      "span_months": 10,
+      "hist_monthly_rate": 2.4,
+      "recency_monthly_rate": 3.0,
+      "recent_3_months": [
+        3,
+        2,
+        4
+      ],
+      "monthly_counts": [
+        5,
+        4,
+        3,
+        1,
+        0,
+        3,
+        4,
+        0,
+        3,
+        2,
+        4,
+        0
+      ],
+      "fit_monthly_counts": [
+        4,
+        3,
+        1,
+        0,
+        3,
+        4,
+        0,
+        3,
+        2,
+        4
+      ],
+      "days_since_last_checkout": 24,
+      "params": {
+        "alpha": 0.4,
+        "beta": 0.3,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.8238,
+        "trend": 0.291
+      },
+      "fit": {
+        "rmse": 1.949,
+        "resid_std": 1.829
+      },
+      "trend_per_month": 0.233,
+      "forecast_next_3_months": [
+        3.06,
+        3.24,
+        3.39
+      ],
+      "method_reason": "24 checkouts over 8/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S004|Bulldozer": {
+      "method": "holt",
+      "n_checkouts": 32,
+      "n_checkouts_all_months": 40,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 3.2,
+      "recency_monthly_rate": 3.0,
+      "recent_3_months": [
+        4,
+        3,
+        2
+      ],
+      "monthly_counts": [
+        8,
+        2,
+        3,
+        2,
+        3,
+        7,
+        4,
+        2,
+        4,
+        3,
+        2,
+        0
+      ],
+      "fit_monthly_counts": [
+        2,
+        3,
+        2,
+        3,
+        7,
+        4,
+        2,
+        4,
+        3,
+        2
+      ],
+      "days_since_last_checkout": 30,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.398,
+        "trend": 0.0433
+      },
+      "fit": {
+        "rmse": 1.634,
+        "resid_std": 1.615
+      },
+      "trend_per_month": 0.035,
+      "forecast_next_3_months": [
+        3.43,
+        3.46,
+        3.48
+      ],
+      "method_reason": "32 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S004|Crane": {
+      "method": "holt",
+      "n_checkouts": 42,
+      "n_checkouts_all_months": 56,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 4.2,
+      "recency_monthly_rate": 4.333,
+      "recent_3_months": [
+        6,
+        4,
+        3
+      ],
+      "monthly_counts": [
+        9,
+        8,
+        2,
+        2,
+        4,
+        4,
+        5,
+        4,
+        6,
+        4,
+        3,
+        5
+      ],
+      "fit_monthly_counts": [
+        8,
+        2,
+        2,
+        4,
+        4,
+        5,
+        4,
+        6,
+        4,
+        3
+      ],
+      "days_since_last_checkout": 5,
+      "params": {
+        "alpha": 0.8,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.2227,
+        "trend": -0.1804
+      },
+      "fit": {
+        "rmse": 2.204,
+        "resid_std": 2.204
+      },
+      "trend_per_month": -0.144,
+      "forecast_next_3_months": [
+        3.08,
+        2.96,
+        2.87
+      ],
+      "method_reason": "42 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S004|Excavator": {
+      "method": "holt",
+      "n_checkouts": 29,
+      "n_checkouts_all_months": 31,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 2.9,
+      "recency_monthly_rate": 2.333,
+      "recent_3_months": [
+        2,
+        4,
+        1
+      ],
+      "monthly_counts": [
+        2,
+        4,
+        3,
+        3,
+        3,
+        3,
+        4,
+        2,
+        2,
+        4,
+        1,
+        0
+      ],
+      "fit_monthly_counts": [
+        4,
+        3,
+        3,
+        3,
+        3,
+        4,
+        2,
+        2,
+        4,
+        1
+      ],
+      "days_since_last_checkout": 31,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.9
+      },
+      "state": {
+        "level": 2.1425,
+        "trend": -0.1291
+      },
+      "fit": {
+        "rmse": 0.929,
+        "resid_std": 0.929
+      },
+      "trend_per_month": -0.116,
+      "forecast_next_3_months": [
+        2.03,
+        1.92,
+        1.83
+      ],
+      "method_reason": "29 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S004|Grader": {
+      "method": "holt",
+      "n_checkouts": 26,
+      "n_checkouts_all_months": 33,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 2.6,
+      "recency_monthly_rate": 3.0,
+      "recent_3_months": [
+        3,
+        5,
+        1
+      ],
+      "monthly_counts": [
+        4,
+        2,
+        1,
+        3,
+        4,
+        1,
+        1,
+        5,
+        3,
+        5,
+        1,
+        3
+      ],
+      "fit_monthly_counts": [
+        2,
+        1,
+        3,
+        4,
+        1,
+        1,
+        5,
+        3,
+        5,
+        1
+      ],
+      "days_since_last_checkout": 2,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.3,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.4791,
+        "trend": 0.0073
+      },
+      "fit": {
+        "rmse": 1.771,
+        "resid_std": 1.671
+      },
+      "trend_per_month": 0.006,
+      "forecast_next_3_months": [
+        3.48,
+        3.49,
+        3.49
+      ],
+      "method_reason": "26 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S005|Bulldozer": {
+      "method": "holt",
+      "n_checkouts": 31,
+      "n_checkouts_all_months": 35,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 3.1,
+      "recency_monthly_rate": 3.667,
+      "recent_3_months": [
+        1,
+        5,
+        5
+      ],
+      "monthly_counts": [
+        2,
+        3,
+        1,
+        4,
+        3,
+        4,
+        4,
+        1,
+        1,
+        5,
+        5,
+        2
+      ],
+      "fit_monthly_counts": [
+        3,
+        1,
+        4,
+        3,
+        4,
+        4,
+        1,
+        1,
+        5,
+        5
+      ],
+      "days_since_last_checkout": 13,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.1554,
+        "trend": 0.0045
+      },
+      "fit": {
+        "rmse": 1.672,
+        "resid_std": 1.663
+      },
+      "trend_per_month": 0.004,
+      "forecast_next_3_months": [
+        3.16,
+        3.16,
+        3.16
+      ],
+      "method_reason": "31 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S005|Crane": {
+      "method": "holt",
+      "n_checkouts": 29,
+      "n_checkouts_all_months": 33,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 2.9,
+      "recency_monthly_rate": 3.667,
+      "recent_3_months": [
+        3,
+        2,
+        6
+      ],
+      "monthly_counts": [
+        3,
+        1,
+        5,
+        3,
+        2,
+        1,
+        4,
+        2,
+        3,
+        2,
+        6,
+        1
+      ],
+      "fit_monthly_counts": [
+        1,
+        5,
+        3,
+        2,
+        1,
+        4,
+        2,
+        3,
+        2,
+        6
+      ],
+      "days_since_last_checkout": 12,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 1.0
+      },
+      "state": {
+        "level": 4.2045,
+        "trend": 0.3366
+      },
+      "fit": {
+        "rmse": 1.781,
+        "resid_std": 1.772
+      },
+      "trend_per_month": 0.337,
+      "forecast_next_3_months": [
+        4.54,
+        4.88,
+        5.21
+      ],
+      "method_reason": "29 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S005|Excavator": {
+      "method": "holt",
+      "n_checkouts": 26,
+      "n_checkouts_all_months": 35,
+      "nonzero_months": 8,
+      "span_months": 10,
+      "hist_monthly_rate": 2.6,
+      "recency_monthly_rate": 2.667,
+      "recent_3_months": [
+        1,
+        3,
+        4
+      ],
+      "monthly_counts": [
+        6,
+        7,
+        3,
+        2,
+        0,
+        2,
+        4,
+        0,
+        1,
+        3,
+        4,
+        3
+      ],
+      "fit_monthly_counts": [
+        7,
+        3,
+        2,
+        0,
+        2,
+        4,
+        0,
+        1,
+        3,
+        4
+      ],
+      "days_since_last_checkout": 12,
+      "params": {
+        "alpha": 0.8,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.6445,
+        "trend": -0.2374
+      },
+      "fit": {
+        "rmse": 2.171,
+        "resid_std": 2.073
+      },
+      "trend_per_month": -0.19,
+      "forecast_next_3_months": [
+        3.45,
+        3.3,
+        3.18
+      ],
+      "method_reason": "26 checkouts over 8/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S005|Grader": {
+      "method": "holt",
+      "n_checkouts": 22,
+      "n_checkouts_all_months": 24,
+      "nonzero_months": 9,
+      "span_months": 9,
+      "hist_monthly_rate": 2.2,
+      "recency_monthly_rate": 2.333,
+      "recent_3_months": [
+        4,
+        1,
+        2
+      ],
+      "monthly_counts": [
+        2,
+        0,
+        1,
+        2,
+        3,
+        2,
+        4,
+        3,
+        4,
+        1,
+        2,
+        0
+      ],
+      "fit_monthly_counts": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        4,
+        3,
+        4,
+        1,
+        2
+      ],
+      "days_since_last_checkout": 31,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.3404,
+        "trend": 0.1291
+      },
+      "fit": {
+        "rmse": 1.177,
+        "resid_std": 1.168
+      },
+      "trend_per_month": 0.103,
+      "forecast_next_3_months": [
+        3.44,
+        3.53,
+        3.59
+      ],
+      "method_reason": "22 checkouts over 9/10 active fit months (span 9) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S006|Bulldozer": {
+      "method": "holt",
+      "n_checkouts": 29,
+      "n_checkouts_all_months": 34,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 2.9,
+      "recency_monthly_rate": 4.0,
+      "recent_3_months": [
+        5,
+        5,
+        2
+      ],
+      "monthly_counts": [
+        2,
+        2,
+        3,
+        3,
+        2,
+        2,
+        2,
+        3,
+        5,
+        5,
+        2,
+        3
+      ],
+      "fit_monthly_counts": [
+        2,
+        3,
+        3,
+        2,
+        2,
+        2,
+        3,
+        5,
+        5,
+        2
+      ],
+      "days_since_last_checkout": 15,
+      "params": {
+        "alpha": 0.2,
+        "beta": 0.2,
+        "phi": 1.0
+      },
+      "state": {
+        "level": 3.3924,
+        "trend": 0.1518
+      },
+      "fit": {
+        "rmse": 1.303,
+        "resid_std": 1.232
+      },
+      "trend_per_month": 0.152,
+      "forecast_next_3_months": [
+        3.54,
+        3.7,
+        3.85
+      ],
+      "method_reason": "29 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S006|Crane": {
+      "method": "holt",
+      "n_checkouts": 26,
+      "n_checkouts_all_months": 33,
+      "nonzero_months": 9,
+      "span_months": 10,
+      "hist_monthly_rate": 2.6,
+      "recency_monthly_rate": 3.0,
+      "recent_3_months": [
+        5,
+        3,
+        1
+      ],
+      "monthly_counts": [
+        5,
+        1,
+        3,
+        3,
+        0,
+        5,
+        2,
+        3,
+        5,
+        3,
+        1,
+        2
+      ],
+      "fit_monthly_counts": [
+        1,
+        3,
+        3,
+        0,
+        5,
+        2,
+        3,
+        5,
+        3,
+        1
+      ],
+      "days_since_last_checkout": 5,
+      "params": {
+        "alpha": 0.3,
+        "beta": 0.3,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.8674,
+        "trend": -0.0828
+      },
+      "fit": {
+        "rmse": 2.067,
+        "resid_std": 2.009
+      },
+      "trend_per_month": -0.066,
+      "forecast_next_3_months": [
+        2.8,
+        2.75,
+        2.71
+      ],
+      "method_reason": "26 checkouts over 9/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S006|Excavator": {
+      "method": "holt",
+      "n_checkouts": 32,
+      "n_checkouts_all_months": 35,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 3.2,
+      "recency_monthly_rate": 3.333,
+      "recent_3_months": [
+        3,
+        3,
+        4
+      ],
+      "monthly_counts": [
+        3,
+        3,
+        5,
+        1,
+        4,
+        2,
+        1,
+        6,
+        3,
+        3,
+        4,
+        0
+      ],
+      "fit_monthly_counts": [
+        3,
+        5,
+        1,
+        4,
+        2,
+        1,
+        6,
+        3,
+        3,
+        4
+      ],
+      "days_since_last_checkout": 28,
+      "params": {
+        "alpha": 0.1,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 3.7664,
+        "trend": 0.0419
+      },
+      "fit": {
+        "rmse": 1.766,
+        "resid_std": 1.717
+      },
+      "trend_per_month": 0.034,
+      "forecast_next_3_months": [
+        3.8,
+        3.83,
+        3.85
+      ],
+      "method_reason": "32 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    },
+    "S006|Grader": {
+      "method": "holt",
+      "n_checkouts": 24,
+      "n_checkouts_all_months": 33,
+      "nonzero_months": 10,
+      "span_months": 10,
+      "hist_monthly_rate": 2.4,
+      "recency_monthly_rate": 2.0,
+      "recent_3_months": [
+        2,
+        1,
+        3
+      ],
+      "monthly_counts": [
+        6,
+        2,
+        5,
+        3,
+        4,
+        1,
+        1,
+        2,
+        2,
+        1,
+        3,
+        3
+      ],
+      "fit_monthly_counts": [
+        2,
+        5,
+        3,
+        4,
+        1,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "days_since_last_checkout": 2,
+      "params": {
+        "alpha": 0.6,
+        "beta": 0.02,
+        "phi": 0.8
+      },
+      "state": {
+        "level": 2.3997,
+        "trend": 0.08
+      },
+      "fit": {
+        "rmse": 1.651,
+        "resid_std": 1.617
+      },
+      "trend_per_month": 0.064,
+      "forecast_next_3_months": [
+        2.46,
+        2.51,
+        2.56
+      ],
+      "method_reason": "24 checkouts over 10/10 active fit months (span 10) -> above volume bar, Holt level+trend fitted; seasonal term off (10 monthly points < 24 for a yearly season)."
+    }
+  },
+  "type_fallback": {
+    "Bulldozer": {
+      "monthly_rate": 2.7,
+      "recency_monthly_rate": 2.778,
+      "n_groups": 6
+    },
+    "Crane": {
+      "monthly_rate": 3.383,
+      "recency_monthly_rate": 3.5,
+      "n_groups": 6
+    },
+    "Excavator": {
+      "monthly_rate": 2.683,
+      "recency_monthly_rate": 2.555,
+      "n_groups": 6
+    },
+    "Grader": {
+      "monthly_rate": 2.267,
+      "recency_monthly_rate": 2.167,
+      "n_groups": 6
+    }
+  },
+  "global_fallback": {
+    "monthly_rate": 2.758
+  }
+}

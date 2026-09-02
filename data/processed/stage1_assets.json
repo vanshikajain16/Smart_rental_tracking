@@ -1,0 +1,1139 @@
+[
+  {
+    "equipment_id": "EQX1000",
+    "type": "Grader",
+    "customer_id": "CUST02",
+    "site_id": "S002",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1001",
+    "type": "Grader",
+    "customer_id": "CUST01",
+    "site_id": "S003",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (59% > 55% threshold)",
+      "Low utilization (engine 2.5 hrs/day < 6 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1002",
+    "type": "Crane",
+    "customer_id": "CUST10",
+    "site_id": "S005",
+    "health_score": 75,
+    "reasons": [
+      "High idle ratio (51% > 50% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1003",
+    "type": "Excavator",
+    "customer_id": "CUST18",
+    "site_id": "S001",
+    "health_score": 85,
+    "reasons": [
+      "Low utilization (engine 3.7 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1004",
+    "type": "Crane",
+    "customer_id": "CUST14",
+    "site_id": "S002",
+    "health_score": 55,
+    "reasons": [
+      "High idle ratio (76% > 50% threshold)",
+      "Severe idle time (11.3 idle hrs/day)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1005",
+    "type": "Bulldozer",
+    "customer_id": "CUST02",
+    "site_id": "S006",
+    "health_score": 85,
+    "reasons": [
+      "Low utilization (engine 3.7 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1006",
+    "type": "Bulldozer",
+    "customer_id": "CUST13",
+    "site_id": "S006",
+    "health_score": 25,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-05-19, 226d overdue)",
+      "Penalty charged",
+      "Low utilization (engine 3.4 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1007",
+    "type": "Crane",
+    "customer_id": "CUST13",
+    "site_id": "S002",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1008",
+    "type": "Bulldozer",
+    "customer_id": "CUST10",
+    "site_id": "S001",
+    "health_score": 40,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-08-05, 148d overdue)",
+      "Penalty charged"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1009",
+    "type": "Excavator",
+    "customer_id": "CUST17",
+    "site_id": "S005",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (78% > 60% threshold)",
+      "Low utilization (engine 1.9 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1010",
+    "type": "Bulldozer",
+    "customer_id": "CUST15",
+    "site_id": "S005",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1011",
+    "type": "Crane",
+    "customer_id": "CUST09",
+    "site_id": "S001",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-07-28, 156d overdue)",
+      "Penalty charged and unpaid",
+      "High idle ratio (59% > 50% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1012",
+    "type": "Crane",
+    "customer_id": "CUST09",
+    "site_id": "S004",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (93% > 50% threshold)",
+      "Low utilization (engine 0.4 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1013",
+    "type": "Crane",
+    "customer_id": "CUST06",
+    "site_id": "S005",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (57% > 50% threshold)",
+      "Low utilization (engine 2.0 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1014",
+    "type": "Excavator",
+    "customer_id": "CUST07",
+    "site_id": "S001",
+    "health_score": 85,
+    "reasons": [
+      "Low utilization (engine 3.7 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1015",
+    "type": "Bulldozer",
+    "customer_id": "CUST06",
+    "site_id": "S001",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (78% > 60% threshold)",
+      "Low utilization (engine 1.8 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1016",
+    "type": "Excavator",
+    "customer_id": "CUST18",
+    "site_id": "S002",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (82% > 60% threshold)",
+      "Low utilization (engine 1.5 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1017",
+    "type": "Excavator",
+    "customer_id": "CUST11",
+    "site_id": "S002",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (68% > 60% threshold)",
+      "Low utilization (engine 2.6 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1018",
+    "type": "Excavator",
+    "customer_id": "CUST10",
+    "site_id": "S001",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-06-28, 186d overdue)",
+      "Penalty charged",
+      "High idle ratio (66% > 60% threshold)",
+      "Low utilization (engine 2.7 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1019",
+    "type": "Bulldozer",
+    "customer_id": "CUST17",
+    "site_id": "S001",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-08-19, 134d overdue)",
+      "Penalty charged",
+      "High idle ratio (67% > 60% threshold)",
+      "Low utilization (engine 3.9 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1020",
+    "type": "Grader",
+    "customer_id": "CUST06",
+    "site_id": "S004",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-04-02, 273d overdue)",
+      "Penalty charged and unpaid",
+      "High idle ratio (62% > 55% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1021",
+    "type": "Grader",
+    "customer_id": "CUST07",
+    "site_id": "S006",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1022",
+    "type": "Bulldozer",
+    "customer_id": "CUST12",
+    "site_id": "S006",
+    "health_score": 75,
+    "reasons": [
+      "High idle ratio (64% > 60% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1023",
+    "type": "Grader",
+    "customer_id": "CUST13",
+    "site_id": "S005",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-05-02, 243d overdue)",
+      "Penalty charged and unpaid",
+      "High idle ratio (76% > 55% threshold)",
+      "Low utilization (engine 1.1 hrs/day < 6 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1024",
+    "type": "Crane",
+    "customer_id": "CUST06",
+    "site_id": "S003",
+    "health_score": 75,
+    "reasons": [
+      "High idle ratio (52% > 50% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1025",
+    "type": "Excavator",
+    "customer_id": "CUST13",
+    "site_id": "S006",
+    "health_score": 40,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-10-02, 90d overdue)",
+      "Penalty charged"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1026",
+    "type": "Grader",
+    "customer_id": "CUST07",
+    "site_id": "S001",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1027",
+    "type": "Grader",
+    "customer_id": "CUST12",
+    "site_id": "S006",
+    "health_score": 100,
+    "reasons": [
+      "Chronic underutilization (flagged in 2 of last 3 rentals)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1028",
+    "type": "Bulldozer",
+    "customer_id": "CUST08",
+    "site_id": "S001",
+    "health_score": 85,
+    "reasons": [
+      "Low utilization (engine 3.5 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1029",
+    "type": "Excavator",
+    "customer_id": "CUST12",
+    "site_id": "S005",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1030",
+    "type": "Bulldozer",
+    "customer_id": "CUST03",
+    "site_id": "S002",
+    "health_score": 40,
+    "reasons": [
+      "High idle ratio (100% > 60% threshold)",
+      "Severe idle time (8.7 idle hrs/day)",
+      "Low utilization (engine 0.0 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1031",
+    "type": "Bulldozer",
+    "customer_id": "CUST02",
+    "site_id": "S005",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (64% > 60% threshold)",
+      "Low utilization (engine 3.2 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1032",
+    "type": "Crane",
+    "customer_id": "CUST15",
+    "site_id": "S006",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (67% > 50% threshold)",
+      "Low utilization (engine 2.0 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1033",
+    "type": "Crane",
+    "customer_id": "CUST17",
+    "site_id": "S001",
+    "health_score": 15,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-11-10, 51d overdue)",
+      "Penalty charged",
+      "High idle ratio (51% > 50% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1034",
+    "type": "Bulldozer",
+    "customer_id": "CUST10",
+    "site_id": "S003",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (78% > 60% threshold)",
+      "Low utilization (engine 1.8 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1035",
+    "type": "Crane",
+    "customer_id": "CUST07",
+    "site_id": "S005",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1036",
+    "type": "Bulldozer",
+    "customer_id": "CUST09",
+    "site_id": "S006",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (64% > 60% threshold)",
+      "Low utilization (engine 2.8 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1037",
+    "type": "Grader",
+    "customer_id": "CUST17",
+    "site_id": "S003",
+    "health_score": 15,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-10-24, 68d overdue)",
+      "Penalty charged",
+      "High idle ratio (59% > 55% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1038",
+    "type": "Crane",
+    "customer_id": "CUST11",
+    "site_id": "S004",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (87% > 50% threshold)",
+      "Low utilization (engine 0.8 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1039",
+    "type": "Grader",
+    "customer_id": "CUST15",
+    "site_id": "S006",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-01-22, 343d overdue)",
+      "Penalty charged and unpaid",
+      "High idle ratio (81% > 55% threshold)",
+      "Low utilization (engine 1.2 hrs/day < 6 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1040",
+    "type": "Excavator",
+    "customer_id": "CUST07",
+    "site_id": "S004",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (84% > 60% threshold)",
+      "Low utilization (engine 1.4 hrs/day < 8 expected)",
+      "Chronic underutilization (flagged in 2 of last 3 rentals)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1041",
+    "type": "Grader",
+    "customer_id": "CUST07",
+    "site_id": "S005",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (83% > 55% threshold)",
+      "Low utilization (engine 1.1 hrs/day < 6 expected)",
+      "Chronic underutilization (flagged in 2 of last 3 rentals)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1042",
+    "type": "Crane",
+    "customer_id": "CUST08",
+    "site_id": "S003",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-04-09, 266d overdue)",
+      "Penalty charged",
+      "High idle ratio (73% > 50% threshold)",
+      "Low utilization (engine 2.3 hrs/day < 5 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1043",
+    "type": "Grader",
+    "customer_id": "CUST18",
+    "site_id": "S004",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1044",
+    "type": "Excavator",
+    "customer_id": "CUST07",
+    "site_id": "S005",
+    "health_score": 100,
+    "reasons": [
+      "Chronic underutilization (flagged in 2 of last 3 rentals)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1045",
+    "type": "Grader",
+    "customer_id": "CUST03",
+    "site_id": "S005",
+    "health_score": 15,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-09-01, 121d overdue)",
+      "Penalty charged",
+      "High idle ratio (61% > 55% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1046",
+    "type": "Bulldozer",
+    "customer_id": "CUST02",
+    "site_id": "S004",
+    "health_score": 75,
+    "reasons": [
+      "High idle ratio (60% > 60% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1047",
+    "type": "Grader",
+    "customer_id": "CUST18",
+    "site_id": "S001",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-12-25, 6d overdue)",
+      "Penalty charged",
+      "High idle ratio (63% > 55% threshold)",
+      "Low utilization (engine 2.0 hrs/day < 6 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1048",
+    "type": "Crane",
+    "customer_id": "CUST16",
+    "site_id": "S004",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-09-01, 121d overdue)",
+      "Penalty charged",
+      "High idle ratio (83% > 50% threshold)",
+      "Low utilization (engine 1.5 hrs/day < 5 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1049",
+    "type": "Excavator",
+    "customer_id": "CUST05",
+    "site_id": "S003",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-07-05, 179d overdue)",
+      "Penalty charged and unpaid",
+      "High idle ratio (76% > 60% threshold)",
+      "Low utilization (engine 1.8 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1050",
+    "type": "Excavator",
+    "customer_id": "CUST11",
+    "site_id": "S005",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (72% > 60% threshold)",
+      "Low utilization (engine 2.5 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1051",
+    "type": "Excavator",
+    "customer_id": "CUST10",
+    "site_id": "S002",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-11-02, 59d overdue)",
+      "Penalty charged",
+      "High idle ratio (64% > 60% threshold)",
+      "Low utilization (engine 2.7 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1052",
+    "type": "Crane",
+    "customer_id": "CUST13",
+    "site_id": "S002",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (70% > 50% threshold)",
+      "Low utilization (engine 1.7 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1053",
+    "type": "Crane",
+    "customer_id": "CUST10",
+    "site_id": "S004",
+    "health_score": 40,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-01-29, 336d overdue)",
+      "Penalty charged"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1054",
+    "type": "Grader",
+    "customer_id": "CUST05",
+    "site_id": "S006",
+    "health_score": 15,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-09-25, 97d overdue)",
+      "Penalty charged",
+      "High idle ratio (67% > 55% threshold)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1055",
+    "type": "Grader",
+    "customer_id": "CUST12",
+    "site_id": "S002",
+    "health_score": 40,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-05-04, 241d overdue)",
+      "Penalty charged"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1056",
+    "type": "Bulldozer",
+    "customer_id": "CUST12",
+    "site_id": "S002",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (100% > 60% threshold)",
+      "Low utilization (engine 0.0 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1057",
+    "type": "Bulldozer",
+    "customer_id": "CUST15",
+    "site_id": "S001",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (83% > 60% threshold)",
+      "Low utilization (engine 1.5 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1058",
+    "type": "Crane",
+    "customer_id": "CUST17",
+    "site_id": "S004",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (69% > 50% threshold)",
+      "Low utilization (engine 1.7 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1059",
+    "type": "Crane",
+    "customer_id": "CUST14",
+    "site_id": "S004",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (100% > 50% threshold)",
+      "Low utilization (engine 0.0 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1060",
+    "type": "Bulldozer",
+    "customer_id": "CUST18",
+    "site_id": "S004",
+    "health_score": 40,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-10-08, 84d overdue)",
+      "Penalty charged"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1061",
+    "type": "Crane",
+    "customer_id": "CUST05",
+    "site_id": "S004",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1062",
+    "type": "Grader",
+    "customer_id": "CUST12",
+    "site_id": "S004",
+    "health_score": 40,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-10-21, 71d overdue)",
+      "Penalty charged"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1063",
+    "type": "Excavator",
+    "customer_id": "CUST01",
+    "site_id": "S006",
+    "health_score": 25,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-11-26, 35d overdue)",
+      "Penalty charged and unpaid"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1064",
+    "type": "Bulldozer",
+    "customer_id": "CUST13",
+    "site_id": "S005",
+    "health_score": 85,
+    "reasons": [
+      "Low utilization (engine 3.5 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1065",
+    "type": "Excavator",
+    "customer_id": "CUST17",
+    "site_id": "S003",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1066",
+    "type": "Excavator",
+    "customer_id": "CUST13",
+    "site_id": "S006",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (81% > 60% threshold)",
+      "Low utilization (engine 1.6 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1067",
+    "type": "Crane",
+    "customer_id": "CUST09",
+    "site_id": "S004",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1068",
+    "type": "Bulldozer",
+    "customer_id": "CUST04",
+    "site_id": "S005",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-12-22, 9d overdue)",
+      "Penalty charged",
+      "High idle ratio (62% > 60% threshold)",
+      "Low utilization (engine 2.7 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1069",
+    "type": "Crane",
+    "customer_id": "CUST09",
+    "site_id": "S002",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (91% > 50% threshold)",
+      "Low utilization (engine 0.5 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1070",
+    "type": "Bulldozer",
+    "customer_id": "CUST03",
+    "site_id": "S002",
+    "health_score": 85,
+    "reasons": [
+      "Low utilization (engine 3.9 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1071",
+    "type": "Bulldozer",
+    "customer_id": "CUST09",
+    "site_id": "S002",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-01-25, 340d overdue)",
+      "Penalty charged and unpaid",
+      "High idle ratio (63% > 60% threshold)",
+      "Low utilization (engine 2.0 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1072",
+    "type": "Excavator",
+    "customer_id": "CUST13",
+    "site_id": "S006",
+    "health_score": 40,
+    "reasons": [
+      "High idle ratio (88% > 60% threshold)",
+      "Severe idle time (11.8 idle hrs/day)",
+      "Low utilization (engine 1.6 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1073",
+    "type": "Crane",
+    "customer_id": "CUST11",
+    "site_id": "S005",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-09-24, 98d overdue)",
+      "Penalty charged",
+      "High idle ratio (69% > 50% threshold)",
+      "Low utilization (engine 2.2 hrs/day < 5 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1074",
+    "type": "Excavator",
+    "customer_id": "CUST03",
+    "site_id": "S003",
+    "health_score": 0,
+    "reasons": [
+      "Not returned - still checked out (expected 2025-10-14, 78d overdue)",
+      "Penalty charged and unpaid",
+      "High idle ratio (81% > 60% threshold)",
+      "Low utilization (engine 1.5 hrs/day < 8 expected)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1075",
+    "type": "Crane",
+    "customer_id": "CUST08",
+    "site_id": "S001",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (81% > 50% threshold)",
+      "Low utilization (engine 1.1 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1076",
+    "type": "Bulldozer",
+    "customer_id": "CUST04",
+    "site_id": "S005",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (61% > 60% threshold)",
+      "Low utilization (engine 3.6 hrs/day < 8 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1077",
+    "type": "Crane",
+    "customer_id": "CUST02",
+    "site_id": "S006",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (71% > 50% threshold)",
+      "Low utilization (engine 1.7 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1078",
+    "type": "Excavator",
+    "customer_id": "CUST11",
+    "site_id": "S005",
+    "health_score": 100,
+    "reasons": [
+      "Chronic underutilization (flagged in 2 of last 3 rentals)"
+    ],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1079",
+    "type": "Excavator",
+    "customer_id": "CUST09",
+    "site_id": "S006",
+    "health_score": 100,
+    "reasons": [],
+    "reallocatable": false,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1080",
+    "type": "Crane",
+    "customer_id": "CUST08",
+    "site_id": "S003",
+    "health_score": 60,
+    "reasons": [
+      "High idle ratio (60% > 50% threshold)",
+      "Low utilization (engine 2.3 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  },
+  {
+    "equipment_id": "EQX1081",
+    "type": "Crane",
+    "customer_id": "CUST05",
+    "site_id": "S006",
+    "health_score": 40,
+    "reasons": [
+      "High idle ratio (100% > 50% threshold)",
+      "Severe idle time (11.7 idle hrs/day)",
+      "Low utilization (engine 0.0 hrs/day < 5 expected)"
+    ],
+    "reallocatable": true,
+    "demand_forecast": null,
+    "recommendation": null
+  }
+]

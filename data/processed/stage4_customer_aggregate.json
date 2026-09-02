@@ -1,0 +1,200 @@
+[
+  {
+    "customer_id": "CUST04",
+    "phone_number": "+918685047194",
+    "n_current_assets": 4,
+    "n_cycles_observed": 43,
+    "avg_health_score": 50.0,
+    "avg_health_all_cycles": 75.2,
+    "health_trend_slope_per_month": -1.58,
+    "trend_direction": "down",
+    "renewal_risk": true
+  },
+  {
+    "customer_id": "CUST14",
+    "phone_number": "+918894228431",
+    "n_current_assets": 3,
+    "n_cycles_observed": 35,
+    "avg_health_score": 58.3,
+    "avg_health_all_cycles": 73.9,
+    "health_trend_slope_per_month": -1.59,
+    "trend_direction": "down",
+    "renewal_risk": true
+  },
+  {
+    "customer_id": "CUST01",
+    "phone_number": "+919365425795",
+    "n_current_assets": 3,
+    "n_cycles_observed": 40,
+    "avg_health_score": 73.3,
+    "avg_health_all_cycles": 81.1,
+    "health_trend_slope_per_month": -1.17,
+    "trend_direction": "down",
+    "renewal_risk": true
+  },
+  {
+    "customer_id": "CUST05",
+    "phone_number": "+919196254131",
+    "n_current_assets": 5,
+    "n_cycles_observed": 42,
+    "avg_health_score": 58.0,
+    "avg_health_all_cycles": 67.9,
+    "health_trend_slope_per_month": -0.75,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST18",
+    "phone_number": "+919411876803",
+    "n_current_assets": 5,
+    "n_cycles_observed": 49,
+    "avg_health_score": 61.0,
+    "avg_health_all_cycles": 75.8,
+    "health_trend_slope_per_month": -0.92,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST06",
+    "phone_number": "+919749526023",
+    "n_current_assets": 4,
+    "n_cycles_observed": 50,
+    "avg_health_score": 63.8,
+    "avg_health_all_cycles": 75.3,
+    "health_trend_slope_per_month": 0.86,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST11",
+    "phone_number": "+919093995305",
+    "n_current_assets": 5,
+    "n_cycles_observed": 40,
+    "avg_health_score": 68.0,
+    "avg_health_all_cycles": 70.4,
+    "health_trend_slope_per_month": -0.19,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST08",
+    "phone_number": "+917076969735",
+    "n_current_assets": 3,
+    "n_cycles_observed": 42,
+    "avg_health_score": 68.3,
+    "avg_health_all_cycles": 76.8,
+    "health_trend_slope_per_month": 1.22,
+    "trend_direction": "up",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST13",
+    "phone_number": "+919941935658",
+    "n_current_assets": 5,
+    "n_cycles_observed": 49,
+    "avg_health_score": 69.0,
+    "avg_health_all_cycles": 64.5,
+    "health_trend_slope_per_month": 1.47,
+    "trend_direction": "up",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST17",
+    "phone_number": "+917300577435",
+    "n_current_assets": 4,
+    "n_cycles_observed": 69,
+    "avg_health_score": 70.0,
+    "avg_health_all_cycles": 77.5,
+    "health_trend_slope_per_month": -0.57,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST15",
+    "phone_number": "+917274769150",
+    "n_current_assets": 7,
+    "n_cycles_observed": 56,
+    "avg_health_score": 71.4,
+    "avg_health_all_cycles": 78.5,
+    "health_trend_slope_per_month": 0.87,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST02",
+    "phone_number": "+917086086820",
+    "n_current_assets": 6,
+    "n_cycles_observed": 46,
+    "avg_health_score": 73.3,
+    "avg_health_all_cycles": 80.8,
+    "health_trend_slope_per_month": 1.08,
+    "trend_direction": "up",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST03",
+    "phone_number": "+919211816265",
+    "n_current_assets": 3,
+    "n_cycles_observed": 42,
+    "avg_health_score": 75.0,
+    "avg_health_all_cycles": 73.8,
+    "health_trend_slope_per_month": -0.84,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST10",
+    "phone_number": "+917531193104",
+    "n_current_assets": 3,
+    "n_cycles_observed": 43,
+    "avg_health_score": 78.3,
+    "avg_health_all_cycles": 69.5,
+    "health_trend_slope_per_month": 0.58,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST09",
+    "phone_number": "+919333377969",
+    "n_current_assets": 7,
+    "n_cycles_observed": 44,
+    "avg_health_score": 80.7,
+    "avg_health_all_cycles": 70.0,
+    "health_trend_slope_per_month": 1.3,
+    "trend_direction": "up",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST12",
+    "phone_number": "+919869381932",
+    "n_current_assets": 5,
+    "n_cycles_observed": 46,
+    "avg_health_score": 82.0,
+    "avg_health_all_cycles": 73.8,
+    "health_trend_slope_per_month": 0.93,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST07",
+    "phone_number": "+917832277221",
+    "n_current_assets": 9,
+    "n_cycles_observed": 44,
+    "avg_health_score": 85.0,
+    "avg_health_all_cycles": 77.8,
+    "health_trend_slope_per_month": 1.39,
+    "trend_direction": "up",
+    "renewal_risk": false
+  },
+  {
+    "customer_id": "CUST16",
+    "phone_number": "+917018994654",
+    "n_current_assets": 1,
+    "n_cycles_observed": 46,
+    "avg_health_score": 100.0,
+    "avg_health_all_cycles": 79.7,
+    "health_trend_slope_per_month": 0.23,
+    "trend_direction": "flat",
+    "renewal_risk": false
+  }
+]

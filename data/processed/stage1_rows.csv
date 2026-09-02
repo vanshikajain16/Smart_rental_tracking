@@ -1,0 +1,827 @@
+Equipment ID,Type,Customer ID,Site ID,cycle_number,health_score,is_anomaly_pred,hard_rules,reasons,is_anomaly_ground_truth
+EQX1000,Grader,CUST18,S004,1,100,False,,,False
+EQX1000,Grader,CUST15,S003,2,100,False,,,False
+EQX1000,Grader,CUST18,S002,3,100,False,,,False
+EQX1000,Grader,CUST16,S005,4,100,False,,,False
+EQX1000,Grader,CUST13,S001,5,100,False,,,False
+EQX1000,Grader,CUST09,S004,6,100,False,,,False
+EQX1000,Grader,CUST12,S006,7,100,False,,,False
+EQX1000,Grader,CUST13,S003,8,100,False,,,False
+EQX1000,Grader,CUST15,S003,9,35,True,no_operator,No operator assigned | High idle ratio (76% > 55% threshold) | Severe idle time (11.2 idle hrs/day),True
+EQX1000,Grader,CUST12,S004,10,100,False,,,False
+EQX1000,Grader,CUST07,S006,11,100,False,,,False
+EQX1000,Grader,CUST09,S004,12,100,False,,,False
+EQX1000,Grader,CUST02,S002,13,100,False,,,False
+EQX1001,Grader,CUST17,S006,1,100,False,,,False
+EQX1001,Grader,CUST03,S004,2,100,False,,,False
+EQX1001,Grader,CUST08,S002,3,100,False,,,False
+EQX1001,Grader,CUST02,S001,4,100,False,,,False
+EQX1001,Grader,CUST16,S003,5,60,False,,High idle ratio (58% > 55% threshold) | Low utilization (engine 2.8 hrs/day < 6 expected),False
+EQX1001,Grader,CUST03,S001,6,100,False,,,False
+EQX1001,Grader,CUST04,S001,7,100,False,,,False
+EQX1001,Grader,CUST14,S006,8,100,False,,,False
+EQX1001,Grader,CUST15,S001,9,100,False,,,False
+EQX1001,Grader,CUST06,S003,10,100,False,,,False
+EQX1001,Grader,CUST01,S003,11,60,False,,High idle ratio (59% > 55% threshold) | Low utilization (engine 2.5 hrs/day < 6 expected),False
+EQX1002,Crane,CUST07,S001,1,100,False,,,False
+EQX1002,Crane,CUST02,S002,2,40,True,,High idle ratio (94% > 50% threshold) | Severe idle time (11.9 idle hrs/day) | Low utilization (engine 0.7 hrs/day < 5 expected),True
+EQX1002,Crane,CUST17,S004,3,100,False,,,False
+EQX1002,Crane,CUST13,S004,4,75,False,,High idle ratio (56% > 50% threshold),False
+EQX1002,Crane,CUST17,S003,5,100,False,,,False
+EQX1002,Crane,CUST16,S001,6,100,False,,,False
+EQX1002,Crane,CUST16,S003,7,100,False,,,False
+EQX1002,Crane,CUST05,S004,8,35,True,no_operator,No operator assigned | High idle ratio (81% > 50% threshold) | Severe idle time (11.0 idle hrs/day),True
+EQX1002,Crane,CUST17,S004,9,100,False,,,False
+EQX1002,Crane,CUST11,S005,10,75,False,,High idle ratio (51% > 50% threshold),False
+EQX1002,Crane,CUST09,S004,11,100,False,,,False
+EQX1002,Crane,CUST10,S005,12,75,False,,High idle ratio (51% > 50% threshold),False
+EQX1003,Excavator,CUST13,S003,1,40,True,,High idle ratio (84% > 60% threshold) | Severe idle time (9.4 idle hrs/day) | Low utilization (engine 1.8 hrs/day < 8 expected),True
+EQX1003,Excavator,CUST15,S005,2,60,False,,High idle ratio (88% > 60% threshold) | Low utilization (engine 1.1 hrs/day < 8 expected),False
+EQX1003,Excavator,CUST13,S005,3,100,False,,,False
+EQX1003,Excavator,CUST06,S006,4,100,False,,,False
+EQX1003,Excavator,CUST08,S005,5,85,False,,Low utilization (engine 3.7 hrs/day < 8 expected),False
+EQX1003,Excavator,CUST07,S003,6,60,False,,High idle ratio (86% > 60% threshold) | Low utilization (engine 1.3 hrs/day < 8 expected),True
+EQX1003,Excavator,CUST07,S001,7,100,False,,,False
+EQX1003,Excavator,CUST06,S002,8,85,False,,Low utilization (engine 3.8 hrs/day < 8 expected),False
+EQX1003,Excavator,CUST18,S001,9,85,False,,Low utilization (engine 3.7 hrs/day < 8 expected),False
+EQX1004,Crane,CUST08,S002,1,40,True,,High idle ratio (92% > 50% threshold) | Severe idle time (9.8 idle hrs/day) | Low utilization (engine 0.9 hrs/day < 5 expected),True
+EQX1004,Crane,CUST13,S004,2,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (12.8 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1004,Crane,CUST02,S002,3,100,False,,,False
+EQX1004,Crane,CUST17,S005,4,100,False,,,False
+EQX1004,Crane,CUST05,S006,5,100,False,,,False
+EQX1004,Crane,CUST17,S002,6,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (11.1 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1004,Crane,CUST12,,7,40,True,no_site,No site assigned | High idle ratio (75% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),True
+EQX1004,Crane,CUST07,S006,8,100,False,,,False
+EQX1004,Crane,CUST06,S001,9,100,False,,,False
+EQX1004,Crane,CUST05,S002,10,100,False,,,False
+EQX1004,Crane,CUST16,S003,11,100,False,,,False
+EQX1004,Crane,CUST05,S002,12,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (9.5 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1004,Crane,CUST02,S001,13,100,False,,,False
+EQX1004,Crane,CUST11,S005,14,100,False,,,False
+EQX1004,Crane,CUST14,S002,15,55,True,,High idle ratio (76% > 50% threshold) | Severe idle time (11.3 idle hrs/day),True
+EQX1005,Bulldozer,CUST17,S005,1,100,False,,,False
+EQX1005,Bulldozer,CUST15,S001,2,100,False,,,False
+EQX1005,Bulldozer,CUST06,S006,3,100,False,,,False
+EQX1005,Bulldozer,CUST08,S005,4,100,False,,,False
+EQX1005,Bulldozer,CUST02,S003,5,100,False,,,False
+EQX1005,Bulldozer,CUST17,S004,6,100,False,,,False
+EQX1005,Bulldozer,CUST10,S005,7,100,False,,,False
+EQX1005,Bulldozer,CUST09,S003,8,100,False,,,False
+EQX1005,Bulldozer,CUST09,S002,9,100,False,,,False
+EQX1005,Bulldozer,CUST05,S006,10,100,False,,,False
+EQX1005,Bulldozer,CUST08,S006,11,100,False,,,False
+EQX1005,Bulldozer,CUST02,S006,12,85,False,,Low utilization (engine 3.7 hrs/day < 8 expected),False
+EQX1006,Bulldozer,CUST04,S006,1,100,False,,,False
+EQX1006,Bulldozer,CUST15,S005,2,100,False,,,False
+EQX1006,Bulldozer,CUST05,S004,3,100,False,,,False
+EQX1006,Bulldozer,CUST13,S006,4,25,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-05-19, 226d overdue) | Penalty charged | Low utilization (engine 3.4 hrs/day < 8 expected)",True
+EQX1006,Bulldozer,CUST05,S002,5,20,True,no_operator,No operator assigned | High idle ratio (76% > 60% threshold) | Severe idle time (11.5 idle hrs/day) | Low utilization (engine 3.7 hrs/day < 8 expected),True
+EQX1006,Bulldozer,CUST14,S004,6,60,False,,High idle ratio (64% > 60% threshold) | Low utilization (engine 3.1 hrs/day < 8 expected),False
+EQX1006,Bulldozer,CUST09,S003,7,85,False,,Low utilization (engine 3.8 hrs/day < 8 expected),False
+EQX1007,Crane,CUST17,S005,1,100,False,,,False
+EQX1007,Crane,CUST08,,2,0,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (83% > 50% threshold) | Severe idle time (10.6 idle hrs/day) | Low utilization (engine 2.1 hrs/day < 5 expected),True
+EQX1007,Crane,CUST16,S003,3,100,False,,,False
+EQX1007,Crane,CUST04,S001,4,100,False,,,False
+EQX1007,Crane,CUST18,S005,5,100,False,,,False
+EQX1007,Crane,CUST15,S005,6,100,False,,,False
+EQX1007,Crane,CUST05,S006,7,100,False,,,False
+EQX1007,Crane,CUST16,S005,8,100,False,,,False
+EQX1007,Crane,CUST06,S006,9,100,False,,,False
+EQX1007,Crane,CUST14,S001,10,100,False,,,False
+EQX1007,Crane,CUST13,S002,11,100,False,,,False
+EQX1008,Bulldozer,CUST13,S001,1,60,False,,High idle ratio (78% > 60% threshold) | Low utilization (engine 1.8 hrs/day < 8 expected),False
+EQX1008,Bulldozer,CUST04,S003,2,60,False,,High idle ratio (73% > 60% threshold) | Low utilization (engine 2.4 hrs/day < 8 expected),False
+EQX1008,Bulldozer,CUST02,S006,3,60,False,,High idle ratio (62% > 60% threshold) | Low utilization (engine 3.3 hrs/day < 8 expected),False
+EQX1008,Bulldozer,CUST09,S001,4,100,False,,,False
+EQX1008,Bulldozer,CUST05,S004,5,25,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-07-14, 170d overdue) | Penalty charged | Low utilization (engine 2.4 hrs/day < 8 expected)",True
+EQX1008,Bulldozer,CUST10,S001,6,40,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-08-05, 148d overdue) | Penalty charged",True
+EQX1008,Bulldozer,CUST16,S006,7,100,False,,,False
+EQX1008,Bulldozer,CUST07,S001,8,100,False,,,False
+EQX1008,Bulldozer,CUST18,S003,9,60,False,,High idle ratio (63% > 60% threshold) | Low utilization (engine 3.1 hrs/day < 8 expected),False
+EQX1009,Excavator,CUST03,S002,1,60,False,,High idle ratio (60% > 60% threshold) | Low utilization (engine 3.7 hrs/day < 8 expected),False
+EQX1009,Excavator,CUST12,S001,2,60,False,,High idle ratio (67% > 60% threshold) | Low utilization (engine 2.9 hrs/day < 8 expected),False
+EQX1009,Excavator,CUST17,S003,3,60,False,,High idle ratio (88% > 60% threshold) | Low utilization (engine 0.9 hrs/day < 8 expected),False
+EQX1009,Excavator,CUST17,S001,4,60,False,,High idle ratio (78% > 60% threshold) | Low utilization (engine 1.9 hrs/day < 8 expected),False
+EQX1009,Excavator,CUST14,S003,5,60,False,,High idle ratio (67% > 60% threshold) | Low utilization (engine 2.8 hrs/day < 8 expected),False
+EQX1009,Excavator,CUST09,S001,6,60,False,,High idle ratio (61% > 60% threshold) | Low utilization (engine 3.3 hrs/day < 8 expected),False
+EQX1009,Excavator,CUST17,S005,7,60,False,,High idle ratio (78% > 60% threshold) | Low utilization (engine 1.9 hrs/day < 8 expected),False
+EQX1010,Bulldozer,CUST02,S004,1,100,False,,,False
+EQX1010,Bulldozer,CUST08,S003,2,100,False,,,False
+EQX1010,Bulldozer,CUST01,S006,3,100,False,,,False
+EQX1010,Bulldozer,CUST10,S004,4,100,False,,,False
+EQX1010,Bulldozer,CUST18,S004,5,100,False,,,False
+EQX1010,Bulldozer,CUST17,S002,6,100,False,,,False
+EQX1010,Bulldozer,CUST15,S006,7,100,False,,,False
+EQX1010,Bulldozer,CUST17,S002,8,100,False,,,False
+EQX1010,Bulldozer,CUST15,S003,9,100,False,,,False
+EQX1010,Bulldozer,CUST07,S005,10,100,False,,,False
+EQX1010,Bulldozer,CUST15,S005,11,100,False,,,False
+EQX1011,Crane,CUST08,S004,1,15,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-01-15, 350d overdue) | Penalty charged | High idle ratio (64% > 50% threshold)",True
+EQX1011,Crane,CUST12,S005,2,60,False,,High idle ratio (98% > 50% threshold) | Low utilization (engine 0.1 hrs/day < 5 expected),False
+EQX1011,Crane,CUST06,S001,3,60,False,,High idle ratio (75% > 50% threshold) | Low utilization (engine 1.4 hrs/day < 5 expected),False
+EQX1011,Crane,CUST08,S005,4,60,False,,High idle ratio (70% > 50% threshold) | Low utilization (engine 1.9 hrs/day < 5 expected),False
+EQX1011,Crane,CUST09,S001,5,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-07-28, 156d overdue) | Penalty charged and unpaid | High idle ratio (59% > 50% threshold)",True
+EQX1011,Crane,CUST18,S004,6,40,True,,High idle ratio (95% > 50% threshold) | Severe idle time (11.3 idle hrs/day) | Low utilization (engine 0.6 hrs/day < 5 expected),True
+EQX1011,Crane,CUST06,S002,7,60,False,,High idle ratio (88% > 50% threshold) | Low utilization (engine 0.6 hrs/day < 5 expected),False
+EQX1011,Crane,CUST06,S001,8,60,False,,High idle ratio (79% > 50% threshold) | Low utilization (engine 1.3 hrs/day < 5 expected),False
+EQX1012,Crane,CUST10,S006,1,60,False,,High idle ratio (89% > 50% threshold) | Low utilization (engine 0.6 hrs/day < 5 expected),False
+EQX1012,Crane,CUST14,S004,2,60,False,,High idle ratio (83% > 50% threshold) | Low utilization (engine 1.0 hrs/day < 5 expected),False
+EQX1012,Crane,CUST09,S003,3,60,False,,High idle ratio (55% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1012,Crane,CUST17,S006,4,60,False,,High idle ratio (100% > 50% threshold) | Low utilization (engine 0.0 hrs/day < 5 expected),False
+EQX1012,Crane,CUST09,S004,5,60,False,,High idle ratio (93% > 50% threshold) | Low utilization (engine 0.4 hrs/day < 5 expected),False
+EQX1013,Crane,CUST08,S004,1,60,False,,High idle ratio (59% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1013,Crane,CUST02,S006,2,100,False,,,False
+EQX1013,Crane,CUST04,S005,3,60,False,,High idle ratio (77% > 50% threshold) | Low utilization (engine 1.3 hrs/day < 5 expected),False
+EQX1013,Crane,CUST01,S001,4,100,False,,,False
+EQX1013,Crane,CUST12,S004,5,60,False,,High idle ratio (63% > 50% threshold) | Low utilization (engine 1.9 hrs/day < 5 expected),False
+EQX1013,Crane,CUST03,S006,6,60,False,,High idle ratio (57% > 50% threshold) | Low utilization (engine 2.2 hrs/day < 5 expected),False
+EQX1013,Crane,CUST11,S006,7,60,False,,High idle ratio (74% > 50% threshold) | Low utilization (engine 1.4 hrs/day < 5 expected),False
+EQX1013,Crane,CUST13,S004,8,100,False,,,False
+EQX1013,Crane,CUST06,S005,9,60,False,,High idle ratio (57% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1014,Excavator,CUST16,S006,1,100,False,,,False
+EQX1014,Excavator,CUST01,S001,2,100,False,,,False
+EQX1014,Excavator,CUST06,S002,3,100,False,,,False
+EQX1014,Excavator,CUST15,S001,4,100,False,,,False
+EQX1014,Excavator,CUST11,S003,5,60,False,,High idle ratio (83% > 60% threshold) | Low utilization (engine 1.4 hrs/day < 8 expected),False
+EQX1014,Excavator,CUST06,S004,6,40,True,,High idle ratio (90% > 60% threshold) | Severe idle time (10.3 idle hrs/day) | Low utilization (engine 1.1 hrs/day < 8 expected),True
+EQX1014,Excavator,CUST16,S006,7,100,False,,,False
+EQX1014,Excavator,CUST02,S006,8,100,False,,,False
+EQX1014,Excavator,CUST10,S004,9,60,False,,High idle ratio (70% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1014,Excavator,CUST07,S001,10,85,False,,Low utilization (engine 3.7 hrs/day < 8 expected),False
+EQX1015,Bulldozer,CUST15,S002,1,60,False,,High idle ratio (85% > 60% threshold) | Low utilization (engine 1.3 hrs/day < 8 expected),False
+EQX1015,Bulldozer,CUST07,S002,2,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.7 hrs/day < 8 expected),False
+EQX1015,Bulldozer,CUST02,S001,3,60,False,,High idle ratio (96% > 60% threshold) | Low utilization (engine 0.3 hrs/day < 8 expected),False
+EQX1015,Bulldozer,CUST02,S003,4,60,False,,High idle ratio (90% > 60% threshold) | Low utilization (engine 0.9 hrs/day < 8 expected),False
+EQX1015,Bulldozer,CUST14,S003,5,60,False,,High idle ratio (88% > 60% threshold) | Low utilization (engine 1.0 hrs/day < 8 expected),False
+EQX1015,Bulldozer,CUST06,S001,6,60,False,,High idle ratio (78% > 60% threshold) | Low utilization (engine 1.8 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST06,S001,1,60,False,,High idle ratio (71% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST16,S002,2,60,False,,High idle ratio (92% > 60% threshold) | Low utilization (engine 0.6 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST13,S004,3,60,False,,High idle ratio (73% > 60% threshold) | Low utilization (engine 2.4 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST07,S001,4,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.4 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST09,S005,5,60,False,,High idle ratio (90% > 60% threshold) | Low utilization (engine 0.9 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST11,S006,6,60,False,,High idle ratio (95% > 60% threshold) | Low utilization (engine 0.4 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST10,S006,7,60,False,,High idle ratio (85% > 60% threshold) | Low utilization (engine 1.2 hrs/day < 8 expected),False
+EQX1016,Excavator,CUST18,S002,8,60,False,,High idle ratio (82% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1017,Excavator,CUST04,S001,1,60,False,,High idle ratio (63% > 60% threshold) | Low utilization (engine 3.1 hrs/day < 8 expected),False
+EQX1017,Excavator,CUST06,S005,2,85,False,,Low utilization (engine 3.6 hrs/day < 8 expected),False
+EQX1017,Excavator,CUST02,S006,3,60,False,,High idle ratio (70% > 60% threshold) | Low utilization (engine 2.3 hrs/day < 8 expected),False
+EQX1017,Excavator,CUST07,S004,4,60,False,,High idle ratio (82% > 60% threshold) | Low utilization (engine 1.6 hrs/day < 8 expected),False
+EQX1017,Excavator,CUST06,S002,5,60,False,,High idle ratio (78% > 60% threshold) | Low utilization (engine 1.9 hrs/day < 8 expected),False
+EQX1017,Excavator,CUST05,S006,6,100,False,,,False
+EQX1017,Excavator,CUST07,S005,7,60,False,,High idle ratio (80% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1017,Excavator,CUST11,S005,8,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (9.6 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1017,Excavator,CUST08,S003,9,100,False,,,False
+EQX1017,Excavator,CUST09,S001,10,60,False,,High idle ratio (82% > 60% threshold) | Low utilization (engine 1.8 hrs/day < 8 expected),True
+EQX1017,Excavator,CUST11,S002,11,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.6 hrs/day < 8 expected),False
+EQX1018,Excavator,CUST17,S005,1,85,False,,Low utilization (engine 3.3 hrs/day < 8 expected),False
+EQX1018,Excavator,CUST11,S002,2,60,False,,High idle ratio (73% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1018,Excavator,CUST08,S001,3,60,False,,High idle ratio (81% > 60% threshold) | Low utilization (engine 1.6 hrs/day < 8 expected),False
+EQX1018,Excavator,CUST18,S002,4,60,False,,High idle ratio (64% > 60% threshold) | Low utilization (engine 3.2 hrs/day < 8 expected),False
+EQX1018,Excavator,CUST10,S001,5,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-06-28, 186d overdue) | Penalty charged | High idle ratio (66% > 60% threshold) | Low utilization (engine 2.7 hrs/day < 8 expected)",True
+EQX1018,Excavator,CUST12,S003,6,60,False,,High idle ratio (79% > 60% threshold) | Low utilization (engine 1.8 hrs/day < 8 expected),False
+EQX1018,Excavator,CUST15,S002,7,85,False,,Low utilization (engine 3.7 hrs/day < 8 expected),False
+EQX1018,Excavator,CUST11,S001,8,60,False,,High idle ratio (60% > 60% threshold) | Low utilization (engine 3.3 hrs/day < 8 expected),False
+EQX1019,Bulldozer,CUST01,S003,1,100,False,,,False
+EQX1019,Bulldozer,CUST08,S001,2,100,False,,,False
+EQX1019,Bulldozer,CUST10,S005,3,100,False,,,False
+EQX1019,Bulldozer,CUST12,S001,4,100,False,,,False
+EQX1019,Bulldozer,CUST05,S002,5,100,False,,,False
+EQX1019,Bulldozer,CUST10,S006,6,100,False,,,False
+EQX1019,Bulldozer,CUST05,S002,7,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-07-01, 183d overdue) | Penalty charged and unpaid | High idle ratio (65% > 60% threshold) | Low utilization (engine 3.7 hrs/day < 8 expected)",True
+EQX1019,Bulldozer,CUST17,S006,8,100,False,,,False
+EQX1019,Bulldozer,CUST17,S001,9,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-08-19, 134d overdue) | Penalty charged | High idle ratio (67% > 60% threshold) | Low utilization (engine 3.9 hrs/day < 8 expected)",True
+EQX1019,Bulldozer,CUST17,S006,10,100,False,,,False
+EQX1019,Bulldozer,CUST16,S005,11,100,False,,,False
+EQX1019,Bulldozer,CUST10,S003,12,100,False,,,False
+EQX1020,Grader,CUST06,S001,1,40,True,,High idle ratio (87% > 55% threshold) | Severe idle time (10.6 idle hrs/day) | Low utilization (engine 1.6 hrs/day < 6 expected),True
+EQX1020,Grader,CUST12,S002,2,60,False,,High idle ratio (60% > 55% threshold) | Low utilization (engine 2.7 hrs/day < 6 expected),False
+EQX1020,Grader,CUST06,S004,3,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-04-02, 273d overdue) | Penalty charged and unpaid | High idle ratio (62% > 55% threshold)",True
+EQX1020,Grader,CUST07,S006,4,60,False,,High idle ratio (85% > 55% threshold) | Low utilization (engine 0.9 hrs/day < 6 expected),False
+EQX1020,Grader,CUST12,S006,5,60,False,,High idle ratio (75% > 55% threshold) | Low utilization (engine 1.5 hrs/day < 6 expected),False
+EQX1020,Grader,CUST12,S001,6,60,False,,High idle ratio (92% > 55% threshold) | Low utilization (engine 0.5 hrs/day < 6 expected),False
+EQX1020,Grader,CUST17,S005,7,60,False,,High idle ratio (74% > 55% threshold) | Low utilization (engine 1.6 hrs/day < 6 expected),False
+EQX1020,Grader,CUST05,S002,8,60,False,,High idle ratio (83% > 55% threshold) | Low utilization (engine 1.1 hrs/day < 6 expected),False
+EQX1020,Grader,CUST15,S006,9,60,False,,High idle ratio (81% > 55% threshold) | Low utilization (engine 1.3 hrs/day < 6 expected),False
+EQX1021,Grader,CUST14,S003,1,100,False,,,False
+EQX1021,Grader,CUST08,S004,2,100,False,,,False
+EQX1021,Grader,CUST12,S002,3,60,False,,High idle ratio (67% > 55% threshold) | Low utilization (engine 2.2 hrs/day < 6 expected),False
+EQX1021,Grader,CUST16,S006,4,100,False,,,False
+EQX1021,Grader,CUST06,S001,5,100,False,,,False
+EQX1021,Grader,CUST06,S006,6,100,False,,,False
+EQX1021,Grader,CUST04,S004,7,100,False,,,False
+EQX1021,Grader,CUST02,S002,8,100,False,,,False
+EQX1021,Grader,CUST02,S004,9,100,False,,,False
+EQX1021,Grader,CUST01,S005,10,100,False,,,False
+EQX1021,Grader,CUST11,S006,11,40,True,,High idle ratio (86% > 55% threshold) | Severe idle time (9.3 idle hrs/day) | Low utilization (engine 1.5 hrs/day < 6 expected),True
+EQX1021,Grader,CUST07,S006,12,100,False,,,False
+EQX1022,Bulldozer,CUST17,S001,1,60,False,,High idle ratio (71% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST14,S004,2,60,False,,High idle ratio (74% > 60% threshold) | Low utilization (engine 2.3 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST14,S002,3,60,False,,High idle ratio (73% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST09,S003,4,60,False,,High idle ratio (80% > 60% threshold) | Low utilization (engine 1.7 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST08,S001,5,60,False,,High idle ratio (72% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST04,S004,6,60,False,,High idle ratio (91% > 60% threshold) | Low utilization (engine 0.8 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST17,S006,7,60,False,,High idle ratio (85% > 60% threshold) | Low utilization (engine 1.3 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST09,S005,8,60,False,,High idle ratio (62% > 60% threshold) | Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1022,Bulldozer,CUST12,S006,9,75,False,,High idle ratio (64% > 60% threshold),True
+EQX1023,Grader,CUST03,S006,1,60,False,,High idle ratio (65% > 55% threshold) | Low utilization (engine 1.9 hrs/day < 6 expected),False
+EQX1023,Grader,CUST10,S001,2,60,False,,High idle ratio (83% > 55% threshold) | Low utilization (engine 1.1 hrs/day < 6 expected),False
+EQX1023,Grader,CUST13,S005,3,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-05-02, 243d overdue) | Penalty charged and unpaid | High idle ratio (76% > 55% threshold) | Low utilization (engine 1.1 hrs/day < 6 expected)",True
+EQX1023,Grader,CUST17,S006,4,60,False,,High idle ratio (84% > 55% threshold) | Low utilization (engine 1.0 hrs/day < 6 expected),False
+EQX1023,Grader,CUST09,S005,5,60,False,,High idle ratio (81% > 55% threshold) | Low utilization (engine 1.1 hrs/day < 6 expected),False
+EQX1023,Grader,CUST12,S005,6,60,False,,High idle ratio (84% > 55% threshold) | Low utilization (engine 0.9 hrs/day < 6 expected),False
+EQX1023,Grader,CUST02,S004,7,60,False,,High idle ratio (79% > 55% threshold) | Low utilization (engine 1.3 hrs/day < 6 expected),False
+EQX1024,Crane,CUST10,,1,35,True,no_site,No site assigned | High idle ratio (70% > 50% threshold) | Severe idle time (10.1 idle hrs/day),True
+EQX1024,Crane,CUST08,S002,2,60,False,,High idle ratio (69% > 50% threshold) | Low utilization (engine 1.8 hrs/day < 5 expected),False
+EQX1024,Crane,CUST06,S004,3,75,False,,High idle ratio (52% > 50% threshold),False
+EQX1024,Crane,CUST12,S002,4,60,False,,High idle ratio (57% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1024,Crane,CUST04,S004,5,100,False,,,False
+EQX1024,Crane,CUST15,S004,6,60,False,,High idle ratio (78% > 50% threshold) | Low utilization (engine 1.1 hrs/day < 5 expected),False
+EQX1024,Crane,CUST05,S002,7,100,False,,,False
+EQX1024,Crane,CUST03,S003,8,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (12.7 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1024,Crane,CUST06,S003,9,75,False,,High idle ratio (52% > 50% threshold),False
+EQX1025,Excavator,CUST17,S005,1,60,False,,High idle ratio (83% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1025,Excavator,CUST17,S005,2,85,False,,Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1025,Excavator,CUST02,S003,3,100,False,,,False
+EQX1025,Excavator,CUST05,S005,4,60,False,,High idle ratio (77% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1025,Excavator,CUST12,S006,5,85,False,,Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1025,Excavator,CUST06,S001,6,100,False,,,False
+EQX1025,Excavator,CUST15,S003,7,85,False,,Low utilization (engine 3.7 hrs/day < 8 expected),False
+EQX1025,Excavator,CUST15,S004,8,100,False,,,False
+EQX1025,Excavator,CUST13,S006,9,40,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-10-02, 90d overdue) | Penalty charged",True
+EQX1025,Excavator,CUST16,S004,10,60,False,,High idle ratio (62% > 60% threshold) | Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1025,Excavator,CUST17,S006,11,60,False,,High idle ratio (73% > 60% threshold) | Low utilization (engine 2.3 hrs/day < 8 expected),False
+EQX1026,Grader,CUST06,S003,1,100,False,,,False
+EQX1026,Grader,CUST06,S002,2,100,False,,,False
+EQX1026,Grader,CUST02,S003,3,85,False,,Low utilization (engine 2.7 hrs/day < 6 expected),False
+EQX1026,Grader,CUST17,S001,4,100,False,,,False
+EQX1026,Grader,CUST10,S004,5,100,False,,,False
+EQX1026,Grader,CUST15,,6,55,True,no_site,No site assigned | High idle ratio (68% > 55% threshold),True
+EQX1026,Grader,CUST09,S004,7,40,True,,High idle ratio (100% > 55% threshold) | Severe idle time (12.1 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 6 expected),True
+EQX1026,Grader,CUST17,S002,8,100,False,,,False
+EQX1026,Grader,CUST12,S004,9,100,False,,,False
+EQX1026,Grader,CUST17,S002,10,100,False,,,False
+EQX1026,Grader,CUST01,S004,11,100,False,,,False
+EQX1026,Grader,CUST10,S001,12,100,False,,,False
+EQX1026,Grader,CUST07,S001,13,100,False,,,False
+EQX1027,Grader,CUST09,S004,1,100,False,,,False
+EQX1027,Grader,CUST13,S001,2,100,False,,,False
+EQX1027,Grader,CUST02,S006,3,60,False,,High idle ratio (81% > 55% threshold) | Low utilization (engine 1.3 hrs/day < 6 expected),False
+EQX1027,Grader,CUST04,S002,4,100,False,,,False
+EQX1027,Grader,CUST12,S003,5,60,False,,High idle ratio (60% > 55% threshold) | Low utilization (engine 2.5 hrs/day < 6 expected),False
+EQX1027,Grader,CUST07,S004,6,55,True,,High idle ratio (73% > 55% threshold) | Severe idle time (8.8 idle hrs/day),True
+EQX1027,Grader,CUST08,S005,7,100,False,,,False
+EQX1027,Grader,CUST12,S002,8,100,False,,,False
+EQX1027,Grader,CUST10,S001,9,100,False,,,False
+EQX1027,Grader,CUST11,S003,10,100,False,,,False
+EQX1027,Grader,CUST05,S004,11,40,True,,High idle ratio (84% > 55% threshold) | Severe idle time (10.1 idle hrs/day) | Low utilization (engine 1.9 hrs/day < 6 expected),True
+EQX1027,Grader,CUST14,S005,12,60,False,,High idle ratio (72% > 55% threshold) | Low utilization (engine 1.8 hrs/day < 6 expected),False
+EQX1027,Grader,CUST06,S005,13,40,True,,High idle ratio (94% > 55% threshold) | Severe idle time (12.0 idle hrs/day) | Low utilization (engine 0.7 hrs/day < 6 expected),True
+EQX1027,Grader,CUST12,S006,14,100,False,,,False
+EQX1028,Bulldozer,CUST16,S002,1,60,False,,High idle ratio (83% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1028,Bulldozer,CUST07,S001,2,60,False,,High idle ratio (63% > 60% threshold) | Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1028,Bulldozer,CUST11,S005,3,100,False,,,False
+EQX1028,Bulldozer,CUST03,S004,4,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.7 hrs/day < 8 expected),False
+EQX1028,Bulldozer,CUST03,S003,5,60,False,,High idle ratio (60% > 60% threshold) | Low utilization (engine 3.6 hrs/day < 8 expected),False
+EQX1028,Bulldozer,CUST18,S004,6,60,False,,High idle ratio (95% > 60% threshold) | Low utilization (engine 0.4 hrs/day < 8 expected),False
+EQX1028,Bulldozer,CUST13,S001,7,60,False,,High idle ratio (67% > 60% threshold) | Low utilization (engine 2.8 hrs/day < 8 expected),False
+EQX1028,Bulldozer,CUST13,S004,8,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.8 hrs/day < 8 expected),False
+EQX1028,Bulldozer,CUST08,S001,9,85,False,,Low utilization (engine 3.5 hrs/day < 8 expected),False
+EQX1029,Excavator,CUST04,S002,1,60,False,,High idle ratio (95% > 60% threshold) | Low utilization (engine 0.4 hrs/day < 8 expected),False
+EQX1029,Excavator,CUST06,S005,2,60,False,,High idle ratio (65% > 60% threshold) | Low utilization (engine 2.8 hrs/day < 8 expected),False
+EQX1029,Excavator,CUST15,S004,3,60,False,,High idle ratio (82% > 60% threshold) | Low utilization (engine 1.6 hrs/day < 8 expected),False
+EQX1029,Excavator,CUST16,S003,4,100,False,,,False
+EQX1029,Excavator,CUST08,S001,5,60,False,,High idle ratio (79% > 60% threshold) | Low utilization (engine 1.9 hrs/day < 8 expected),False
+EQX1029,Excavator,CUST17,S004,6,85,False,,Low utilization (engine 3.5 hrs/day < 8 expected),False
+EQX1029,Excavator,CUST04,S001,7,60,False,,High idle ratio (71% > 60% threshold) | Low utilization (engine 2.6 hrs/day < 8 expected),False
+EQX1029,Excavator,CUST17,S002,8,100,False,,,False
+EQX1029,Excavator,CUST12,S005,9,100,False,,,False
+EQX1030,Bulldozer,CUST06,S001,1,40,True,,High idle ratio (91% > 60% threshold) | Severe idle time (9.9 idle hrs/day) | Low utilization (engine 1.0 hrs/day < 8 expected),True
+EQX1030,Bulldozer,CUST03,S003,2,40,True,,High idle ratio (97% > 60% threshold) | Severe idle time (8.7 idle hrs/day) | Low utilization (engine 0.3 hrs/day < 8 expected),False
+EQX1030,Bulldozer,CUST05,S006,3,60,False,,High idle ratio (100% > 60% threshold) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1030,Bulldozer,CUST11,S005,4,40,True,,High idle ratio (99% > 60% threshold) | Severe idle time (8.7 idle hrs/day) | Low utilization (engine 0.1 hrs/day < 8 expected),False
+EQX1030,Bulldozer,CUST01,S006,5,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (8.9 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1030,Bulldozer,CUST15,S006,6,60,False,,High idle ratio (100% > 60% threshold) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1030,Bulldozer,CUST08,S002,7,60,False,,High idle ratio (76% > 60% threshold) | Low utilization (engine 2.1 hrs/day < 8 expected),False
+EQX1030,Bulldozer,CUST03,S002,8,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (8.7 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1031,Bulldozer,CUST03,S002,1,100,False,,,False
+EQX1031,Bulldozer,CUST02,S005,2,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (11.4 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1031,Bulldozer,CUST04,S002,3,60,False,,High idle ratio (74% > 60% threshold) | Low utilization (engine 2.1 hrs/day < 8 expected),False
+EQX1031,Bulldozer,CUST01,S002,4,100,False,,,False
+EQX1031,Bulldozer,CUST15,S004,5,100,False,,,False
+EQX1031,Bulldozer,CUST18,S004,6,100,False,,,False
+EQX1031,Bulldozer,CUST18,S003,7,100,False,,,False
+EQX1031,Bulldozer,CUST04,S003,8,100,False,,,False
+EQX1031,Bulldozer,CUST09,S005,9,100,False,,,False
+EQX1031,Bulldozer,CUST02,S005,10,60,False,,High idle ratio (64% > 60% threshold) | Low utilization (engine 3.2 hrs/day < 8 expected),False
+EQX1032,Crane,CUST15,S001,1,40,True,,High idle ratio (91% > 50% threshold) | Severe idle time (8.6 idle hrs/day) | Low utilization (engine 0.9 hrs/day < 5 expected),True
+EQX1032,Crane,CUST10,S004,2,60,False,,High idle ratio (95% > 50% threshold) | Low utilization (engine 0.3 hrs/day < 5 expected),False
+EQX1032,Crane,CUST12,S004,3,60,False,,High idle ratio (95% > 50% threshold) | Low utilization (engine 0.3 hrs/day < 5 expected),False
+EQX1032,Crane,CUST05,S004,4,60,False,,High idle ratio (94% > 50% threshold) | Low utilization (engine 0.4 hrs/day < 5 expected),False
+EQX1032,Crane,CUST13,S003,5,60,False,,High idle ratio (75% > 50% threshold) | Low utilization (engine 1.5 hrs/day < 5 expected),False
+EQX1032,Crane,CUST15,S005,6,60,False,,High idle ratio (88% > 50% threshold) | Low utilization (engine 0.6 hrs/day < 5 expected),False
+EQX1032,Crane,CUST02,S005,7,60,False,,High idle ratio (100% > 50% threshold) | Low utilization (engine 0.0 hrs/day < 5 expected),False
+EQX1032,Crane,CUST15,S004,8,60,False,,High idle ratio (81% > 50% threshold) | Low utilization (engine 1.0 hrs/day < 5 expected),False
+EQX1032,Crane,CUST15,S006,9,60,False,,High idle ratio (67% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1033,Crane,CUST07,S002,1,75,False,,High idle ratio (55% > 50% threshold),False
+EQX1033,Crane,CUST17,S006,2,60,False,,High idle ratio (57% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1033,Crane,CUST09,S001,3,60,False,,High idle ratio (68% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),False
+EQX1033,Crane,CUST02,S001,4,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (10.6 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1033,Crane,CUST16,S002,5,75,False,,High idle ratio (56% > 50% threshold),False
+EQX1033,Crane,CUST13,S005,6,60,False,,High idle ratio (84% > 50% threshold) | Low utilization (engine 0.8 hrs/day < 5 expected),False
+EQX1033,Crane,CUST08,S003,7,100,False,,,False
+EQX1033,Crane,CUST17,S001,8,15,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-11-10, 51d overdue) | Penalty charged | High idle ratio (51% > 50% threshold)",True
+EQX1033,Crane,CUST05,S005,9,75,False,,High idle ratio (53% > 50% threshold),False
+EQX1034,Bulldozer,CUST16,S003,1,60,False,,High idle ratio (65% > 60% threshold) | Low utilization (engine 2.8 hrs/day < 8 expected),False
+EQX1034,Bulldozer,CUST08,S003,2,60,False,,High idle ratio (75% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1034,Bulldozer,CUST17,S002,3,60,False,,High idle ratio (82% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1034,Bulldozer,CUST03,S006,4,60,False,,High idle ratio (93% > 60% threshold) | Low utilization (engine 0.6 hrs/day < 8 expected),False
+EQX1034,Bulldozer,CUST10,S005,5,60,False,,High idle ratio (81% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1034,Bulldozer,CUST03,S005,6,60,False,,High idle ratio (80% > 60% threshold) | Low utilization (engine 1.7 hrs/day < 8 expected),False
+EQX1034,Bulldozer,CUST07,S005,7,60,False,,High idle ratio (77% > 60% threshold) | Low utilization (engine 2.1 hrs/day < 8 expected),False
+EQX1034,Bulldozer,CUST10,S003,8,60,False,,High idle ratio (78% > 60% threshold) | Low utilization (engine 1.8 hrs/day < 8 expected),False
+EQX1035,Crane,CUST11,S002,1,60,False,,High idle ratio (73% > 50% threshold) | Low utilization (engine 1.4 hrs/day < 5 expected),False
+EQX1035,Crane,CUST11,S001,2,60,False,,High idle ratio (65% > 50% threshold) | Low utilization (engine 1.8 hrs/day < 5 expected),False
+EQX1035,Crane,CUST05,S003,3,100,False,,,False
+EQX1035,Crane,CUST18,,4,15,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (73% > 50% threshold) | Severe idle time (9.5 idle hrs/day),True
+EQX1035,Crane,CUST15,S004,5,100,False,,,False
+EQX1035,Crane,CUST11,S004,6,60,False,,High idle ratio (57% > 50% threshold) | Low utilization (engine 2.2 hrs/day < 5 expected),False
+EQX1035,Crane,CUST04,,7,20,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (95% > 50% threshold) | Low utilization (engine 0.3 hrs/day < 5 expected),True
+EQX1035,Crane,CUST16,S006,8,100,False,,,False
+EQX1035,Crane,CUST09,S003,9,100,False,,,False
+EQX1035,Crane,CUST07,S005,10,100,False,,,False
+EQX1036,Bulldozer,CUST10,S004,1,60,False,,High idle ratio (73% > 60% threshold) | Low utilization (engine 2.3 hrs/day < 8 expected),False
+EQX1036,Bulldozer,CUST10,S004,2,100,False,,,False
+EQX1036,Bulldozer,CUST06,S006,3,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.8 hrs/day < 8 expected),False
+EQX1036,Bulldozer,CUST12,S004,4,100,False,,,False
+EQX1036,Bulldozer,CUST02,S001,5,100,False,,,False
+EQX1036,Bulldozer,CUST17,S001,6,100,False,,,False
+EQX1036,Bulldozer,CUST07,,7,0,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (82% > 60% threshold) | Severe idle time (10.3 idle hrs/day) | Low utilization (engine 2.3 hrs/day < 8 expected),True
+EQX1036,Bulldozer,CUST13,S001,8,100,False,,,False
+EQX1036,Bulldozer,CUST03,S004,9,60,False,,High idle ratio (76% > 60% threshold) | Low utilization (engine 2.1 hrs/day < 8 expected),False
+EQX1036,Bulldozer,CUST06,S006,10,100,False,,,False
+EQX1036,Bulldozer,CUST09,S006,11,60,False,,High idle ratio (64% > 60% threshold) | Low utilization (engine 2.8 hrs/day < 8 expected),False
+EQX1037,Grader,CUST13,S001,1,60,False,,High idle ratio (74% > 55% threshold) | Low utilization (engine 1.8 hrs/day < 6 expected),False
+EQX1037,Grader,CUST16,S002,2,60,False,,High idle ratio (75% > 55% threshold) | Low utilization (engine 1.7 hrs/day < 6 expected),False
+EQX1037,Grader,CUST11,S005,3,100,False,,,False
+EQX1037,Grader,CUST01,S001,4,60,False,,High idle ratio (66% > 55% threshold) | Low utilization (engine 2.4 hrs/day < 6 expected),False
+EQX1037,Grader,CUST12,S001,5,60,False,,High idle ratio (64% > 55% threshold) | Low utilization (engine 2.3 hrs/day < 6 expected),False
+EQX1037,Grader,CUST17,S001,6,60,False,,High idle ratio (62% > 55% threshold) | Low utilization (engine 2.7 hrs/day < 6 expected),False
+EQX1037,Grader,CUST13,S003,7,60,False,,High idle ratio (95% > 55% threshold) | Low utilization (engine 0.3 hrs/day < 6 expected),False
+EQX1037,Grader,CUST17,S006,8,60,False,,High idle ratio (78% > 55% threshold) | Low utilization (engine 1.5 hrs/day < 6 expected),False
+EQX1037,Grader,CUST17,S003,9,15,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-10-24, 68d overdue) | Penalty charged | High idle ratio (59% > 55% threshold)",True
+EQX1037,Grader,CUST03,S006,10,60,False,,High idle ratio (61% > 55% threshold) | Low utilization (engine 2.7 hrs/day < 6 expected),False
+EQX1037,Grader,CUST15,S004,11,60,False,,High idle ratio (70% > 55% threshold) | Low utilization (engine 1.9 hrs/day < 6 expected),False
+EQX1038,Crane,CUST05,S003,1,75,False,,High idle ratio (51% > 50% threshold),False
+EQX1038,Crane,CUST12,S004,2,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (9.8 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1038,Crane,CUST17,S004,3,60,False,,High idle ratio (70% > 50% threshold) | Low utilization (engine 1.6 hrs/day < 5 expected),False
+EQX1038,Crane,CUST15,S006,4,60,False,,High idle ratio (89% > 50% threshold) | Low utilization (engine 1.0 hrs/day < 5 expected),True
+EQX1038,Crane,CUST18,S005,5,60,False,,High idle ratio (73% > 50% threshold) | Low utilization (engine 1.6 hrs/day < 5 expected),False
+EQX1038,Crane,CUST05,S002,6,40,True,,High idle ratio (86% > 50% threshold) | Severe idle time (8.9 idle hrs/day) | Low utilization (engine 1.4 hrs/day < 5 expected),True
+EQX1038,Crane,CUST08,S004,7,100,False,,,False
+EQX1038,Crane,CUST09,,8,0,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (97% > 50% threshold) | Severe idle time (9.8 idle hrs/day) | Low utilization (engine 0.3 hrs/day < 5 expected),True
+EQX1038,Crane,CUST10,S006,9,60,False,,High idle ratio (95% > 50% threshold) | Low utilization (engine 0.3 hrs/day < 5 expected),False
+EQX1038,Crane,CUST17,S006,10,60,False,,High idle ratio (63% > 50% threshold) | Low utilization (engine 1.9 hrs/day < 5 expected),False
+EQX1038,Crane,CUST13,S001,11,60,False,,High idle ratio (62% > 50% threshold) | Low utilization (engine 1.9 hrs/day < 5 expected),False
+EQX1038,Crane,CUST18,S002,12,100,False,,,False
+EQX1038,Crane,CUST11,S004,13,60,False,,High idle ratio (87% > 50% threshold) | Low utilization (engine 0.8 hrs/day < 5 expected),False
+EQX1039,Grader,CUST15,S006,1,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-01-22, 343d overdue) | Penalty charged and unpaid | High idle ratio (81% > 55% threshold) | Low utilization (engine 1.2 hrs/day < 6 expected)",True
+EQX1039,Grader,CUST03,S006,2,100,False,,,False
+EQX1039,Grader,CUST07,S002,3,100,False,,,False
+EQX1039,Grader,CUST13,S005,4,100,False,,,False
+EQX1039,Grader,CUST18,S002,5,100,False,,,False
+EQX1039,Grader,CUST04,S001,6,100,False,,,False
+EQX1039,Grader,CUST11,S005,7,60,False,,High idle ratio (88% > 55% threshold) | Low utilization (engine 0.7 hrs/day < 6 expected),False
+EQX1039,Grader,CUST05,S004,8,60,False,,High idle ratio (77% > 55% threshold) | Low utilization (engine 1.4 hrs/day < 6 expected),False
+EQX1040,Excavator,CUST03,S004,1,60,False,,High idle ratio (76% > 60% threshold) | Low utilization (engine 2.1 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST17,S003,2,60,False,,High idle ratio (88% > 60% threshold) | Low utilization (engine 1.1 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST10,S004,3,60,False,,High idle ratio (98% > 60% threshold) | Low utilization (engine 0.2 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST14,S004,4,60,False,,High idle ratio (85% > 60% threshold) | Low utilization (engine 1.2 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST16,S004,5,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (8.7 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST03,S004,6,40,True,,High idle ratio (99% > 60% threshold) | Severe idle time (8.8 idle hrs/day) | Low utilization (engine 0.1 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST06,S004,7,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.7 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST15,S004,8,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (8.6 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST04,S002,9,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (8.9 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1040,Excavator,CUST07,S004,10,60,False,,High idle ratio (84% > 60% threshold) | Low utilization (engine 1.4 hrs/day < 8 expected),False
+EQX1041,Grader,CUST17,S006,1,60,False,,High idle ratio (84% > 55% threshold) | Low utilization (engine 1.0 hrs/day < 6 expected),False
+EQX1041,Grader,CUST01,S003,2,60,False,,High idle ratio (73% > 55% threshold) | Low utilization (engine 1.9 hrs/day < 6 expected),False
+EQX1041,Grader,CUST11,S002,3,55,True,,High idle ratio (73% > 55% threshold) | Severe idle time (9.2 idle hrs/day),True
+EQX1041,Grader,CUST06,S004,4,60,False,,High idle ratio (93% > 55% threshold) | Low utilization (engine 0.5 hrs/day < 6 expected),False
+EQX1041,Grader,CUST13,S006,5,40,True,,High idle ratio (81% > 55% threshold) | Severe idle time (8.7 idle hrs/day) | Low utilization (engine 2.0 hrs/day < 6 expected),True
+EQX1041,Grader,CUST09,S004,6,40,True,,High idle ratio (100% > 55% threshold) | Severe idle time (12.4 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 6 expected),True
+EQX1041,Grader,CUST04,S006,7,60,False,,High idle ratio (88% > 55% threshold) | Low utilization (engine 0.8 hrs/day < 6 expected),False
+EQX1041,Grader,CUST07,S005,8,60,False,,High idle ratio (83% > 55% threshold) | Low utilization (engine 1.1 hrs/day < 6 expected),False
+EQX1042,Crane,CUST01,S005,1,60,False,,High idle ratio (71% > 50% threshold) | Low utilization (engine 1.6 hrs/day < 5 expected),False
+EQX1042,Crane,CUST08,S003,2,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-04-09, 266d overdue) | Penalty charged | High idle ratio (73% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected)",True
+EQX1042,Crane,CUST15,S004,3,60,False,,High idle ratio (82% > 50% threshold) | Low utilization (engine 1.0 hrs/day < 5 expected),False
+EQX1042,Crane,CUST01,S005,4,60,False,,High idle ratio (68% > 50% threshold) | Low utilization (engine 1.5 hrs/day < 5 expected),False
+EQX1042,Crane,CUST03,S005,5,100,False,,,False
+EQX1042,Crane,CUST12,S003,6,60,False,,High idle ratio (85% > 50% threshold) | Low utilization (engine 0.9 hrs/day < 5 expected),False
+EQX1042,Crane,CUST01,S002,7,60,False,,High idle ratio (52% > 50% threshold) | Low utilization (engine 2.4 hrs/day < 5 expected),False
+EQX1042,Crane,CUST12,S004,8,75,False,,High idle ratio (51% > 50% threshold),False
+EQX1043,Grader,CUST08,S002,1,100,False,,,False
+EQX1043,Grader,CUST14,S003,2,100,False,,,False
+EQX1043,Grader,CUST17,S002,3,100,False,,,False
+EQX1043,Grader,CUST06,S006,4,100,False,,,False
+EQX1043,Grader,CUST04,S003,5,100,False,,,False
+EQX1043,Grader,CUST01,S004,6,100,False,,,False
+EQX1043,Grader,CUST15,S006,7,100,False,,,False
+EQX1043,Grader,CUST17,S002,8,100,False,,,False
+EQX1043,Grader,CUST12,S005,9,100,False,,,False
+EQX1043,Grader,CUST18,S004,10,100,False,,,False
+EQX1043,Grader,CUST04,S005,11,100,False,,,False
+EQX1043,Grader,CUST04,S002,12,60,False,,High idle ratio (69% > 55% threshold) | Low utilization (engine 2.0 hrs/day < 6 expected),False
+EQX1043,Grader,CUST06,S004,13,100,False,,,False
+EQX1043,Grader,CUST01,S003,14,100,False,,,False
+EQX1043,Grader,CUST18,S004,15,100,False,,,False
+EQX1044,Excavator,CUST17,S001,1,60,False,,High idle ratio (64% > 60% threshold) | Low utilization (engine 3.9 hrs/day < 8 expected),True
+EQX1044,Excavator,CUST15,S003,2,100,False,,,False
+EQX1044,Excavator,CUST03,S002,3,40,True,,High idle ratio (96% > 60% threshold) | Severe idle time (9.0 idle hrs/day) | Low utilization (engine 0.4 hrs/day < 8 expected),True
+EQX1044,Excavator,CUST07,S006,4,100,False,,,False
+EQX1044,Excavator,CUST12,S001,5,100,False,,,False
+EQX1044,Excavator,CUST05,S003,6,100,False,,,False
+EQX1044,Excavator,CUST15,S001,7,100,False,,,False
+EQX1044,Excavator,CUST16,S006,8,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (11.5 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1044,Excavator,CUST13,S002,9,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (11.5 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1044,Excavator,CUST07,S005,10,100,False,,,False
+EQX1045,Grader,CUST17,S005,1,60,False,,High idle ratio (79% > 55% threshold) | Low utilization (engine 1.4 hrs/day < 6 expected),False
+EQX1045,Grader,CUST16,S004,2,15,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-03-09, 297d overdue) | Penalty charged | High idle ratio (60% > 55% threshold)",True
+EQX1045,Grader,CUST09,S001,3,60,False,,High idle ratio (100% > 55% threshold) | Low utilization (engine 0.0 hrs/day < 6 expected),False
+EQX1045,Grader,CUST07,S003,4,60,False,,High idle ratio (99% > 55% threshold) | Low utilization (engine 0.1 hrs/day < 6 expected),True
+EQX1045,Grader,CUST13,S001,5,60,False,,High idle ratio (98% > 55% threshold) | Low utilization (engine 0.1 hrs/day < 6 expected),False
+EQX1045,Grader,CUST17,S004,6,60,False,,High idle ratio (75% > 55% threshold) | Low utilization (engine 1.5 hrs/day < 6 expected),False
+EQX1045,Grader,CUST03,S005,7,15,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-09-01, 121d overdue) | Penalty charged | High idle ratio (61% > 55% threshold)",True
+EQX1045,Grader,CUST04,S001,8,40,True,,High idle ratio (100% > 55% threshold) | Severe idle time (12.6 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 6 expected),True
+EQX1046,Bulldozer,CUST01,S002,1,100,False,,,False
+EQX1046,Bulldozer,CUST09,S003,2,100,False,,,False
+EQX1046,Bulldozer,CUST08,S001,3,100,False,,,False
+EQX1046,Bulldozer,CUST15,S002,4,100,False,,,False
+EQX1046,Bulldozer,CUST03,S005,5,100,False,,,False
+EQX1046,Bulldozer,CUST02,S006,6,100,False,,,False
+EQX1046,Bulldozer,CUST17,S005,7,100,False,,,False
+EQX1046,Bulldozer,CUST11,S006,8,85,False,,Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1046,Bulldozer,CUST12,S003,9,100,False,,,False
+EQX1046,Bulldozer,CUST08,S003,10,100,False,,,False
+EQX1046,Bulldozer,CUST06,S002,11,100,False,,,False
+EQX1046,Bulldozer,CUST02,S004,12,75,False,,High idle ratio (60% > 60% threshold),True
+EQX1047,Grader,CUST08,S006,1,100,False,,,False
+EQX1047,Grader,CUST11,S002,2,60,False,,High idle ratio (57% > 55% threshold) | Low utilization (engine 2.7 hrs/day < 6 expected),False
+EQX1047,Grader,CUST16,S003,3,100,False,,,False
+EQX1047,Grader,CUST18,,4,15,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (73% > 55% threshold) | Severe idle time (9.4 idle hrs/day),True
+EQX1047,Grader,CUST08,S005,5,60,False,,High idle ratio (57% > 55% threshold) | Low utilization (engine 2.5 hrs/day < 6 expected),False
+EQX1047,Grader,CUST02,S002,6,60,False,,High idle ratio (63% > 55% threshold) | Low utilization (engine 2.5 hrs/day < 6 expected),False
+EQX1047,Grader,CUST03,S005,7,85,False,,Low utilization (engine 2.7 hrs/day < 6 expected),False
+EQX1047,Grader,CUST07,S002,8,100,False,,,False
+EQX1047,Grader,CUST02,S001,9,100,False,,,False
+EQX1047,Grader,CUST18,S001,10,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-12-25, 6d overdue) | Penalty charged | High idle ratio (63% > 55% threshold) | Low utilization (engine 2.0 hrs/day < 6 expected)",True
+EQX1048,Crane,CUST05,S003,1,100,False,,,False
+EQX1048,Crane,CUST18,S002,2,100,False,,,False
+EQX1048,Crane,CUST14,S001,3,100,False,,,False
+EQX1048,Crane,CUST15,S003,4,100,False,,,False
+EQX1048,Crane,CUST09,S002,5,100,False,,,False
+EQX1048,Crane,CUST12,S002,6,60,False,,High idle ratio (86% > 50% threshold) | Low utilization (engine 1.3 hrs/day < 5 expected),True
+EQX1048,Crane,CUST16,S004,7,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-09-01, 121d overdue) | Penalty charged | High idle ratio (83% > 50% threshold) | Low utilization (engine 1.5 hrs/day < 5 expected)",True
+EQX1048,Crane,CUST07,S004,8,60,False,,High idle ratio (65% > 50% threshold) | Low utilization (engine 1.8 hrs/day < 5 expected),False
+EQX1048,Crane,CUST02,S002,9,100,False,,,False
+EQX1048,Crane,CUST18,S006,10,100,False,,,False
+EQX1048,Crane,CUST04,S005,11,100,False,,,False
+EQX1049,Excavator,CUST01,S005,1,60,False,,High idle ratio (72% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1049,Excavator,CUST17,S001,2,60,False,,High idle ratio (69% > 60% threshold) | Low utilization (engine 2.7 hrs/day < 8 expected),False
+EQX1049,Excavator,CUST14,,3,20,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (75% > 60% threshold) | Low utilization (engine 2.1 hrs/day < 8 expected),True
+EQX1049,Excavator,CUST05,S003,4,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-07-05, 179d overdue) | Penalty charged and unpaid | High idle ratio (76% > 60% threshold) | Low utilization (engine 1.8 hrs/day < 8 expected)",True
+EQX1049,Excavator,CUST09,S004,5,60,False,,High idle ratio (77% > 60% threshold) | Low utilization (engine 2.0 hrs/day < 8 expected),False
+EQX1049,Excavator,CUST10,S005,6,60,False,,High idle ratio (85% > 60% threshold) | Low utilization (engine 1.3 hrs/day < 8 expected),False
+EQX1049,Excavator,CUST15,S003,7,60,False,,High idle ratio (70% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST03,S002,1,60,False,,High idle ratio (76% > 60% threshold) | Low utilization (engine 2.0 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST04,S005,2,60,False,,High idle ratio (75% > 60% threshold) | Low utilization (engine 2.3 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST10,S006,3,100,False,,,False
+EQX1050,Excavator,CUST14,S001,4,60,False,,High idle ratio (99% > 60% threshold) | Low utilization (engine 0.1 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST12,S006,5,60,False,,High idle ratio (99% > 60% threshold) | Low utilization (engine 0.1 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST02,S002,6,60,False,,High idle ratio (72% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST14,S003,7,60,False,,High idle ratio (86% > 60% threshold) | Low utilization (engine 1.2 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST18,S004,8,60,False,,High idle ratio (80% > 60% threshold) | Low utilization (engine 1.7 hrs/day < 8 expected),False
+EQX1050,Excavator,CUST11,S005,9,60,False,,High idle ratio (72% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1051,Excavator,CUST14,S006,1,60,False,,High idle ratio (67% > 60% threshold) | Low utilization (engine 2.6 hrs/day < 8 expected),False
+EQX1051,Excavator,CUST01,S004,2,100,False,,,False
+EQX1051,Excavator,CUST02,S006,3,60,False,,High idle ratio (96% > 60% threshold) | Low utilization (engine 0.3 hrs/day < 8 expected),False
+EQX1051,Excavator,CUST04,S002,4,60,False,,High idle ratio (70% > 60% threshold) | Low utilization (engine 2.6 hrs/day < 8 expected),False
+EQX1051,Excavator,CUST18,S006,5,60,False,,High idle ratio (84% > 60% threshold) | Low utilization (engine 1.4 hrs/day < 8 expected),False
+EQX1051,Excavator,CUST12,,6,40,True,no_site,No site assigned | High idle ratio (69% > 60% threshold) | Low utilization (engine 3.7 hrs/day < 8 expected),True
+EQX1051,Excavator,CUST07,S001,7,85,False,,Low utilization (engine 3.6 hrs/day < 8 expected),False
+EQX1051,Excavator,CUST10,S002,8,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-11-02, 59d overdue) | Penalty charged | High idle ratio (64% > 60% threshold) | Low utilization (engine 2.7 hrs/day < 8 expected)",True
+EQX1051,Excavator,CUST01,S005,9,60,False,,High idle ratio (76% > 60% threshold) | Low utilization (engine 1.9 hrs/day < 8 expected),False
+EQX1052,Crane,CUST04,S001,1,60,False,,High idle ratio (58% > 50% threshold) | Low utilization (engine 2.1 hrs/day < 5 expected),False
+EQX1052,Crane,CUST12,S002,2,100,False,,,False
+EQX1052,Crane,CUST03,S002,3,60,False,,High idle ratio (62% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1052,Crane,CUST12,S006,4,60,False,,High idle ratio (57% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1052,Crane,CUST14,S002,5,60,False,,High idle ratio (54% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1052,Crane,CUST11,S004,6,100,False,,,False
+EQX1052,Crane,CUST13,S003,7,60,False,,High idle ratio (58% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1052,Crane,CUST01,S004,8,60,False,,High idle ratio (63% > 50% threshold) | Low utilization (engine 2.1 hrs/day < 5 expected),False
+EQX1052,Crane,CUST13,S002,9,60,False,,High idle ratio (70% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),False
+EQX1053,Crane,CUST10,S004,1,40,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-01-29, 336d overdue) | Penalty charged",True
+EQX1053,Crane,CUST18,S003,2,75,False,,High idle ratio (54% > 50% threshold),False
+EQX1053,Crane,CUST18,S004,3,100,False,,,False
+EQX1053,Crane,CUST14,S002,4,100,False,,,False
+EQX1053,Crane,CUST02,S001,5,100,False,,,False
+EQX1053,Crane,CUST16,S001,6,100,False,,,False
+EQX1053,Crane,CUST17,S006,7,100,False,,,False
+EQX1053,Crane,CUST15,S004,8,100,False,,,False
+EQX1053,Crane,CUST04,S004,9,100,False,,,False
+EQX1053,Crane,CUST10,S001,10,100,False,,,False
+EQX1053,Crane,CUST01,S004,11,100,False,,,False
+EQX1054,Grader,CUST10,S006,1,60,False,,High idle ratio (99% > 55% threshold) | Low utilization (engine 0.1 hrs/day < 6 expected),False
+EQX1054,Grader,CUST06,S006,2,40,True,,High idle ratio (100% > 55% threshold) | Severe idle time (10.3 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 6 expected),True
+EQX1054,Grader,CUST01,S001,3,100,False,,,False
+EQX1054,Grader,CUST02,S005,4,60,False,,High idle ratio (75% > 55% threshold) | Low utilization (engine 1.6 hrs/day < 6 expected),False
+EQX1054,Grader,CUST02,S003,5,100,False,,,False
+EQX1054,Grader,CUST17,S005,6,60,False,,High idle ratio (70% > 55% threshold) | Low utilization (engine 2.0 hrs/day < 6 expected),False
+EQX1054,Grader,CUST05,S006,7,15,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-09-25, 97d overdue) | Penalty charged | High idle ratio (67% > 55% threshold)",True
+EQX1055,Grader,CUST01,S005,1,100,False,,,False
+EQX1055,Grader,CUST18,S003,2,100,False,,,False
+EQX1055,Grader,CUST06,S003,3,100,False,,,False
+EQX1055,Grader,CUST11,S006,4,60,False,,High idle ratio (93% > 55% threshold) | Low utilization (engine 0.6 hrs/day < 6 expected),True
+EQX1055,Grader,CUST12,S002,5,40,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-05-04, 241d overdue) | Penalty charged",True
+EQX1055,Grader,CUST17,S004,6,100,False,,,False
+EQX1055,Grader,CUST06,S005,7,100,False,,,False
+EQX1055,Grader,CUST03,S005,8,100,False,,,False
+EQX1055,Grader,CUST06,S003,9,40,True,,High idle ratio (90% > 55% threshold) | Severe idle time (9.6 idle hrs/day) | Low utilization (engine 1.1 hrs/day < 6 expected),True
+EQX1055,Grader,CUST03,S004,10,100,False,,,False
+EQX1055,Grader,CUST17,S004,11,100,False,,,False
+EQX1055,Grader,CUST15,S003,12,100,False,,,False
+EQX1055,Grader,CUST13,S003,13,100,False,,,False
+EQX1055,Grader,CUST03,S003,14,100,False,,,False
+EQX1056,Bulldozer,CUST15,S004,1,60,False,,High idle ratio (80% > 60% threshold) | Low utilization (engine 1.7 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST06,S006,2,60,False,,High idle ratio (93% > 60% threshold) | Low utilization (engine 0.6 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST06,S003,3,60,False,,High idle ratio (90% > 60% threshold) | Low utilization (engine 0.8 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST13,S004,4,40,True,,High idle ratio (97% > 60% threshold) | Severe idle time (8.6 idle hrs/day) | Low utilization (engine 0.3 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST02,S005,5,60,False,,High idle ratio (71% > 60% threshold) | Low utilization (engine 2.6 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST07,S004,6,60,False,,High idle ratio (62% > 60% threshold) | Low utilization (engine 3.5 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST11,S002,7,40,True,,High idle ratio (89% > 60% threshold) | Severe idle time (10.4 idle hrs/day) | Low utilization (engine 1.3 hrs/day < 8 expected),True
+EQX1056,Bulldozer,CUST12,S005,8,60,False,,High idle ratio (66% > 60% threshold) | Low utilization (engine 3.0 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST04,S006,9,60,False,,High idle ratio (85% > 60% threshold) | Low utilization (engine 1.3 hrs/day < 8 expected),False
+EQX1056,Bulldozer,CUST12,S002,10,60,False,,High idle ratio (100% > 60% threshold) | Low utilization (engine 0.0 hrs/day < 8 expected),False
+EQX1057,Bulldozer,CUST11,S001,1,60,False,,High idle ratio (68% > 60% threshold) | Low utilization (engine 2.6 hrs/day < 8 expected),False
+EQX1057,Bulldozer,CUST18,S001,2,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (12.0 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1057,Bulldozer,CUST13,S006,3,60,False,,High idle ratio (89% > 60% threshold) | Low utilization (engine 0.9 hrs/day < 8 expected),False
+EQX1057,Bulldozer,CUST14,S005,4,60,False,,High idle ratio (93% > 60% threshold) | Low utilization (engine 0.6 hrs/day < 8 expected),False
+EQX1057,Bulldozer,CUST10,S004,5,40,True,,High idle ratio (87% > 60% threshold) | Severe idle time (10.5 idle hrs/day) | Low utilization (engine 1.6 hrs/day < 8 expected),True
+EQX1057,Bulldozer,CUST03,S006,6,60,False,,High idle ratio (84% > 60% threshold) | Low utilization (engine 1.3 hrs/day < 8 expected),False
+EQX1057,Bulldozer,CUST07,S004,7,60,False,,High idle ratio (62% > 60% threshold) | Low utilization (engine 3.2 hrs/day < 8 expected),False
+EQX1057,Bulldozer,CUST13,S001,8,60,False,,High idle ratio (83% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1057,Bulldozer,CUST15,S001,9,60,False,,High idle ratio (83% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected),False
+EQX1058,Crane,CUST17,S002,1,60,False,,High idle ratio (64% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1058,Crane,CUST04,S004,2,60,False,,High idle ratio (100% > 50% threshold) | Low utilization (engine 0.0 hrs/day < 5 expected),False
+EQX1058,Crane,CUST11,S005,3,60,False,,High idle ratio (98% > 50% threshold) | Low utilization (engine 0.1 hrs/day < 5 expected),False
+EQX1058,Crane,CUST18,S006,4,60,False,,High idle ratio (100% > 50% threshold) | Low utilization (engine 0.0 hrs/day < 5 expected),False
+EQX1058,Crane,CUST09,S006,5,60,False,,High idle ratio (77% > 50% threshold) | Low utilization (engine 1.4 hrs/day < 5 expected),False
+EQX1058,Crane,CUST15,S003,6,60,False,,High idle ratio (85% > 50% threshold) | Low utilization (engine 0.8 hrs/day < 5 expected),False
+EQX1058,Crane,CUST05,S001,7,60,False,,High idle ratio (75% > 50% threshold) | Low utilization (engine 1.4 hrs/day < 5 expected),False
+EQX1058,Crane,CUST18,S001,8,60,False,,High idle ratio (96% > 50% threshold) | Low utilization (engine 0.2 hrs/day < 5 expected),False
+EQX1058,Crane,CUST17,S004,9,60,False,,High idle ratio (69% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),False
+EQX1059,Crane,CUST05,S004,1,60,False,,High idle ratio (76% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),True
+EQX1059,Crane,CUST09,S002,2,60,False,,High idle ratio (94% > 50% threshold) | Low utilization (engine 0.3 hrs/day < 5 expected),False
+EQX1059,Crane,CUST09,S002,3,60,False,,High idle ratio (67% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),False
+EQX1059,Crane,CUST10,S003,4,60,False,,High idle ratio (72% > 50% threshold) | Low utilization (engine 1.4 hrs/day < 5 expected),False
+EQX1059,Crane,CUST06,S003,5,75,False,,High idle ratio (51% > 50% threshold),False
+EQX1059,Crane,CUST14,S004,6,60,False,,High idle ratio (100% > 50% threshold) | Low utilization (engine 0.0 hrs/day < 5 expected),False
+EQX1060,Bulldozer,CUST08,S002,1,60,False,,High idle ratio (71% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1060,Bulldozer,CUST07,S002,2,60,False,,High idle ratio (74% > 60% threshold) | Low utilization (engine 2.3 hrs/day < 8 expected),False
+EQX1060,Bulldozer,CUST13,S004,3,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (9.8 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1060,Bulldozer,CUST07,S001,4,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (12.7 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1060,Bulldozer,CUST18,S003,5,60,False,,High idle ratio (92% > 60% threshold) | Low utilization (engine 0.7 hrs/day < 8 expected),False
+EQX1060,Bulldozer,CUST03,S006,6,60,False,,High idle ratio (81% > 60% threshold) | Low utilization (engine 1.6 hrs/day < 8 expected),False
+EQX1060,Bulldozer,CUST09,S004,7,60,False,,High idle ratio (75% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1060,Bulldozer,CUST18,S001,8,60,False,,High idle ratio (76% > 60% threshold) | Low utilization (engine 2.0 hrs/day < 8 expected),False
+EQX1060,Bulldozer,CUST18,S004,9,40,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-10-08, 84d overdue) | Penalty charged",True
+EQX1060,Bulldozer,CUST14,S005,10,60,False,,High idle ratio (81% > 60% threshold) | Low utilization (engine 1.2 hrs/day < 8 expected),True
+EQX1061,Crane,CUST01,S005,1,100,False,,,False
+EQX1061,Crane,CUST12,S004,2,100,False,,,False
+EQX1061,Crane,CUST17,S002,3,100,False,,,False
+EQX1061,Crane,CUST03,S002,4,100,False,,,False
+EQX1061,Crane,CUST18,S001,5,100,False,,,False
+EQX1061,Crane,CUST03,S004,6,100,False,,,False
+EQX1061,Crane,CUST05,S006,7,100,False,,,False
+EQX1061,Crane,CUST16,S004,8,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (11.5 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1061,Crane,CUST04,S001,9,100,False,,,False
+EQX1061,Crane,CUST05,S004,10,100,False,,,False
+EQX1062,Grader,CUST14,S001,1,100,False,,,False
+EQX1062,Grader,CUST02,S004,2,100,False,,,False
+EQX1062,Grader,CUST16,S003,3,100,False,,,False
+EQX1062,Grader,CUST09,S006,4,100,False,,,False
+EQX1062,Grader,CUST05,S006,5,40,True,,High idle ratio (100% > 55% threshold) | Severe idle time (12.3 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 6 expected),True
+EQX1062,Grader,CUST10,S001,6,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-05-17, 228d overdue) | Penalty charged | High idle ratio (80% > 55% threshold) | Low utilization (engine 1.5 hrs/day < 6 expected)",True
+EQX1062,Grader,CUST18,S006,7,100,False,,,False
+EQX1062,Grader,CUST03,S003,8,100,False,,,False
+EQX1062,Grader,CUST18,S003,9,100,False,,,False
+EQX1062,Grader,CUST11,S004,10,100,False,,,False
+EQX1062,Grader,CUST12,S004,11,40,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-10-21, 71d overdue) | Penalty charged",True
+EQX1062,Grader,CUST16,S006,12,100,False,,,False
+EQX1063,Excavator,CUST08,S003,1,100,False,,,False
+EQX1063,Excavator,CUST17,S006,2,100,False,,,False
+EQX1063,Excavator,CUST05,S006,3,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (9.6 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1063,Excavator,CUST11,S004,4,100,False,,,False
+EQX1063,Excavator,CUST08,S002,5,100,False,,,False
+EQX1063,Excavator,CUST07,S002,6,100,False,,,False
+EQX1063,Excavator,CUST10,S002,7,100,False,,,False
+EQX1063,Excavator,CUST16,S004,8,100,False,,,False
+EQX1063,Excavator,CUST09,,9,35,True,no_site|no_operator,No site assigned | No operator assigned | High idle ratio (61% > 60% threshold),True
+EQX1063,Excavator,CUST15,S006,10,100,False,,,False
+EQX1063,Excavator,CUST12,S006,11,100,False,,,False
+EQX1063,Excavator,CUST08,S005,12,100,False,,,False
+EQX1063,Excavator,CUST01,S006,13,25,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-11-26, 35d overdue) | Penalty charged and unpaid",True
+EQX1063,Excavator,CUST07,S005,14,100,False,,,False
+EQX1064,Bulldozer,CUST08,S002,1,60,False,,High idle ratio (75% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1064,Bulldozer,CUST01,S004,2,60,False,,High idle ratio (64% > 60% threshold) | Low utilization (engine 3.1 hrs/day < 8 expected),False
+EQX1064,Bulldozer,CUST14,S002,3,85,False,,Low utilization (engine 3.3 hrs/day < 8 expected),False
+EQX1064,Bulldozer,CUST04,S005,4,40,True,,High idle ratio (92% > 60% threshold) | Severe idle time (9.8 idle hrs/day) | Low utilization (engine 0.8 hrs/day < 8 expected),True
+EQX1064,Bulldozer,CUST13,S004,5,60,False,,High idle ratio (60% > 60% threshold) | Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1064,Bulldozer,CUST07,S004,6,85,False,,Low utilization (engine 3.9 hrs/day < 8 expected),False
+EQX1064,Bulldozer,CUST13,S005,7,85,False,,Low utilization (engine 3.5 hrs/day < 8 expected),False
+EQX1065,Excavator,CUST11,S006,1,100,False,,,False
+EQX1065,Excavator,CUST13,S005,2,40,True,,High idle ratio (87% > 60% threshold) | Severe idle time (10.5 idle hrs/day) | Low utilization (engine 1.6 hrs/day < 8 expected),True
+EQX1065,Excavator,CUST14,S006,3,100,False,,,False
+EQX1065,Excavator,CUST08,S006,4,100,False,,,False
+EQX1065,Excavator,CUST09,S002,5,100,False,,,False
+EQX1065,Excavator,CUST05,S002,6,100,False,,,False
+EQX1065,Excavator,CUST12,S005,7,100,False,,,False
+EQX1065,Excavator,CUST14,S005,8,100,False,,,False
+EQX1065,Excavator,CUST17,S006,9,100,False,,,False
+EQX1065,Excavator,CUST17,S003,10,100,False,,,False
+EQX1066,Excavator,CUST12,S005,1,100,False,,,False
+EQX1066,Excavator,CUST12,S005,2,60,False,,High idle ratio (70% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1066,Excavator,CUST07,S002,3,100,False,,,False
+EQX1066,Excavator,CUST05,S001,4,40,True,,High idle ratio (93% > 60% threshold) | Severe idle time (11.4 idle hrs/day) | Low utilization (engine 0.8 hrs/day < 8 expected),True
+EQX1066,Excavator,CUST11,S002,5,100,False,,,False
+EQX1066,Excavator,CUST07,S006,6,100,False,,,False
+EQX1066,Excavator,CUST17,S001,7,60,False,,High idle ratio (63% > 60% threshold) | Low utilization (engine 3.4 hrs/day < 8 expected),False
+EQX1066,Excavator,CUST10,S004,8,100,False,,,False
+EQX1066,Excavator,CUST04,S005,9,100,False,,,False
+EQX1066,Excavator,CUST13,S006,10,60,False,,High idle ratio (81% > 60% threshold) | Low utilization (engine 1.6 hrs/day < 8 expected),False
+EQX1067,Crane,CUST13,S001,1,100,False,,,False
+EQX1067,Crane,CUST03,S006,2,100,False,,,False
+EQX1067,Crane,CUST10,S002,3,100,False,,,False
+EQX1067,Crane,CUST05,S006,4,100,False,,,False
+EQX1067,Crane,CUST03,S002,5,100,False,,,False
+EQX1067,Crane,CUST11,S004,6,100,False,,,False
+EQX1067,Crane,CUST11,S006,7,100,False,,,False
+EQX1067,Crane,CUST18,S002,8,100,False,,,False
+EQX1067,Crane,CUST02,S001,9,75,False,,High idle ratio (51% > 50% threshold),False
+EQX1067,Crane,CUST18,S001,10,100,False,,,False
+EQX1067,Crane,CUST06,S006,11,100,False,,,False
+EQX1067,Crane,CUST11,S003,12,100,False,,,False
+EQX1067,Crane,CUST10,S002,13,100,False,,,False
+EQX1067,Crane,CUST09,S004,14,100,False,,,False
+EQX1068,Bulldozer,CUST05,S005,1,60,False,,High idle ratio (99% > 60% threshold) | Low utilization (engine 0.1 hrs/day < 8 expected),False
+EQX1068,Bulldozer,CUST18,S003,2,60,False,,High idle ratio (91% > 60% threshold) | Low utilization (engine 0.7 hrs/day < 8 expected),False
+EQX1068,Bulldozer,CUST09,S004,3,60,False,,High idle ratio (89% > 60% threshold) | Low utilization (engine 1.0 hrs/day < 8 expected),False
+EQX1068,Bulldozer,CUST05,S001,4,60,False,,High idle ratio (96% > 60% threshold) | Low utilization (engine 0.4 hrs/day < 8 expected),False
+EQX1068,Bulldozer,CUST06,S005,5,60,False,,High idle ratio (99% > 60% threshold) | Low utilization (engine 0.1 hrs/day < 8 expected),False
+EQX1068,Bulldozer,CUST04,S005,6,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-12-22, 9d overdue) | Penalty charged | High idle ratio (62% > 60% threshold) | Low utilization (engine 2.7 hrs/day < 8 expected)",True
+EQX1069,Crane,CUST15,S004,1,60,False,,High idle ratio (70% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),False
+EQX1069,Crane,CUST16,S001,2,60,False,,High idle ratio (67% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),False
+EQX1069,Crane,CUST10,S003,3,60,False,,High idle ratio (87% > 50% threshold) | Low utilization (engine 0.7 hrs/day < 5 expected),False
+EQX1069,Crane,CUST17,S003,4,60,False,,High idle ratio (61% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1069,Crane,CUST12,S002,5,60,False,,High idle ratio (72% > 50% threshold) | Low utilization (engine 1.4 hrs/day < 5 expected),False
+EQX1069,Crane,CUST16,S002,6,60,False,,High idle ratio (79% > 50% threshold) | Low utilization (engine 1.2 hrs/day < 5 expected),False
+EQX1069,Crane,CUST11,S005,7,60,False,,High idle ratio (84% > 50% threshold) | Low utilization (engine 0.9 hrs/day < 5 expected),False
+EQX1069,Crane,CUST16,S001,8,55,True,,High idle ratio (80% > 50% threshold) | Severe idle time (10.1 idle hrs/day),True
+EQX1069,Crane,CUST10,S001,9,60,False,,High idle ratio (100% > 50% threshold) | Low utilization (engine 0.0 hrs/day < 5 expected),False
+EQX1069,Crane,CUST13,S005,10,60,False,,High idle ratio (100% > 50% threshold) | Low utilization (engine 0.0 hrs/day < 5 expected),False
+EQX1069,Crane,CUST09,S002,11,60,False,,High idle ratio (91% > 50% threshold) | Low utilization (engine 0.5 hrs/day < 5 expected),False
+EQX1070,Bulldozer,CUST08,S002,1,60,False,,High idle ratio (72% > 60% threshold) | Low utilization (engine 2.2 hrs/day < 8 expected),False
+EQX1070,Bulldozer,CUST03,S004,2,100,False,,,False
+EQX1070,Bulldozer,CUST15,S006,3,100,False,,,False
+EQX1070,Bulldozer,CUST04,S003,4,100,False,,,False
+EQX1070,Bulldozer,CUST17,S005,5,100,False,,,False
+EQX1070,Bulldozer,CUST16,S004,6,100,False,,,False
+EQX1070,Bulldozer,CUST08,S004,7,100,False,,,False
+EQX1070,Bulldozer,CUST17,S003,8,100,False,,,False
+EQX1070,Bulldozer,CUST15,S004,9,100,False,,,False
+EQX1070,Bulldozer,CUST02,S006,10,100,False,,,False
+EQX1070,Bulldozer,CUST13,S004,11,60,False,,High idle ratio (71% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1070,Bulldozer,CUST03,S002,12,85,False,,Low utilization (engine 3.9 hrs/day < 8 expected),False
+EQX1071,Bulldozer,CUST09,S002,1,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-01-25, 340d overdue) | Penalty charged and unpaid | High idle ratio (63% > 60% threshold) | Low utilization (engine 2.0 hrs/day < 8 expected)",True
+EQX1071,Bulldozer,CUST06,S004,2,100,False,,,False
+EQX1071,Bulldozer,CUST04,S001,3,100,False,,,False
+EQX1071,Bulldozer,CUST12,S005,4,100,False,,,False
+EQX1071,Bulldozer,CUST03,S004,5,100,False,,,False
+EQX1071,Bulldozer,CUST18,S001,6,100,False,,,False
+EQX1071,Bulldozer,CUST14,S005,7,100,False,,,False
+EQX1071,Bulldozer,CUST14,S005,8,20,True,no_operator,No operator assigned | High idle ratio (74% > 60% threshold) | Severe idle time (8.9 idle hrs/day) | Low utilization (engine 3.2 hrs/day < 8 expected),True
+EQX1071,Bulldozer,CUST02,S004,9,100,False,,,False
+EQX1071,Bulldozer,CUST01,S001,10,100,False,,,False
+EQX1071,Bulldozer,CUST15,S002,11,100,False,,,False
+EQX1071,Bulldozer,CUST15,S005,12,100,False,,,False
+EQX1071,Bulldozer,CUST01,S006,13,100,False,,,False
+EQX1071,Bulldozer,CUST10,S003,14,100,False,,,False
+EQX1071,Bulldozer,CUST03,S006,15,100,False,,,False
+EQX1071,Bulldozer,CUST15,S006,16,100,False,,,False
+EQX1072,Excavator,CUST13,S003,1,60,False,,High idle ratio (69% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1072,Excavator,CUST18,S004,2,100,False,,,False
+EQX1072,Excavator,CUST17,S006,3,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (11.0 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1072,Excavator,CUST04,S001,4,60,False,,High idle ratio (76% > 60% threshold) | Low utilization (engine 2.1 hrs/day < 8 expected),False
+EQX1072,Excavator,CUST14,S001,5,100,False,,,False
+EQX1072,Excavator,CUST13,S006,6,40,True,,High idle ratio (88% > 60% threshold) | Severe idle time (11.8 idle hrs/day) | Low utilization (engine 1.6 hrs/day < 8 expected),True
+EQX1073,Crane,CUST10,S001,1,60,False,,High idle ratio (60% > 50% threshold) | Low utilization (engine 2.4 hrs/day < 5 expected),False
+EQX1073,Crane,CUST14,S004,2,60,False,,High idle ratio (56% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1073,Crane,CUST11,S002,3,60,False,,High idle ratio (65% > 50% threshold) | Low utilization (engine 1.8 hrs/day < 5 expected),False
+EQX1073,Crane,CUST13,S001,4,60,False,,High idle ratio (76% > 50% threshold) | Low utilization (engine 1.3 hrs/day < 5 expected),False
+EQX1073,Crane,CUST15,S002,5,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-05-29, 216d overdue) | Penalty charged | High idle ratio (83% > 50% threshold) | Low utilization (engine 1.1 hrs/day < 5 expected)",True
+EQX1073,Crane,CUST13,S001,6,60,False,,High idle ratio (74% > 50% threshold) | Low utilization (engine 1.2 hrs/day < 5 expected),False
+EQX1073,Crane,CUST17,S001,7,60,False,,High idle ratio (63% > 50% threshold) | Low utilization (engine 1.9 hrs/day < 5 expected),False
+EQX1073,Crane,CUST11,S005,8,0,True,still_checked_out|penalty_charged,"Not returned - still checked out (expected 2025-09-24, 98d overdue) | Penalty charged | High idle ratio (69% > 50% threshold) | Low utilization (engine 2.2 hrs/day < 5 expected)",True
+EQX1073,Crane,CUST18,S003,9,60,False,,High idle ratio (60% > 50% threshold) | Low utilization (engine 2.2 hrs/day < 5 expected),False
+EQX1073,Crane,CUST06,S005,10,75,False,,High idle ratio (53% > 50% threshold),False
+EQX1073,Crane,CUST10,S005,11,40,True,,High idle ratio (91% > 50% threshold) | Severe idle time (11.0 idle hrs/day) | Low utilization (engine 1.1 hrs/day < 5 expected),True
+EQX1073,Crane,CUST07,S004,12,60,False,,High idle ratio (63% > 50% threshold) | Low utilization (engine 1.9 hrs/day < 5 expected),False
+EQX1074,Excavator,CUST14,S001,1,100,False,,,False
+EQX1074,Excavator,CUST01,S004,2,100,False,,,False
+EQX1074,Excavator,CUST16,S003,3,60,False,,High idle ratio (71% > 60% threshold) | Low utilization (engine 2.3 hrs/day < 8 expected),False
+EQX1074,Excavator,CUST07,S001,4,100,False,,,False
+EQX1074,Excavator,CUST01,S006,5,85,False,,Low utilization (engine 3.8 hrs/day < 8 expected),False
+EQX1074,Excavator,CUST16,S003,6,100,False,,,False
+EQX1074,Excavator,CUST05,S003,7,85,False,,Low utilization (engine 3.5 hrs/day < 8 expected),False
+EQX1074,Excavator,CUST18,S003,8,85,False,,Low utilization (engine 3.9 hrs/day < 8 expected),False
+EQX1074,Excavator,CUST04,S001,9,60,False,,High idle ratio (63% > 60% threshold) | Low utilization (engine 3.0 hrs/day < 8 expected),False
+EQX1074,Excavator,CUST03,S003,10,0,True,still_checked_out|unpaid_penalty,"Not returned - still checked out (expected 2025-10-14, 78d overdue) | Penalty charged and unpaid | High idle ratio (81% > 60% threshold) | Low utilization (engine 1.5 hrs/day < 8 expected)",True
+EQX1074,Excavator,CUST01,S006,11,100,False,,,False
+EQX1074,Excavator,CUST09,S002,12,100,False,,,False
+EQX1075,Crane,CUST13,S006,1,75,False,,High idle ratio (55% > 50% threshold),False
+EQX1075,Crane,CUST16,S006,2,60,False,,High idle ratio (94% > 50% threshold) | Low utilization (engine 0.3 hrs/day < 5 expected),False
+EQX1075,Crane,CUST01,S002,3,60,False,,High idle ratio (68% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1075,Crane,CUST18,S005,4,60,False,,High idle ratio (65% > 50% threshold) | Low utilization (engine 2.1 hrs/day < 5 expected),False
+EQX1075,Crane,CUST01,S004,5,75,False,,High idle ratio (52% > 50% threshold),False
+EQX1075,Crane,CUST18,S006,6,60,False,,High idle ratio (60% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1075,Crane,CUST01,S002,7,60,False,,High idle ratio (96% > 50% threshold) | Low utilization (engine 0.2 hrs/day < 5 expected),False
+EQX1075,Crane,CUST01,S005,8,60,False,,High idle ratio (65% > 50% threshold) | Low utilization (engine 2.2 hrs/day < 5 expected),False
+EQX1075,Crane,CUST06,S001,9,100,False,,,False
+EQX1075,Crane,CUST08,S001,10,60,False,,High idle ratio (81% > 50% threshold) | Low utilization (engine 1.1 hrs/day < 5 expected),False
+EQX1076,Bulldozer,CUST06,S004,1,60,False,,High idle ratio (64% > 60% threshold) | Low utilization (engine 3.2 hrs/day < 8 expected),False
+EQX1076,Bulldozer,CUST04,S003,2,100,False,,,False
+EQX1076,Bulldozer,CUST13,S002,3,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (12.8 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1076,Bulldozer,CUST17,S002,4,100,False,,,False
+EQX1076,Bulldozer,CUST18,S002,5,60,False,,High idle ratio (61% > 60% threshold) | Low utilization (engine 3.6 hrs/day < 8 expected),False
+EQX1076,Bulldozer,CUST16,S001,6,60,False,,High idle ratio (60% > 60% threshold) | Low utilization (engine 3.3 hrs/day < 8 expected),False
+EQX1076,Bulldozer,CUST13,S005,7,100,False,,,False
+EQX1076,Bulldozer,CUST04,S005,8,60,False,,High idle ratio (61% > 60% threshold) | Low utilization (engine 3.6 hrs/day < 8 expected),False
+EQX1077,Crane,CUST04,S001,1,100,False,,,False
+EQX1077,Crane,CUST09,S003,2,60,False,,High idle ratio (65% > 50% threshold) | Low utilization (engine 1.8 hrs/day < 5 expected),False
+EQX1077,Crane,CUST02,S002,3,60,False,,High idle ratio (71% > 50% threshold) | Low utilization (engine 1.9 hrs/day < 5 expected),False
+EQX1077,Crane,CUST01,S005,4,40,True,,High idle ratio (91% > 50% threshold) | Severe idle time (9.1 idle hrs/day) | Low utilization (engine 0.9 hrs/day < 5 expected),True
+EQX1077,Crane,CUST11,S001,5,60,False,,High idle ratio (89% > 50% threshold) | Low utilization (engine 0.6 hrs/day < 5 expected),False
+EQX1077,Crane,CUST15,S001,6,60,False,,High idle ratio (66% > 50% threshold) | Low utilization (engine 1.8 hrs/day < 5 expected),False
+EQX1077,Crane,CUST08,S004,7,60,False,,High idle ratio (63% > 50% threshold) | Low utilization (engine 2.2 hrs/day < 5 expected),False
+EQX1077,Crane,CUST14,S006,8,60,False,,High idle ratio (67% > 50% threshold) | Low utilization (engine 2.0 hrs/day < 5 expected),False
+EQX1077,Crane,CUST02,S006,9,60,False,,High idle ratio (71% > 50% threshold) | Low utilization (engine 1.7 hrs/day < 5 expected),False
+EQX1078,Excavator,CUST14,S004,1,85,False,,Low utilization (engine 3.5 hrs/day < 8 expected),False
+EQX1078,Excavator,CUST04,S001,2,100,False,,,False
+EQX1078,Excavator,CUST16,S005,3,100,False,,,False
+EQX1078,Excavator,CUST01,S005,4,100,False,,,False
+EQX1078,Excavator,CUST10,S002,5,60,False,,High idle ratio (70% > 60% threshold) | Low utilization (engine 2.5 hrs/day < 8 expected),False
+EQX1078,Excavator,CUST01,S004,6,100,False,,,False
+EQX1078,Excavator,CUST01,S005,7,100,False,,,False
+EQX1078,Excavator,CUST18,S001,8,60,False,,High idle ratio (72% > 60% threshold) | Low utilization (engine 2.4 hrs/day < 8 expected),False
+EQX1078,Excavator,CUST18,S001,9,100,False,,,False
+EQX1078,Excavator,CUST18,S004,10,100,False,,,False
+EQX1078,Excavator,CUST09,S006,11,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (11.7 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1078,Excavator,CUST16,S002,12,40,True,,High idle ratio (100% > 60% threshold) | Severe idle time (11.8 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 8 expected),True
+EQX1078,Excavator,CUST11,S005,13,100,False,,,False
+EQX1079,Excavator,CUST08,S003,1,100,False,,,False
+EQX1079,Excavator,CUST04,S001,2,100,False,,,False
+EQX1079,Excavator,CUST15,S005,3,100,False,,,False
+EQX1079,Excavator,CUST07,S005,4,100,False,,,False
+EQX1079,Excavator,CUST16,S001,5,100,False,,,False
+EQX1079,Excavator,CUST17,S001,6,100,False,,,False
+EQX1079,Excavator,CUST17,S004,7,100,False,,,False
+EQX1079,Excavator,CUST13,S004,8,100,False,,,False
+EQX1079,Excavator,CUST09,S001,9,100,False,,,False
+EQX1079,Excavator,CUST02,S004,10,100,False,,,False
+EQX1079,Excavator,CUST07,S004,11,40,True,,High idle ratio (87% > 60% threshold) | Severe idle time (10.4 idle hrs/day) | Low utilization (engine 1.5 hrs/day < 8 expected),True
+EQX1079,Excavator,CUST03,S003,12,100,False,,,False
+EQX1079,Excavator,CUST05,S005,13,100,False,,,False
+EQX1079,Excavator,CUST09,S006,14,100,False,,,False
+EQX1080,Crane,CUST02,S003,1,75,False,,High idle ratio (58% > 50% threshold),False
+EQX1080,Crane,CUST10,S004,2,100,False,,,False
+EQX1080,Crane,CUST02,S005,3,100,False,,,False
+EQX1080,Crane,CUST14,S003,4,100,False,,,False
+EQX1080,Crane,CUST15,S003,5,100,False,,,False
+EQX1080,Crane,CUST07,S004,6,100,False,,,False
+EQX1080,Crane,CUST16,S001,7,100,False,,,False
+EQX1080,Crane,CUST15,S002,8,75,False,,High idle ratio (53% > 50% threshold),False
+EQX1080,Crane,CUST04,S003,9,75,False,,High idle ratio (51% > 50% threshold),False
+EQX1080,Crane,CUST03,S004,10,75,False,,High idle ratio (54% > 50% threshold),False
+EQX1080,Crane,CUST08,S003,11,60,False,,High idle ratio (60% > 50% threshold) | Low utilization (engine 2.3 hrs/day < 5 expected),False
+EQX1081,Crane,CUST16,S006,1,100,False,,,False
+EQX1081,Crane,CUST13,S003,2,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (12.1 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True
+EQX1081,Crane,CUST05,S004,3,100,False,,,False
+EQX1081,Crane,CUST06,,4,55,True,no_site,No site assigned | High idle ratio (61% > 50% threshold),True
+EQX1081,Crane,CUST16,S003,5,100,False,,,False
+EQX1081,Crane,CUST17,S001,6,100,False,,,False
+EQX1081,Crane,CUST08,S003,7,100,False,,,False
+EQX1081,Crane,CUST15,S001,8,100,False,,,False
+EQX1081,Crane,CUST06,S001,9,100,False,,,False
+EQX1081,Crane,CUST16,S003,10,100,False,,,False
+EQX1081,Crane,CUST02,S002,11,100,False,,,False
+EQX1081,Crane,CUST16,S003,12,100,False,,,False
+EQX1081,Crane,CUST15,S006,13,100,False,,,False
+EQX1081,Crane,CUST05,S006,14,40,True,,High idle ratio (100% > 50% threshold) | Severe idle time (11.7 idle hrs/day) | Low utilization (engine 0.0 hrs/day < 5 expected),True

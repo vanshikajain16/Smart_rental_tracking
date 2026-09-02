@@ -1,0 +1,26 @@
+[
+  {
+    "equipment_id": "EQX1030",
+    "customer_id": "CUST03",
+    "type": "Bulldozer",
+    "from_health": 40,
+    "recommendation": {
+      "action": "move",
+      "from_site": "S002",
+      "to_site": "S003",
+      "reason": "Idle 100% at S002 (health 40/100); S003 forecasted to need a Bulldozer within ~11 days (demand 50/100 vs 34/100 here)"
+    }
+  },
+  {
+    "equipment_id": "EQX1045",
+    "customer_id": "CUST04",
+    "type": "Grader",
+    "from_health": 40,
+    "recommendation": {
+      "action": "move",
+      "from_site": "S001",
+      "to_site": "S005",
+      "reason": "Idle 100% at S001 (health 40/100); S005 forecasted to need a Grader within ~10 days (demand 55/100 vs 41/100 here)"
+    }
+  }
+]

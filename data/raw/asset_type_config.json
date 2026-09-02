@@ -1,0 +1,27 @@
+{
+  "Excavator": {
+    "expected_daily_hours": 8,
+    "idle_threshold": 0.6,
+    "custom_fields": ["bucket_size", "attachment"]
+  },
+  "Bulldozer": {
+    "expected_daily_hours": 8,
+    "idle_threshold": 0.6,
+    "custom_fields": ["blade_width"]
+  },
+  "Crane": {
+    "expected_daily_hours": 5,
+    "idle_threshold": 0.5,
+    "custom_fields": ["max_lift_capacity", "boom_length"]
+  },
+  "Grader": {
+    "expected_daily_hours": 6,
+    "idle_threshold": 0.55,
+    "custom_fields": ["blade_width"]
+  },
+  "Generator": {
+    "expected_daily_hours": 24,
+    "idle_threshold": 0.3,
+    "custom_fields": ["kva_rating", "fuel_type"]
+  }
+}

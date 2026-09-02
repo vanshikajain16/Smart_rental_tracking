@@ -1,0 +1,39 @@
+{
+  "trained_at": "2026-09-02T03:05:12+00:00",
+  "sklearn_version": "1.8.0",
+  "features": [
+    "idle_ratio",
+    "utilization",
+    "rental_length_days",
+    "cycle_number",
+    "n_prior_cycles",
+    "prior_idle_ratio_mean",
+    "prior_utilization_mean",
+    "prior_idle_ratio_last",
+    "prior_rental_length_mean"
+  ],
+  "label_rule": "gap_days_to_next_checkout >= 14",
+  "n_trainable_rows": 744,
+  "positive_rate": 0.4167,
+  "holdout": {
+    "accuracy": 0.5753,
+    "roc_auc": 0.6036
+  },
+  "groupkfold": {
+    "accuracy": 0.5941,
+    "macro_f1": 0.5817,
+    "roc_auc": 0.6063
+  },
+  "feature_importances": {
+    "prior_utilization_mean": 0.17,
+    "prior_idle_ratio_mean": 0.151,
+    "idle_ratio": 0.1362,
+    "utilization": 0.1298,
+    "prior_idle_ratio_last": 0.129,
+    "prior_rental_length_mean": 0.1047,
+    "rental_length_days": 0.0978,
+    "n_prior_cycles": 0.0409,
+    "cycle_number": 0.0407
+  },
+  "reallocatable_threshold": 0.5
+}
