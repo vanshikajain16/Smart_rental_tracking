@@ -6,7 +6,11 @@ contract.
 """
 from __future__ import annotations
 
-from pydantic import BaseModel
+import re
+
+from pydantic import BaseModel, field_validator
+
+_EMAIL_RE = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
 
 
 class DemandForecast(BaseModel):
@@ -56,6 +60,61 @@ class SmsReminder(BaseModel):
     lead_days: int
     risk_tier: str | None = None
     message: str
+
+
+class SignupRequest(BaseModel):
+    """A new login linked to an existing Customer ID."""
+    email: str
+    password: str
+    customer_id: str
+
+    @field_validator("email")
+    @classmethod
+    def _valid_email(cls, v: str) -> str:
+        v = v.strip().lower()
+        if not _EMAIL_RE.fullmatch(v):
+            raise ValueError("not a valid email address")
+        return v
+
+    @field_validator("password")
+    @classmethod
+    def _password_bounds(cls, v: str) -> str:
+        if len(v) < 8:
+            raise ValueError("password must be at least 8 characters")
+        if len(v.encode("utf-8")) > 72:
+            # bcrypt only hashes the first 72 bytes; reject rather than
+            # silently truncate.
+            raise ValueError("password must be at most 72 bytes")
+        return v
+
+    @field_validator("customer_id")
+    @classmethod
+    def _trim_customer_id(cls, v: str) -> str:
+        v = v.strip()
+        if not v:
+            raise ValueError("customer_id is required")
+        return v
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+    @field_validator("email")
+    @classmethod
+    def _normalize_email(cls, v: str) -> str:
+        return v.strip().lower()
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    customer_id: str
+
+
+class AuthedCustomer(BaseModel):
+    customer_id: str
+    email: str
 
 
 class RenewalRiskCustomer(BaseModel):

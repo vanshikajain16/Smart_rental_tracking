@@ -3,12 +3,7 @@ import { api } from '../api.js'
 import AssetCard from './AssetCard.jsx'
 import AlertsPanel from './AlertsPanel.jsx'
 
-export default function CustomerDashboard({
-  customerId,
-  setCustomerId,
-  customers,
-  assetTypes,
-}) {
+export default function CustomerDashboard({ customerId, assetTypes }) {
   const [assets, setAssets] = useState([])
   const [alerts, setAlerts] = useState([])
   const [sms, setSms] = useState([])
@@ -38,27 +33,13 @@ export default function CustomerDashboard({
     }
   }, [customerId])
 
-  const options = customers.length
-    ? customers.map((c) => c.customer_id)
-    : [customerId]
-
   return (
     <div className="dashboard">
       <div className="dash-head">
         <h1>Customer dashboard</h1>
-        <label className="picker">
-          Customer&nbsp;
-          <select
-            value={customerId}
-            onChange={(e) => setCustomerId(e.target.value)}
-          >
-            {options.map((id) => (
-              <option key={id} value={id}>
-                {id}
-              </option>
-            ))}
-          </select>
-        </label>
+        <span className="picker">
+          Signed in as&nbsp;<strong className="mono">{customerId}</strong>
+        </span>
       </div>
 
       {error && <div className="banner error">{error}</div>}

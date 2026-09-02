@@ -196,3 +196,31 @@ h3 { font-size: 13px; margin: 12px 0 6px; color: var(--muted); text-transform: u
 .trend.down { color: var(--bad); }
 .trend.up   { color: var(--good); }
 .trend.flat { color: var(--muted); }
+
+/* ---- auth ---- */
+.session-tag {
+  display: inline-flex; align-items: center; gap: 8px; margin-left: 8px;
+  font-size: 12px; color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.auth-panel { display: flex; justify-content: center; padding: 40px 16px; }
+.auth-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: 24px; width: 100%; max-width: 360px;
+}
+.auth-card h1 { font-size: 18px; margin-bottom: 4px; }
+.auth-card form {
+  display: flex; flex-direction: column; gap: 12px; margin-top: 16px;
+}
+.auth-card label {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 13px; color: var(--muted);
+}
+.auth-card input {
+  padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+  font-size: 14px; color: var(--ink); background: var(--bg);
+}
+.auth-card input:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+.auth-submit { text-align: center; margin-top: 4px; }
+.auth-submit:disabled { opacity: .6; cursor: default; }
+.auth-card .banner.error { margin: 0; }

@@ -22,6 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import JSONResponse  # noqa: E402
 
 import data_access as da  # noqa: E402
+from auth_routes import router as auth_router  # noqa: E402
 from customer_routes import router as customer_router  # noqa: E402
 from dealer_routes import router as dealer_router  # noqa: E402
 
@@ -39,6 +40,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth_router)
 app.include_router(customer_router)
 app.include_router(dealer_router)
 
@@ -56,6 +58,9 @@ def root():
     return {
         "service": "smart-rental-tracking",
         "endpoints": [
+            "/auth/signup",
+            "/auth/login",
+            "/auth/me",
             "/customer/{customer_id}/assets",
             "/customer/{customer_id}/alerts",
             "/customer/{customer_id}/sms-reminders",

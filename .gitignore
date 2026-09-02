@@ -23,3 +23,7 @@ Thumbs.db
 .env.*
 *.key
 *.pem
+
+# runtime auth store (created on first signup, not a pipeline artifact)
+data/processed/auth_users.json
+data/processed/auth_users.json.tmp
