@@ -3,9 +3,9 @@
 export const BASE =
   import.meta.env.VITE_API_BASE ?? 'http://127.0.0.1:8000'
 
-// --- session (bearer token) --------------------------------------------- //
-const TOKEN_KEY = 'rental_token'
-const CID_KEY = 'rental_customer_id'
+// --- token storage ---------------------------------------------------- //
+const TOKEN_KEY = 'rental_tracker_token'
+const CUSTOMER_ID_KEY = 'rental_tracker_customer_id'
 
 export function getToken() {
   try {
@@ -15,39 +15,40 @@ export function getToken() {
   }
 }
 
-export function getStoredCustomerId() {
+export function getCustomerId() {
   try {
-    return localStorage.getItem(CID_KEY)
+    return localStorage.getItem(CUSTOMER_ID_KEY)
   } catch {
     return null
   }
 }
 
-export function saveSession(token, customerId) {
+function storeSession(token, customerId) {
   try {
     localStorage.setItem(TOKEN_KEY, token)
-    localStorage.setItem(CID_KEY, customerId)
+    localStorage.setItem(CUSTOMER_ID_KEY, customerId)
   } catch {
-    /* private mode / storage disabled - token just won't persist a reload */
+    /* private mode / storage disabled - session just won't survive a reload */
   }
 }
 
-export function clearSession() {
+export function logout() {
   try {
     localStorage.removeItem(TOKEN_KEY)
-    localStorage.removeItem(CID_KEY)
+    localStorage.removeItem(CUSTOMER_ID_KEY)
   } catch {
     /* ignore */
   }
 }
 
-// App registers a callback so an expired/rejected token bounces to the login.
+// App registers this so a rejected token (expired etc.) bounces to the login.
 let onUnauthorized = () => {}
 export function setUnauthorizedHandler(fn) {
   onUnauthorized = fn
 }
 
-function formatDetail(detail, fallback) {
+function describeError(payload, fallback) {
+  const detail = payload && payload.detail
   if (!detail) return fallback
   if (Array.isArray(detail)) {
     // FastAPI 422 validation errors
@@ -56,11 +57,13 @@ function formatDetail(detail, fallback) {
   return typeof detail === 'string' ? detail : JSON.stringify(detail)
 }
 
-async function request(path, { method = 'GET', body, auth = false } = {}) {
+async function request(path, { method = 'GET', body, withAuth = false } = {}) {
   const headers = {}
   if (body !== undefined) headers['Content-Type'] = 'application/json'
-  const token = getToken()
-  if (auth && token) headers['Authorization'] = `Bearer ${token}`
+  if (withAuth) {
+    const token = getToken()
+    if (token) headers.Authorization = `Bearer ${token}`
+  }
 
   let res
   try {
@@ -75,40 +78,59 @@ async function request(path, { method = 'GET', body, auth = false } = {}) {
     )
   }
 
-  if (res.status === 401 && auth) {
-    clearSession()
+  if (res.status === 401 && withAuth) {
+    logout()
     onUnauthorized()
   }
 
-  if (!res.ok) {
-    let detail = res.statusText
-    try {
-      detail = formatDetail((await res.json()).detail, res.statusText)
-    } catch {
-      /* body wasn't JSON */
-    }
-    throw new Error(`${res.status} - ${detail}`)
+  let data = null
+  try {
+    data = await res.json()
+  } catch {
+    /* no / non-JSON body */
   }
-  return res.json()
+
+  if (!res.ok) {
+    throw new Error(describeError(data, `${res.status} ${res.statusText}`))
+  }
+  return data
 }
 
-const get = (path) => request(path)
-const authGet = (path) => request(path, { auth: true })
+// --- auth ----------------------------------------------------------- //
+// POST /auth/login -> { access_token, token_type, customer_id }
+// Stores the JWT + customer_id in localStorage and returns the body.
+export async function login(email, password) {
+  const data = await request('/auth/login', {
+    method: 'POST',
+    body: { email, password },
+  })
+  storeSession(data.access_token, data.customer_id)
+  return data
+}
+
+// POST /auth/signup -> { message: "account created" }
+// Does NOT log in - the user signs in as a separate step.
+export async function signup(email, password, customerId) {
+  return request('/auth/signup', {
+    method: 'POST',
+    body: { email, password, customer_id: customerId },
+  })
+}
 
 export const api = {
-  assetTypes: () => get('/config/asset-types'),
+  login,
+  signup,
+  logout,
 
-  // auth
-  signup: (payload) =>
-    request('/auth/signup', { method: 'POST', body: payload }),
-  login: (payload) => request('/auth/login', { method: 'POST', body: payload }),
+  assetTypes: () => request('/config/asset-types'),
 
   // customer (bearer token required, own data only)
-  customerAssets: (id) => authGet(`/customer/${id}/assets`),
-  customerAlerts: (id) => authGet(`/customer/${id}/alerts`),
-  customerSmsReminders: (id) => authGet(`/customer/${id}/sms-reminders`),
+  customerAssets: (id) => request(`/customer/${id}/assets`, { withAuth: true }),
+  customerAlerts: (id) => request(`/customer/${id}/alerts`, { withAuth: true }),
+  customerSmsReminders: (id) =>
+    request(`/customer/${id}/sms-reminders`, { withAuth: true }),
 
   // dealer (unchanged, no auth)
-  dealerCustomers: () => get('/dealer/customers'),
-  dealerRenewalRisk: () => get('/dealer/renewal-risk'),
+  dealerCustomers: () => request('/dealer/customers'),
+  dealerRenewalRisk: () => request('/dealer/renewal-risk'),
 }

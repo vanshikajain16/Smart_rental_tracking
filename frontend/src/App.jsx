@@ -1,38 +1,45 @@
 import React, { useEffect, useState } from 'react'
-import {
-  api,
-  getToken,
-  getStoredCustomerId,
-  clearSession,
-  setUnauthorizedHandler,
-} from './api.js'
-import AuthPanel from './components/AuthPanel.jsx'
+import { api, getToken, getCustomerId, logout, setUnauthorizedHandler } from './api.js'
+import Login from './components/Login.jsx'
+import Signup from './components/Signup.jsx'
 import CustomerDashboard from './components/CustomerDashboard.jsx'
 import DealerDashboard from './components/DealerDashboard.jsx'
 
 export default function App() {
   const [view, setView] = useState('customer')
   const [assetTypes, setAssetTypes] = useState({})
-  const [session, setSession] = useState(() =>
-    getToken() ? { customerId: getStoredCustomerId() } : null
-  )
   const [bootError, setBootError] = useState(null)
 
-  // A rejected token (expired etc.) drops us back to the login form.
-  useEffect(() => {
-    setUnauthorizedHandler(() => setSession(null))
-  }, [])
+  // customer-side auth
+  const [token, setToken] = useState(() => getToken())
+  const [customerId, setCustomerId] = useState(() => getCustomerId())
+  const [authScreen, setAuthScreen] = useState('login') // 'login' | 'signup'
+  const isAuthed = Boolean(token)
 
   useEffect(() => {
     api.assetTypes().then(setAssetTypes).catch((e) => setBootError(e.message))
   }, [])
 
-  // A stored token is trusted on load; if it's stale the first authenticated
-  // customer call returns 401 and the api-layer handler drops us to the login.
+  // A rejected/expired token (from any authenticated call) drops us to Login.
+  useEffect(() => {
+    setUnauthorizedHandler(() => {
+      setToken(null)
+      setCustomerId(null)
+      setAuthScreen('login')
+    })
+  }, [])
 
-  function signOut() {
-    clearSession()
-    setSession(null)
+  function handleLoggedIn(id) {
+    setToken(getToken()) // api.login already wrote it to localStorage
+    setCustomerId(id)
+    setAuthScreen('login')
+  }
+
+  function handleLogout() {
+    logout()
+    setToken(null)
+    setCustomerId(null)
+    setAuthScreen('login')
   }
 
   return (
@@ -54,11 +61,11 @@ export default function App() {
           >
             Dealer view
           </button>
-          {session && (
+          {view === 'customer' && isAuthed && (
             <span className="session-tag">
-              {session.customerId}
-              <button className="link-btn" onClick={signOut}>
-                Sign out
+              {customerId}
+              <button className="link-btn" onClick={handleLogout}>
+                Log out
               </button>
             </span>
           )}
@@ -68,21 +75,17 @@ export default function App() {
       <main className="content">
         {bootError && <div className="banner error">{bootError}</div>}
 
-        {view === 'customer' ? (
-          session ? (
-            <CustomerDashboard
-              customerId={session.customerId}
-              assetTypes={assetTypes}
-            />
-          ) : (
-            <AuthPanel
-              onAuthed={({ customerId, email }) =>
-                setSession({ customerId, email })
-              }
-            />
-          )
-        ) : (
+        {view === 'dealer' ? (
           <DealerDashboard />
+        ) : isAuthed ? (
+          <CustomerDashboard customerId={customerId} assetTypes={assetTypes} />
+        ) : authScreen === 'signup' ? (
+          <Signup onShowLogin={() => setAuthScreen('login')} />
+        ) : (
+          <Login
+            onLoggedIn={handleLoggedIn}
+            onShowSignup={() => setAuthScreen('signup')}
+          />
         )}
       </main>
 
