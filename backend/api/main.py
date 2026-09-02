@@ -60,6 +60,7 @@ def root():
         "endpoints": [
             "/auth/signup",
             "/auth/login",
+            "/auth/check-email",
             "/customer/{customer_id}/assets",
             "/customer/{customer_id}/alerts",
             "/customer/{customer_id}/sms-reminders",

@@ -14,7 +14,13 @@ export default function App() {
   const [token, setToken] = useState(() => getToken())
   const [customerId, setCustomerId] = useState(() => getCustomerId())
   const [authScreen, setAuthScreen] = useState('login') // 'login' | 'signup'
+  const [signupEmail, setSignupEmail] = useState('') // pre-fill from Login
   const isAuthed = Boolean(token)
+
+  function showSignup(prefillEmail = '') {
+    setSignupEmail(prefillEmail)
+    setAuthScreen('signup')
+  }
 
   useEffect(() => {
     api.assetTypes().then(setAssetTypes).catch((e) => setBootError(e.message))
@@ -80,12 +86,12 @@ export default function App() {
         ) : isAuthed ? (
           <CustomerDashboard customerId={customerId} assetTypes={assetTypes} />
         ) : authScreen === 'signup' ? (
-          <Signup onShowLogin={() => setAuthScreen('login')} />
-        ) : (
-          <Login
-            onLoggedIn={handleLoggedIn}
-            onShowSignup={() => setAuthScreen('signup')}
+          <Signup
+            initialEmail={signupEmail}
+            onShowLogin={() => setAuthScreen('login')}
           />
+        ) : (
+          <Login onLoggedIn={handleLoggedIn} onShowSignup={showSignup} />
         )}
       </main>
 

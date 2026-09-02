@@ -117,9 +117,16 @@ export async function signup(email, password, customerId) {
   })
 }
 
+// GET /auth/check-email -> { exists: bool }. UX hint only (see backend note):
+// used after a failed login to tell "no account yet" from "wrong password".
+export async function checkEmail(email) {
+  return request(`/auth/check-email?email=${encodeURIComponent(email)}`)
+}
+
 export const api = {
   login,
   signup,
+  checkEmail,
   logout,
 
   assetTypes: () => request('/config/asset-types'),

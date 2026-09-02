@@ -199,6 +199,17 @@ def signup(body: SignupBody):
     return {"message": "account created"}
 
 
+@auth_router.get("/check-email")
+def check_email(email: str):
+    """Whether an email is already registered - a client-side UX hint only.
+
+    Safe to expose: it never touches passwords, so ``/auth/login`` can stay
+    deliberately non-committal about which half of the pair was wrong. Do not
+    build security logic on this.
+    """
+    return {"exists": find_account_by_email(email) is not None}
+
+
 @auth_router.post("/login")
 def login(body: LoginBody):
     account = find_account_by_email(body.email)

@@ -126,6 +126,23 @@ def test_login_unknown_email_is_401_generic(client):
     assert r.json()["detail"] == "invalid credentials"
 
 
+# --- check-email (UX hint only) --------------------------------- #
+def test_check_email_reports_existence(client):
+    assert client.get(
+        "/auth/check-email", params={"email": "nobody@example.com"}
+    ).json() == {"exists": False}
+
+    _signup(client, email="somebody@example.com")
+
+    assert client.get(
+        "/auth/check-email", params={"email": "somebody@example.com"}
+    ).json() == {"exists": True}
+    # same case-folding as the login lookup
+    assert client.get(
+        "/auth/check-email", params={"email": "SOMEBODY@Example.com"}
+    ).json() == {"exists": True}
+
+
 # --- protected customer routes -------------------------------- #
 def _token(client, **kw):
     _signup(client, **kw)

@@ -3,8 +3,8 @@ import { api } from '../api.js'
 
 // Create a login linked to an existing Customer ID. Two-step by design: on
 // success we just tell the user to sign in - no auto-login.
-export default function Signup({ onShowLogin }) {
-  const [email, setEmail] = useState('')
+export default function Signup({ onShowLogin, initialEmail = '' }) {
+  const [email, setEmail] = useState(initialEmail)
   const [password, setPassword] = useState('')
   const [customerId, setCustomerId] = useState('')
   const [error, setError] = useState(null)
