@@ -1,17 +1,25 @@
-# Smart Rental Tracking - frontend
+# Smart Rental Tracking — frontend
 
-Two views over the pipeline's FastAPI backend.
+React 18 + Vite 5, no router, no state library. One `styles.css`. All data goes
+through `src/api.js`. See [`../HANDOFF.md`](../HANDOFF.md) for the full picture.
 
-- **Customer view** - `/customer/{id}/assets`, `/customer/{id}/alerts`,
-  `/customer/{id}/sms-reminders`. Asset cards (Equipment ID, Type, health score,
-  reasons on hover / click, a "→ Move to Site X" button when the asset is
-  reallocatable with a target), plus an alerts panel (flagged assets + pending
-  SMS reminders). `AssetCard.jsx` renders the type-specific extra fields from
-  `/config/asset-types` (`custom_fields` in `data/raw/asset_type_config.json`) -
-  no field names are hardcoded per Type.
-- **Dealer view** - `/dealer/customers`, `/dealer/renewal-risk`. Sortable table
-  (Customer ID, Reliability Score, Risk Tier, avg health, health trend, assets);
-  renewal-risk customers are highlighted.
+## Views
+
+- **Customer view** — gated behind a login (`Login.jsx` / `Signup.jsx`; JWT in
+  `localStorage`). `CustomerDashboard` shows `AlertsPanel` (flagged assets +
+  pending SMS reminders) and an `AssetCard` grid. Calls
+  `/customer/{id}/assets|alerts|sms-reminders` with `Authorization: Bearer` —
+  the backend only ever returns the signed‑in customer's own data.
+- **Dealer view** — open, no auth. `DealerDashboard`:
+  - `DealerKpis` — 6 cards from `/dealer/summary`.
+  - `RiskBreakdown` — CSS bar chart of customers per risk tier; click a bar to
+    set the table filter.
+  - Table — sort by column click, risk‑tier segmented filter, customer‑ID
+    search. Click a row → `CustomerDrilldown` (stat strip + `AssetCard` grid
+    from `/dealer/customer/{id}/assets` + that customer's activity slice); the
+    back button restores the table's sort/filter/search.
+  - `ActivityFeed` — read‑only timeline from `/dealer/activity-feed`
+    (icon · date · type · message), styled to look unlike `AlertsPanel`.
 
 ## Run
 
@@ -24,5 +32,5 @@ npm install
 npm run dev                           # http://localhost:5173
 ```
 
-If the API is hosted elsewhere, set `VITE_API_BASE`, e.g.
+Override the API base with `VITE_API_BASE`, e.g.
 `VITE_API_BASE=http://localhost:9000 npm run dev`.

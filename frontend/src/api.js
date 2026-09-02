@@ -142,6 +142,9 @@ export const api = {
   dealerRenewalRisk: () => request('/dealer/renewal-risk'),
   dealerCustomerDetail: (id) =>
     request(`/dealer/customers/${encodeURIComponent(id)}`),
+  // same per-asset shape as /customer/{id}/assets, dealer side (no auth)
+  dealerCustomerAssets: (id) =>
+    request(`/dealer/customer/${encodeURIComponent(id)}/assets`),
   dealerSummary: () => request('/dealer/summary'),
   // retroactive feed, newest first, top 50 (no server-side filter)
   dealerActivityFeed: () => request('/dealer/activity-feed'),

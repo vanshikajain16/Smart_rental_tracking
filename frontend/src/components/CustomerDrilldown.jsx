@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { api } from '../api.js'
+import AssetCard from './AssetCard.jsx'
 import ActivityFeed from './ActivityFeed.jsx'
 
 const TIER_CLASS = { High: 'chip bad', Medium: 'chip warn', Low: 'chip good' }
 
-function healthClass(h) {
-  if (h == null) return 'na'
-  if (h >= 80) return 'good'
-  if (h >= 50) return 'warn'
-  return 'bad'
-}
-
-// Per-customer drill-down: aggregate + current assets (reuses
-// assets_for_customer server-side) + that customer's slice of the feed.
-export default function CustomerDrilldown({ customerId, onBack }) {
+// Per-customer drill-down opened from a dealer table row. Shows the customer's
+// aggregate, their assets (GET /dealer/customer/{id}/assets, rendered with the
+// same AssetCard grid CustomerDashboard uses), and their slice of the activity
+// feed. `onBack` returns to the table with its sort/filter/search intact.
+export default function CustomerDrilldown({ customerId, assetTypes = {}, onBack }) {
   const [detail, setDetail] = useState(null)
+  const [assets, setAssets] = useState([])
   const [activity, setActivity] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -25,11 +22,13 @@ export default function CustomerDrilldown({ customerId, onBack }) {
     setError(null)
     Promise.all([
       api.dealerCustomerDetail(customerId),
+      api.dealerCustomerAssets(customerId),
       api.dealerActivityFeed(),
     ])
-      .then(([d, a]) => {
+      .then(([d, as, a]) => {
         if (cancelled) return
         setDetail(d)
+        setAssets(as)
         setActivity(a.filter((e) => e.customer_id === customerId))
       })
       .catch((e) => !cancelled && setError(e.message))
@@ -97,41 +96,20 @@ export default function CustomerDrilldown({ customerId, onBack }) {
           </div>
 
           <h2>
-            Current fleet <span className="count">{detail.assets.length}</span>
+            Current fleet <span className="count">{assets.length}</span>
           </h2>
-          {detail.assets.length === 0 ? (
+          {assets.length === 0 ? (
             <p className="muted">No assets currently out with this customer.</p>
           ) : (
-            <table className="grid">
-              <thead>
-                <tr>
-                  <th>Equipment</th>
-                  <th>Type</th>
-                  <th>Site</th>
-                  <th>Health</th>
-                  <th>Reallocatable</th>
-                  <th>Reasons</th>
-                </tr>
-              </thead>
-              <tbody>
-                {detail.assets.map((a) => (
-                  <tr key={a.equipment_id}>
-                    <td className="mono">{a.equipment_id}</td>
-                    <td>{a.type}</td>
-                    <td>{a.site_id ?? '—'}</td>
-                    <td>
-                      <span className={`pill ${healthClass(a.health_score)}`}>
-                        {a.health_score ?? '—'}
-                      </span>
-                    </td>
-                    <td>{a.reallocatable ? 'yes' : '—'}</td>
-                    <td className="tiny muted">
-                      {a.reasons?.length ? a.reasons.join('; ') : '—'}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="card-grid">
+              {assets.map((a) => (
+                <AssetCard
+                  key={a.equipment_id}
+                  asset={a}
+                  customFields={assetTypes[a.type]?.custom_fields ?? []}
+                />
+              ))}
+            </div>
           )}
 
           <ActivityFeed

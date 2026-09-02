@@ -24,6 +24,7 @@ export default function DealerDashboard() {
   const [riskIds, setRiskIds] = useState(new Set())
   const [activity, setActivity] = useState([])
   const [summary, setSummary] = useState(null)
+  const [assetTypes, setAssetTypes] = useState({})
   const [error, setError] = useState(null)
   const [sort, setSort] = useState({ key: 'reliability_score', dir: 'asc' })
 
@@ -37,12 +38,14 @@ export default function DealerDashboard() {
       api.dealerRenewalRisk(),
       api.dealerActivityFeed(),
       api.dealerSummary(),
+      api.assetTypes(),
     ])
-      .then(([custs, risk, acts, sum]) => {
+      .then(([custs, risk, acts, sum, types]) => {
         setRows(custs)
         setRiskIds(new Set(risk.map((r) => r.customer_id)))
         setActivity(acts)
         setSummary(sum)
+        setAssetTypes(types)
       })
       .catch((e) => setError(e.message))
   }, [])
@@ -81,11 +84,15 @@ export default function DealerDashboard() {
 
   if (error) return <div className="banner error">{error}</div>
 
+  // Detail view is a full-page swap (matches the app's existing view pattern).
+  // The table's sort / tier / query state lives here in the parent, so it is
+  // untouched while the drill-down is open and restored on "back".
   if (selected) {
     return (
       <div className="dashboard">
         <CustomerDrilldown
           customerId={selected}
+          assetTypes={assetTypes}
           onBack={() => setSelected(null)}
         />
       </div>

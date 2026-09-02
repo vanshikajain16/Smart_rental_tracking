@@ -7,12 +7,17 @@ into an API and a dual (customer / dealer) dashboard.
 ```
 Raw data
   -> Stage 1  rule-based anomaly flags          [built]
-  -> Stage 2  ML demand forecasting             [todo]
-  -> Stage 3  ML underutilization scoring       [todo]
-  -> Stage 4  reallocation matching engine      [todo]
-  -> Stage 5  customer reliability scoring      [todo]
-  -> SMS alerts -> API -> dual dashboard        [todo]
+  -> Stage 2  Holt demand forecasting           [built]
+  -> Stage 3  "reallocatable" RF classifier     [built]
+  -> Stage 4  reallocation matching engine      [built]
+  -> Stage 5  customer reliability + SMS alerts  [built]
+  -> API -> dual dashboard (customer auth)      [built]
 ```
+
+> **New here?** Read [`HANDOFF.md`](HANDOFF.md) — full architecture, the complete
+> API reference, the auth system, the frontend map, data gotchas, a change log,
+> and a "how to add a feature" guide. The section below is the detailed Stage 1
+> rule reference.
 
 ## Data
 
