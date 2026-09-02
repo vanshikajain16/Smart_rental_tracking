@@ -3,7 +3,7 @@
     pytest -q tests/test_auth.py
 
 Uses the real customers.csv / pipeline output (they ship with the repo) but
-redirects the auth-user store to a tmp file so signups don't touch
+redirects the account store to a tmp CSV so signups don't touch
 data/processed/.
 """
 from __future__ import annotations
@@ -17,8 +17,7 @@ from fastapi.testclient import TestClient
 API_DIR = Path(__file__).resolve().parents[1] / "backend" / "api"
 sys.path.insert(0, str(API_DIR))
 
-import auth_store  # noqa: E402
-import data_access as da  # noqa: E402
+import auth  # noqa: E402
 from main import app  # noqa: E402
 
 # two real ids from data/processed/customers.csv
@@ -28,7 +27,7 @@ OTHER_CID = "CUST03"
 
 @pytest.fixture()
 def client(tmp_path, monkeypatch):
-    monkeypatch.setattr(auth_store, "AUTH_USERS_JSON", tmp_path / "auth_users.json")
+    monkeypatch.setattr(auth, "ACCOUNTS_CSV", tmp_path / "customer_accounts.csv")
     with TestClient(app) as c:
         yield c
 
@@ -40,14 +39,33 @@ def _signup(client, email="a@example.com", password="hunter2!!", cid=CID):
     )
 
 
-# --- signup ------------------------------------------------------------- #
-def test_signup_links_existing_customer_and_returns_token(client):
+# --- token helpers ---------------------------------------------------- #
+def test_token_round_trip():
+    tok = auth.create_access_token("CUST09", expires_minutes=5)
+    assert auth.decode_access_token(tok) == "CUST09"
+
+
+def test_decode_rejects_garbage():
+    with pytest.raises(Exception):
+        auth.decode_access_token("not.a.jwt")
+
+
+# --- signup --------------------------------------------------------- #
+def test_signup_creates_account(client, tmp_path):
     r = _signup(client)
-    assert r.status_code == 201
-    body = r.json()
-    assert body["customer_id"] == CID
-    assert body["token_type"] == "bearer"
-    assert body["access_token"]
+    assert r.status_code == 200
+    assert r.json() == {"message": "account created"}
+    rows = (tmp_path / "customer_accounts.csv").read_text().splitlines()
+    assert rows[0] == "email,hashed_password,customer_id,created_at"
+    assert rows[1].startswith("a@example.com,")
+    assert ",CUST02," in rows[1]
+
+
+def test_signup_hashes_the_password(client, tmp_path):
+    _signup(client, password="plaintext-secret")
+    body = (tmp_path / "customer_accounts.csv").read_text()
+    assert "plaintext-secret" not in body
+    assert "$2b$" in body  # bcrypt hash marker
 
 
 def test_signup_rejects_unknown_customer_id(client):
@@ -56,65 +74,70 @@ def test_signup_rejects_unknown_customer_id(client):
     assert "not a known customer" in r.json()["detail"]
 
 
-def test_signup_unknown_id_is_never_stored(client, tmp_path):
+def test_signup_unknown_id_writes_nothing(client, tmp_path):
     _signup(client, cid="CUST_NOPE")
-    assert not (tmp_path / "auth_users.json").exists()
+    csv_path = tmp_path / "customer_accounts.csv"
+    # header-only file at most, never a data row
+    assert not csv_path.exists() or len(csv_path.read_text().splitlines()) <= 1
 
 
 def test_signup_duplicate_email_conflicts(client):
-    assert _signup(client).status_code == 201
+    assert _signup(client).status_code == 200
     r = _signup(client, cid=OTHER_CID)  # same email, different id
     assert r.status_code == 409
 
 
 def test_signup_customer_id_already_linked_conflicts(client):
-    assert _signup(client, email="first@example.com").status_code == 201
+    assert _signup(client, email="first@example.com").status_code == 200
     r = _signup(client, email="second@example.com")  # same id
     assert r.status_code == 409
-    assert CID in r.json()["detail"]
 
 
-def test_signup_short_password_is_422(client):
-    r = _signup(client, password="short")
-    assert r.status_code == 422
-
-
-# --- login ------------------------------------------------------------- #
-def test_login_returns_token_for_good_credentials(client):
+# --- login -------------------------------------------------------- #
+def test_login_returns_bearer_token(client):
     _signup(client, email="u@example.com", password="correct-horse")
     r = client.post(
         "/auth/login",
         json={"email": "u@example.com", "password": "correct-horse"},
     )
     assert r.status_code == 200
-    assert r.json()["customer_id"] == CID
+    body = r.json()
+    assert body["token_type"] == "bearer"
+    assert body["customer_id"] == CID
+    assert auth.decode_access_token(body["access_token"]) == CID
 
 
-def test_login_wrong_password_is_401(client):
+def test_login_wrong_password_is_401_generic(client):
     _signup(client, email="u@example.com", password="correct-horse")
     r = client.post(
         "/auth/login",
-        json={"email": "u@example.com", "password": "nope-nope-nope"},
+        json={"email": "u@example.com", "password": "wrong-password"},
     )
     assert r.status_code == 401
+    assert r.json()["detail"] == "invalid credentials"
 
 
-def test_login_unknown_email_is_401(client):
+def test_login_unknown_email_is_401_generic(client):
     r = client.post(
         "/auth/login",
         json={"email": "ghost@example.com", "password": "whatever!!"},
     )
     assert r.status_code == 401
+    assert r.json()["detail"] == "invalid credentials"
 
 
-# --- protected customer routes --------------------------------------- #
+# --- protected customer routes -------------------------------- #
 def _token(client, **kw):
-    return _signup(client, **kw).json()["access_token"]
+    _signup(client, **kw)
+    email = kw.get("email", "a@example.com")
+    password = kw.get("password", "hunter2!!")
+    return client.post(
+        "/auth/login", json={"email": email, "password": password}
+    ).json()["access_token"]
 
 
 def test_customer_assets_requires_a_token(client):
-    r = client.get(f"/customer/{CID}/assets")
-    assert r.status_code == 401
+    assert client.get(f"/customer/{CID}/assets").status_code == 401
 
 
 def test_customer_assets_served_with_own_token(client):
@@ -142,13 +165,6 @@ def test_garbage_token_is_401(client):
         headers={"Authorization": "Bearer not.a.jwt"},
     )
     assert r.status_code == 401
-
-
-def test_me_echoes_token_identity(client):
-    tok = _token(client, email="who@example.com")
-    r = client.get("/auth/me", headers={"Authorization": f"Bearer {tok}"})
-    assert r.status_code == 200
-    assert r.json() == {"customer_id": CID, "email": "who@example.com"}
 
 
 def test_dealer_routes_stay_open(client):

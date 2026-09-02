@@ -10,9 +10,9 @@ uvicorn>=0.27
 pydantic>=2.6
 
 # customer auth (backend/api)
-passlib[bcrypt]>=1.7.4   # password hashing (bcrypt scheme)
-bcrypt>=4.0,<4.1         # passlib 1.7.4 breaks with bcrypt >= 4.1 (72-byte check)
-python-jose>=3.3         # JWT create / verify
+passlib[bcrypt]>=1.7.4          # password hashing (bcrypt scheme)
+bcrypt>=4.0,<4.1               # passlib 1.7.4 breaks with bcrypt >= 4.1 (72-byte check)
+python-jose[cryptography]>=3.3  # JWT create / verify
 
 # dev
 pytest>=7.4

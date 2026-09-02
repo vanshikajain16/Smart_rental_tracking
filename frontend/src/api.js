@@ -102,7 +102,6 @@ export const api = {
   signup: (payload) =>
     request('/auth/signup', { method: 'POST', body: payload }),
   login: (payload) => request('/auth/login', { method: 'POST', body: payload }),
-  me: () => authGet('/auth/me'),
 
   // customer (bearer token required, own data only)
   customerAssets: (id) => authGet(`/customer/${id}/assets`),

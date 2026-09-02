@@ -42,14 +42,14 @@ def _authorize(path_customer_id: str, caller_id: str) -> None:
 
 @router.get("/{customer_id}/assets", response_model=list[AssetRecord])
 def customer_assets(customer_id: str,
-                    caller_id: str = Depends(auth.current_customer_id)):
+                    caller_id: str = Depends(auth.get_current_customer)):
     _authorize(customer_id, caller_id)
     return da.assets_for_customer(customer_id)
 
 
 @router.get("/{customer_id}/alerts", response_model=list[AssetRecord])
 def customer_alerts(customer_id: str,
-                    caller_id: str = Depends(auth.current_customer_id)):
+                    caller_id: str = Depends(auth.get_current_customer)):
     _authorize(customer_id, caller_id)
     flagged = da.latest_cycle_is_flagged()
     return [a for a in da.assets_for_customer(customer_id)
@@ -58,7 +58,7 @@ def customer_alerts(customer_id: str,
 
 @router.get("/{customer_id}/sms-reminders", response_model=list[SmsReminder])
 def customer_sms_reminders(customer_id: str,
-                           caller_id: str = Depends(auth.current_customer_id)):
+                           caller_id: str = Depends(auth.get_current_customer)):
     """Pending return-reminder SMS for this customer (Stage 5 sms_alerts logic)."""
     _authorize(customer_id, caller_id)
     return da.sms_reminders_for_customer(customer_id)

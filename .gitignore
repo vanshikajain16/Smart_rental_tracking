@@ -25,5 +25,4 @@ Thumbs.db
 *.pem
 
 # runtime auth store (created on first signup, not a pipeline artifact)
-data/processed/auth_users.json
-data/processed/auth_users.json.tmp
+data/processed/customer_accounts.csv

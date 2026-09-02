@@ -18,13 +18,15 @@ export default function AuthPanel({ onAuthed }) {
     setBusy(true)
     setError(null)
     try {
-      const res = isSignup
-        ? await api.signup({
-            email: email.trim(),
-            password,
-            customer_id: customerId.trim(),
-          })
-        : await api.login({ email: email.trim(), password })
+      // signup just creates the account; log in straight after to get a token
+      if (isSignup) {
+        await api.signup({
+          email: email.trim(),
+          password,
+          customer_id: customerId.trim(),
+        })
+      }
+      const res = await api.login({ email: email.trim(), password })
       saveSession(res.access_token, res.customer_id)
       onAuthed({ customerId: res.customer_id, email: email.trim() })
     } catch (err) {

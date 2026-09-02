@@ -27,17 +27,8 @@ export default function App() {
     api.assetTypes().then(setAssetTypes).catch((e) => setBootError(e.message))
   }, [])
 
-  // If we booted with a stored token, confirm it still works and refresh the
-  // customer id / email from the server.
-  useEffect(() => {
-    if (!getToken()) return
-    api
-      .me()
-      .then((who) =>
-        setSession({ customerId: who.customer_id, email: who.email })
-      )
-      .catch(() => setSession(null))
-  }, [])
+  // A stored token is trusted on load; if it's stale the first authenticated
+  // customer call returns 401 and the api-layer handler drops us to the login.
 
   function signOut() {
     clearSession()

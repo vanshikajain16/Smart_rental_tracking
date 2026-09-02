@@ -1,81 +1,234 @@
-"""Customer authentication: password hashing + JWT.
+"""Customer authentication - hashing, JWT, account store, and the /auth routes.
 
-passlib (bcrypt scheme) hashes passwords; python-jose mints and verifies the
-signed tokens. A token's ``sub`` claim is the linked Customer ID - protected
-customer routes read it via ``current_customer_id`` and refuse to serve a
-different id.
+Everything auth-related lives in this one module:
 
-The signing secret comes from ``RENTAL_JWT_SECRET`` with a dev-only fallback so
-the demo runs with zero setup. Set a real secret in any deployment.
+* a passlib bcrypt ``CryptContext`` for hashing / verifying passwords
+* ``create_access_token`` / ``decode_access_token`` (python-jose, HS256)
+* a CSV-backed account store at ``data/processed/customer_accounts.csv``
+* the ``auth_router`` with ``POST /auth/signup`` and ``POST /auth/login``
+* ``get_current_customer`` - a FastAPI dependency other routers use to read the
+  caller's Customer ID out of the bearer token.
+
+Signup only ever links a login to a Customer ID that already exists in
+``data/processed/customers.csv`` - the pipeline is scoped to ids that already
+have rental history.
 """
 from __future__ import annotations
 
+import csv
 import os
+import threading
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
-from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+from pydantic import BaseModel
 
-_PWD = CryptContext(schemes=["bcrypt"], deprecated="auto")
+import data_access as da
 
-JWT_SECRET = os.environ.get(
-    "RENTAL_JWT_SECRET", "dev-only-insecure-secret-change-me"
+# --------------------------------------------------------------------------- #
+# 1. Password hashing
+# --------------------------------------------------------------------------- #
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+
+def hash_password(password: str) -> str:
+    return pwd_context.hash(password)
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    try:
+        return pwd_context.verify(plain_password, hashed_password)
+    except ValueError:
+        # malformed hash on disk - treat as a failed verification, not a 500
+        return False
+
+
+# --------------------------------------------------------------------------- #
+# 2. JWT helpers
+# --------------------------------------------------------------------------- #
+# SECURITY: this fallback exists ONLY so the project runs locally with zero
+# setup. It is public and therefore worthless as a signing secret. Any real
+# deployment MUST set SECRET_KEY via the RENTAL_JWT_SECRET environment variable.
+SECRET_KEY = os.environ.get(
+    "RENTAL_JWT_SECRET", "insecure-local-dev-only-key-change-me"
 )
-JWT_ALGORITHM = "HS256"
-TOKEN_TTL_HOURS = 12
+ALGORITHM = "HS256"
 
-_bearer = HTTPBearer(auto_error=False)
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
-_UNAUTHORIZED = dict(
+
+def create_access_token(customer_id: str, expires_minutes: int = 60) -> str:
+    """Sign a JWT whose ``sub`` claim is the Customer ID."""
+    expire = datetime.now(timezone.utc) + timedelta(minutes=expires_minutes)
+    payload = {"sub": customer_id, "exp": expire}
+    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+
+
+def decode_access_token(token: str) -> str:
+    """Return the ``sub`` (customer_id) claim of a valid token.
+
+    Raises ``jose.JWTError`` if the token is malformed, tampered with, or
+    expired, and ``ValueError`` if it carries no subject.
+    """
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    customer_id = payload.get("sub")
+    if not customer_id:
+        raise ValueError("token is missing its subject claim")
+    return customer_id
+
+
+# --------------------------------------------------------------------------- #
+# 3. Account store  (data/processed/customer_accounts.csv)
+# --------------------------------------------------------------------------- #
+REPO_ROOT = Path(__file__).resolve().parents[2]
+ACCOUNTS_CSV = REPO_ROOT / "data" / "processed" / "customer_accounts.csv"
+ACCOUNT_FIELDS = ["email", "hashed_password", "customer_id", "created_at"]
+
+_accounts_lock = threading.Lock()
+
+
+def _ensure_accounts_file() -> None:
+    """Create the CSV with just a header row if it doesn't exist yet."""
+    if ACCOUNTS_CSV.exists():
+        return
+    ACCOUNTS_CSV.parent.mkdir(parents=True, exist_ok=True)
+    with open(ACCOUNTS_CSV, "w", newline="", encoding="utf-8") as fh:
+        csv.DictWriter(fh, fieldnames=ACCOUNT_FIELDS).writeheader()
+
+
+def read_accounts() -> list[dict]:
+    """Every account row (empty list when the store is brand new)."""
+    _ensure_accounts_file()
+    with open(ACCOUNTS_CSV, newline="", encoding="utf-8") as fh:
+        return list(csv.DictReader(fh))
+
+
+def find_account_by_email(email: str) -> dict | None:
+    email = email.strip().lower()
+    for row in read_accounts():
+        if row.get("email", "").strip().lower() == email:
+            return row
+    return None
+
+
+def account_exists_for_customer(customer_id: str) -> bool:
+    return any(row.get("customer_id") == customer_id for row in read_accounts())
+
+
+def append_account(email: str, hashed_password: str, customer_id: str) -> dict:
+    """Append one account row. Re-checks email / customer_id uniqueness while
+    holding the lock, so it stays correct even if two signups race past the
+    endpoint's friendlier pre-checks. Raises ValueError on a duplicate."""
+    email = email.strip().lower()
+    row = {
+        "email": email,
+        "hashed_password": hashed_password,
+        "customer_id": customer_id,
+        "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    }
+    with _accounts_lock:
+        existing = read_accounts()
+        if any(r.get("email", "").strip().lower() == email for r in existing):
+            raise ValueError("email already registered")
+        if any(r.get("customer_id") == customer_id for r in existing):
+            raise ValueError("customer_id already linked to an account")
+        with open(ACCOUNTS_CSV, "a", newline="", encoding="utf-8") as fh:
+            csv.DictWriter(fh, fieldnames=ACCOUNT_FIELDS).writerow(row)
+    return row
+
+
+# --------------------------------------------------------------------------- #
+# 4/5. Routes
+# --------------------------------------------------------------------------- #
+auth_router = APIRouter(prefix="/auth", tags=["auth"])
+
+_INVALID_CREDENTIALS = HTTPException(
     status_code=status.HTTP_401_UNAUTHORIZED,
+    detail="invalid credentials",
     headers={"WWW-Authenticate": "Bearer"},
 )
 
 
-def hash_password(plain: str) -> str:
-    return _PWD.hash(plain)
+class SignupBody(BaseModel):
+    email: str
+    password: str
+    customer_id: str
 
 
-def verify_password(plain: str, hashed: str) -> bool:
-    try:
-        return _PWD.verify(plain, hashed)
-    except ValueError:
-        # malformed hash on disk - treat as a failed login, not a 500
-        return False
+class LoginBody(BaseModel):
+    email: str
+    password: str
 
 
-def create_access_token(customer_id: str, email: str) -> str:
-    now = datetime.now(timezone.utc)
-    payload = {
-        "sub": customer_id,
-        "email": email,
-        "iat": now,
-        "exp": now + timedelta(hours=TOKEN_TTL_HOURS),
-    }
-    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
+@auth_router.post("/signup")
+def signup(body: SignupBody):
+    email = body.email.strip().lower()
+    customer_id = body.customer_id.strip()
 
-
-def current_token_claims(
-    creds: HTTPAuthorizationCredentials | None = Depends(_bearer),
-) -> dict:
-    """Decoded payload of a valid Bearer token, or 401."""
-    if creds is None or not creds.credentials:
-        raise HTTPException(detail="missing bearer token", **_UNAUTHORIZED)
-    try:
-        claims = jwt.decode(
-            creds.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM]
+    if customer_id not in da.customer_ids():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=(
+                f"customer_id '{customer_id}' is not a known customer - "
+                "signups can only be linked to a Customer ID that already has "
+                "rental history"
+            ),
         )
-    except JWTError:
-        raise HTTPException(detail="invalid or expired token", **_UNAUTHORIZED)
-    if not claims.get("sub"):
-        raise HTTPException(detail="token has no subject", **_UNAUTHORIZED)
-    return claims
+    if find_account_by_email(email) is not None:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="an account already exists for this email",
+        )
+    if account_exists_for_customer(customer_id):
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="this customer_id is already linked to an account",
+        )
+
+    try:
+        append_account(email, hash_password(body.password), customer_id)
+    except ValueError as exc:  # lost a race on one of the checks above
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT, detail=str(exc)
+        )
+
+    return {"message": "account created"}
 
 
-def current_customer_id(
-    claims: dict = Depends(current_token_claims),
-) -> str:
-    """The Customer ID carried by a valid Bearer token."""
-    return claims["sub"]
+@auth_router.post("/login")
+def login(body: LoginBody):
+    account = find_account_by_email(body.email)
+    if account is None or not verify_password(
+        body.password, account["hashed_password"]
+    ):
+        raise _INVALID_CREDENTIALS
+    token = create_access_token(account["customer_id"])
+    return {
+        "access_token": token,
+        "token_type": "bearer",
+        "customer_id": account["customer_id"],
+    }
+
+
+# --------------------------------------------------------------------------- #
+# 6. Dependency
+# --------------------------------------------------------------------------- #
+def get_current_customer(token: str = Depends(oauth2_scheme)) -> str:
+    """The Customer ID carried by a valid bearer token.
+
+    ``OAuth2PasswordBearer`` already answers 401 when the Authorization header
+    is missing; this turns a malformed / expired / subject-less token into the
+    same 401.
+    """
+    try:
+        return decode_access_token(token)
+    except (JWTError, ValueError):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="invalid credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
