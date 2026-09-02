@@ -1,6 +1,6 @@
 {
   "meta": {
-    "trained_at": "2026-09-02T03:05:02+00:00",
+    "trained_at": "2026-09-02T08:52:54+00:00",
     "source": "data\\processed\\stage1_output.csv",
     "n_rows": 826,
     "date_min": "2025-01-01",

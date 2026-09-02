@@ -1,5 +1,5 @@
 {
-  "trained_at": "2026-09-02T03:05:22+00:00",
+  "trained_at": "2026-09-02T08:53:13+00:00",
   "sklearn_version": "1.8.0",
   "features": [
     "n_rentals",
