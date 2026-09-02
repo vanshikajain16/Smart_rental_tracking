@@ -23,6 +23,7 @@ export default function DealerDashboard() {
   const [rows, setRows] = useState([])
   const [riskIds, setRiskIds] = useState(new Set())
   const [activity, setActivity] = useState([])
+  const [summary, setSummary] = useState(null)
   const [error, setError] = useState(null)
   const [sort, setSort] = useState({ key: 'reliability_score', dir: 'asc' })
 
@@ -34,12 +35,14 @@ export default function DealerDashboard() {
     Promise.all([
       api.dealerCustomers(),
       api.dealerRenewalRisk(),
-      api.dealerActivity({ limit: 500 }),
+      api.dealerActivityFeed(),
+      api.dealerSummary(),
     ])
-      .then(([custs, risk, acts]) => {
+      .then(([custs, risk, acts, sum]) => {
         setRows(custs)
         setRiskIds(new Set(risk.map((r) => r.customer_id)))
         setActivity(acts)
+        setSummary(sum)
       })
       .catch((e) => setError(e.message))
   }, [])
@@ -102,7 +105,7 @@ export default function DealerDashboard() {
         </div>
       </div>
 
-      <DealerKpis rows={rows} />
+      <DealerKpis rows={rows} summary={summary} />
 
       <RiskBreakdown rows={rows} activeTier={tier} onPick={setTier} />
 

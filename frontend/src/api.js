@@ -142,9 +142,7 @@ export const api = {
   dealerRenewalRisk: () => request('/dealer/renewal-risk'),
   dealerCustomerDetail: (id) =>
     request(`/dealer/customers/${encodeURIComponent(id)}`),
-  dealerActivity: ({ customerId, limit = 200 } = {}) => {
-    const qs = new URLSearchParams({ limit: String(limit) })
-    if (customerId) qs.set('customer_id', customerId)
-    return request(`/dealer/activity?${qs.toString()}`)
-  },
+  dealerSummary: () => request('/dealer/summary'),
+  // retroactive feed, newest first, top 50 (no server-side filter)
+  dealerActivityFeed: () => request('/dealer/activity-feed'),
 }

@@ -77,10 +77,19 @@ class DealerCustomerDetail(BaseModel):
 class ActivityEvent(BaseModel):
     """One reconstructed row in the retroactive dealer activity feed."""
     date: str
+    type: str  # "high_risk" | "flag" | "penalty" | "sms_reminder"
     customer_id: str
-    equipment_id: str | None = None
-    category: str  # "flag" | "penalty" | "sms_reminder"
-    summary: str
+    message: str
+
+
+class SummaryStats(BaseModel):
+    """Dealer dashboard headline numbers (GET /dealer/summary)."""
+    total_customers: int
+    total_assets: int
+    avg_fleet_health_score: float | None = None
+    high_risk_count: int
+    pending_sms_count: int
+    unpaid_penalty_count: int
 
 
 class RenewalRiskCustomer(BaseModel):

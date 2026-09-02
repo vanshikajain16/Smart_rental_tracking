@@ -25,12 +25,12 @@ export default function CustomerDrilldown({ customerId, onBack }) {
     setError(null)
     Promise.all([
       api.dealerCustomerDetail(customerId),
-      api.dealerActivity({ customerId, limit: 500 }),
+      api.dealerActivityFeed(),
     ])
       .then(([d, a]) => {
         if (cancelled) return
         setDetail(d)
-        setActivity(a)
+        setActivity(a.filter((e) => e.customer_id === customerId))
       })
       .catch((e) => !cancelled && setError(e.message))
       .finally(() => !cancelled && setLoading(false))

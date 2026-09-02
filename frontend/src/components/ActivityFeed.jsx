@@ -1,30 +1,31 @@
 import React, { useMemo, useState } from 'react'
 
-const CAT = {
-  flag: { label: 'Flag', cls: 'bad' },
-  penalty: { label: 'Penalty', cls: 'warn' },
+const TYPE = {
+  high_risk: { label: 'High risk', cls: 'bad' },
+  flag: { label: 'Flag', cls: 'warn' },
+  penalty: { label: 'Penalty', cls: 'bad' },
   sms_reminder: { label: 'Reminder', cls: 'accent' },
 }
 const PAGE = 40
 
 // Retroactive activity feed: a sorted-by-date reconstruction, not a live log.
-// `events` is already newest-first from the API.
+// `events` is already newest-first from the API: { date, type, customer_id, message }.
 export default function ActivityFeed({
   events,
   showCustomer = true,
   onPickCustomer,
 }) {
-  const [cat, setCat] = useState('all')
+  const [type, setType] = useState('all')
   const [limit, setLimit] = useState(PAGE)
 
   const filtered = useMemo(
-    () => (cat === 'all' ? events : events.filter((e) => e.category === cat)),
-    [events, cat]
+    () => (type === 'all' ? events : events.filter((e) => e.type === type)),
+    [events, type]
   )
   const shown = filtered.slice(0, limit)
 
-  const cats = ['all', ...Object.keys(CAT).filter((k) =>
-    events.some((e) => e.category === k)
+  const types = ['all', ...Object.keys(TYPE).filter((k) =>
+    events.some((e) => e.type === k)
   )]
 
   return (
@@ -32,16 +33,16 @@ export default function ActivityFeed({
       <div className="af-head">
         <h3>Activity feed</h3>
         <div className="af-filters">
-          {cats.map((k) => (
+          {types.map((k) => (
             <button
               key={k}
-              className={`af-chip${cat === k ? ' active' : ''}`}
+              className={`af-chip${type === k ? ' active' : ''}`}
               onClick={() => {
-                setCat(k)
+                setType(k)
                 setLimit(PAGE)
               }}
             >
-              {k === 'all' ? 'All' : CAT[k].label}
+              {k === 'all' ? 'All' : TYPE[k].label}
             </button>
           ))}
         </div>
@@ -53,10 +54,10 @@ export default function ActivityFeed({
         <>
           <ul className="af-list">
             {shown.map((e, i) => (
-              <li key={`${e.date}-${e.equipment_id}-${e.category}-${i}`}>
+              <li key={`${e.date}-${e.type}-${e.customer_id}-${i}`}>
                 <span className="af-date mono">{e.date}</span>
-                <span className={`chip ${CAT[e.category]?.cls ?? ''}`}>
-                  {CAT[e.category]?.label ?? e.category}
+                <span className={`chip ${TYPE[e.type]?.cls ?? ''}`}>
+                  {TYPE[e.type]?.label ?? e.type}
                 </span>
                 {showCustomer && (
                   <button
@@ -66,7 +67,7 @@ export default function ActivityFeed({
                     {e.customer_id}
                   </button>
                 )}
-                <span className="af-summary">{e.summary}</span>
+                <span className="af-summary">{e.message}</span>
               </li>
             ))}
           </ul>

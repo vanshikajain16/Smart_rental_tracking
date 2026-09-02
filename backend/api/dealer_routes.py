@@ -6,23 +6,29 @@ GET /dealer/customers               - every customer from customers.csv with
                                       their current assets (Stage 1-4 output).
 GET /dealer/customers/{customer_id} - drill-down: that customer's aggregate plus
                                       their current per-asset records.
+GET /dealer/customer/{customer_id}/assets
+                                    - just the per-asset detail for one customer
+                                      (same shape as the customer-side route,
+                                      no auth - dealer view).
+GET /dealer/summary                 - headline numbers for the dashboard.
 GET /dealer/renewal-risk            - just the customers flagged renewal_risk in
                                       Stage 4's dealer-level aggregate.
-GET /dealer/activity                - retroactive activity feed (Stage 1 flags,
-                                      penalty_charged rows, pending SMS
-                                      reminders), newest first; optional
-                                      ?customer_id= filter.
+GET /dealer/activity-feed           - retroactive activity feed (High-risk
+                                      customers, Stage 1 flags, penalty_charged
+                                      rows, SMS reminders), newest first, top 50.
 """
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException
 
 import data_access as da
 from schemas import (
     ActivityEvent,
+    AssetRecord,
     DealerCustomer,
     DealerCustomerDetail,
     RenewalRiskCustomer,
+    SummaryStats,
 )
 
 router = APIRouter(prefix="/dealer", tags=["dealer"])
@@ -60,14 +66,41 @@ def dealer_customer_detail(customer_id: str):
     return da.dealer_customer_detail(customer_id)
 
 
+@router.get("/customer/{customer_id}/assets", response_model=list[AssetRecord])
+def dealer_customer_assets(customer_id: str):
+    """The same per-asset detail as GET /customer/{customer_id}/assets, but on
+    the dealer side (no auth) - reuses data_access.assets_for_customer."""
+    if customer_id not in da.customer_ids():
+        raise HTTPException(status_code=404,
+                            detail=f"unknown customer_id '{customer_id}'")
+    return da.assets_for_customer(customer_id)
+
+
+@router.get("/summary", response_model=SummaryStats)
+def dealer_summary():
+    counts = da.assets_count_by_customer()
+    health = da.avg_health_by_customer()
+    customers = da.customers_table()
+
+    health_vals = [v for v in health.values() if v is not None]
+    return SummaryStats(
+        total_customers=len(customers),
+        total_assets=sum(counts.values()),
+        avg_fleet_health_score=(round(sum(health_vals) / len(health_vals), 1)
+                                if health_vals else None),
+        high_risk_count=sum(1 for c in customers.values()
+                            if c.get("risk_tier") == "High"),
+        pending_sms_count=sum(len(da.sms_reminders_for_customer(cid))
+                              for cid in customers),
+        unpaid_penalty_count=da.unpaid_penalty_count(),
+    )
+
+
 @router.get("/renewal-risk", response_model=list[RenewalRiskCustomer])
 def dealer_renewal_risk():
     return [c for c in da.customer_aggregate() if c.get("renewal_risk")]
 
 
-@router.get("/activity", response_model=list[ActivityEvent])
-def dealer_activity(
-    customer_id: str | None = Query(default=None),
-    limit: int = Query(default=200, ge=1, le=2000),
-):
-    return da.activity_events(customer_id=customer_id, limit=limit)
+@router.get("/activity-feed", response_model=list[ActivityEvent])
+def dealer_activity_feed():
+    return da.activity_events(limit=50)

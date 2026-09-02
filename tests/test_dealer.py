@@ -1,4 +1,4 @@
-"""Dealer drill-down + retroactive activity feed tests.
+"""Dealer summary / drill-down / retroactive activity-feed tests.
 
     pytest -q tests/test_dealer.py
 
@@ -18,7 +18,7 @@ sys.path.insert(0, str(API_DIR))
 from main import app  # noqa: E402
 
 CID = "CUST04"  # renewal-risk customer with 4 current assets
-CATEGORIES = {"flag", "penalty", "sms_reminder"}
+EVENT_TYPES = {"high_risk", "flag", "penalty", "sms_reminder"}
 
 
 @pytest.fixture(scope="module")
@@ -27,48 +27,88 @@ def client():
         yield c
 
 
-# --- drill-down --------------------------------------------------------- #
+# --- /dealer/summary -------------------------------------------------- #
+def test_summary_returns_valid_stats(client):
+    r = client.get("/dealer/summary")
+    assert r.status_code == 200
+    s = r.json()
+    assert set(s) == {
+        "total_customers", "total_assets", "avg_fleet_health_score",
+        "high_risk_count", "pending_sms_count", "unpaid_penalty_count",
+    }
+    assert s["total_customers"] > 0
+    assert s["total_assets"] > 0
+    assert 0 <= s["avg_fleet_health_score"] <= 100
+    for k in ("high_risk_count", "pending_sms_count", "unpaid_penalty_count"):
+        assert isinstance(s[k], int) and s[k] >= 0
+    assert s["high_risk_count"] <= s["total_customers"]
+
+
+def test_summary_matches_customer_list(client):
+    s = client.get("/dealer/summary").json()
+    custs = client.get("/dealer/customers").json()
+    assert s["total_customers"] == len(custs)
+    assert s["total_assets"] == sum(c["n_assets"] for c in custs)
+    assert s["high_risk_count"] == sum(
+        1 for c in custs if c["risk_tier"] == "High")
+
+
+# --- /dealer/activity-feed --------------------------------------- #
+def test_activity_feed_is_valid_and_sorted(client):
+    r = client.get("/dealer/activity-feed")
+    assert r.status_code == 200
+    feed = r.json()
+    assert 0 < len(feed) <= 50
+    for e in feed:
+        assert set(e) == {"date", "type", "customer_id", "message"}
+        assert e["type"] in EVENT_TYPES
+        assert e["message"]
+    dates = [e["date"] for e in feed]
+    assert dates == sorted(dates, reverse=True)
+
+
+def test_activity_feed_reconstructs_multiple_sources(client):
+    kinds = {e["type"] for e in client.get("/dealer/activity-feed").json()}
+    # flags and penalties are both plentiful in the dataset
+    assert {"flag", "penalty"} <= kinds
+
+
+# --- drill-down (unchanged) ------------------------------------ #
 def test_customer_detail_has_aggregate_and_assets(client):
     r = client.get(f"/dealer/customers/{CID}")
     assert r.status_code == 200
     body = r.json()
     assert body["customer_id"] == CID
-    assert body["n_assets"] == len(body["assets"])
-    assert body["n_assets"] > 0
-    for a in body["assets"]:
-        assert a["customer_id"] == CID
-        assert a["equipment_id"]
+    assert body["n_assets"] == len(body["assets"]) > 0
+    assert all(a["customer_id"] == CID for a in body["assets"])
 
 
 def test_customer_detail_unknown_id_is_404(client):
     assert client.get("/dealer/customers/CUST_NOPE").status_code == 404
 
 
-# --- activity feed --------------------------------------------------- #
-def test_activity_feed_is_reconstructed_and_sorted(client):
-    events = client.get("/dealer/activity?limit=1000").json()
-    assert len(events) > 0
-    assert {e["category"] for e in events} <= CATEGORIES
-    # Stage 1 flags and penalty rows are both reconstructed
-    assert {"flag", "penalty"} <= {e["category"] for e in events}
-    # newest first
-    dates = [e["date"] for e in events]
-    assert dates == sorted(dates, reverse=True)
+def test_dealer_customer_assets_route(client):
+    r = client.get(f"/dealer/customer/{CID}/assets")
+    assert r.status_code == 200
+    assets = r.json()
+    assert len(assets) > 0
+    for a in assets:
+        assert a["customer_id"] == CID
+        assert set(a) >= {
+            "equipment_id", "type", "health_score", "reasons",
+            "reallocatable", "recommendation",
+        }
+    # same payload the drill-down embeds
+    assert assets == client.get(f"/dealer/customers/{CID}").json()["assets"]
 
 
-def test_activity_feed_respects_limit(client):
-    assert len(client.get("/dealer/activity?limit=5").json()) == 5
+def test_dealer_customer_assets_unknown_id_is_404(client):
+    r = client.get("/dealer/customer/CUST_NOPE/assets")
+    assert r.status_code == 404
+    assert "CUST_NOPE" in r.json()["detail"]
 
 
-def test_activity_feed_customer_filter(client):
-    events = client.get(f"/dealer/activity?customer_id={CID}&limit=1000").json()
-    assert len(events) > 0
-    assert all(e["customer_id"] == CID for e in events)
-    # a subset of the dealer-wide feed
-    everything = client.get("/dealer/activity?limit=2000").json()
-    assert len(events) < len(everything)
-
-
-def test_activity_feed_still_open_when_no_auth(client):
-    # dealer side stays unauthenticated
-    assert client.get("/dealer/activity").status_code == 200
+def test_dealer_side_stays_unauthenticated(client):
+    for path in ("/dealer/summary", "/dealer/activity-feed",
+                 "/dealer/customers", f"/dealer/customers/{CID}"):
+        assert client.get(path).status_code == 200, path
