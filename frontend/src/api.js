@@ -137,7 +137,14 @@ export const api = {
   customerSmsReminders: (id) =>
     request(`/customer/${id}/sms-reminders`, { withAuth: true }),
 
-  // dealer (unchanged, no auth)
+  // dealer (no auth)
   dealerCustomers: () => request('/dealer/customers'),
   dealerRenewalRisk: () => request('/dealer/renewal-risk'),
+  dealerCustomerDetail: (id) =>
+    request(`/dealer/customers/${encodeURIComponent(id)}`),
+  dealerActivity: ({ customerId, limit = 200 } = {}) => {
+    const qs = new URLSearchParams({ limit: String(limit) })
+    if (customerId) qs.set('customer_id', customerId)
+    return request(`/dealer/activity?${qs.toString()}`)
+  },
 }

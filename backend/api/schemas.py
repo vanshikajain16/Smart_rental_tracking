@@ -58,6 +58,31 @@ class SmsReminder(BaseModel):
     message: str
 
 
+class DealerCustomerDetail(BaseModel):
+    """Dealer drill-down for one customer: aggregate + current per-asset rows."""
+    customer_id: str
+    phone_number: str | None = None
+    reliability_score: int | None = None
+    risk_tier: str | None = None
+    n_assets: int
+    avg_health_score: float | None = None
+    avg_health_all_cycles: float | None = None
+    n_cycles_observed: int | None = None
+    trend_direction: str | None = None
+    health_trend_slope_per_month: float | None = None
+    renewal_risk: bool = False
+    assets: list[AssetRecord] = []
+
+
+class ActivityEvent(BaseModel):
+    """One reconstructed row in the retroactive dealer activity feed."""
+    date: str
+    customer_id: str
+    equipment_id: str | None = None
+    category: str  # "flag" | "penalty" | "sms_reminder"
+    summary: str
+
+
 class RenewalRiskCustomer(BaseModel):
     customer_id: str
     phone_number: str | None = None

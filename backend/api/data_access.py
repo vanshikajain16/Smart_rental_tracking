@@ -152,3 +152,120 @@ def assets_count_by_customer() -> dict[str, int]:
     for r in recs:
         out[str(r.get("customer_id"))] = out.get(str(r.get("customer_id")), 0) + 1
     return out
+
+
+# --------------------------------------------------------------------------- #
+# Dealer drill-down + retroactive activity feed
+# --------------------------------------------------------------------------- #
+def dealer_customer_detail(customer_id: str) -> dict:
+    """One customer's row-level aggregate plus their current per-asset records
+    (reuses assets_for_customer). Powers the dealer dashboard drill-down."""
+    agg = customer_aggregate_by_id().get(customer_id, {})
+    table = customers_table().get(customer_id, {})
+    assets = assets_for_customer(customer_id)
+    return {
+        "customer_id": customer_id,
+        "phone_number": table.get("phone_number") or agg.get("phone_number"),
+        "reliability_score": table.get("reliability_score"),
+        "risk_tier": table.get("risk_tier"),
+        "n_assets": len(assets),
+        "avg_health_score": avg_health_by_customer().get(
+            customer_id, agg.get("avg_health_score")),
+        "avg_health_all_cycles": agg.get("avg_health_all_cycles"),
+        "n_cycles_observed": agg.get("n_cycles_observed"),
+        "trend_direction": agg.get("trend_direction"),
+        "health_trend_slope_per_month": agg.get("health_trend_slope_per_month"),
+        "renewal_risk": bool(agg.get("renewal_risk", False)),
+        "assets": assets,
+    }
+
+
+def _due_sms_reminders() -> list[dict]:
+    """Every pending Stage 5 reminder in one find_due_reminders() call."""
+    stage5 = REPO_ROOT / "backend" / "stage5_customer_score"
+    if str(stage5) not in sys.path:
+        sys.path.insert(0, str(stage5))
+    import sms_alerts  # noqa: E402
+
+    out = []
+    for _, row in sms_alerts.find_due_reminders().iterrows():
+        out.append({
+            "customer_id": str(row["Customer ID"]).strip(),
+            "equipment_id": row["Equipment ID"],
+            "expected_return_date": str(
+                pd.to_datetime(row["Expected Return Date"]).date()),
+            "lead_days": int(row["lead_days"]),
+        })
+    return out
+
+
+def activity_events(customer_id: str | None = None,
+                    limit: int | None = None) -> list[dict]:
+    """A retroactive activity feed - NOT a live log. One-shot reconstruction,
+    newest first, from dated records that already exist:
+
+      * Stage 1 flags        (is_flagged rows in stage1_output.csv)
+      * penalty_charged rows  (same file)
+      * pending SMS reminders (Stage 5 find_due_reminders)
+
+    Each cycle row is dated by its Actual Check-In Date, falling back to the
+    Expected Return / Check-In / Check-Out date when a rental is still out.
+    """
+    df = pd.read_csv(_require(STAGE1_OUTPUT_CSV), dtype=str)
+
+    def _is_true(v: object) -> bool:
+        return str(v).strip().lower() == "true"
+
+    def _event_date(row: pd.Series) -> str | None:
+        for col in ("Actual Check-In Date", "Expected Return Date",
+                    "Check-In Date", "Check-Out Date"):
+            v = row.get(col)
+            if v is not None and str(v).strip().lower() not in ("", "nan", "nat"):
+                try:
+                    return str(pd.to_datetime(v).date())
+                except (ValueError, TypeError):
+                    continue
+        return None
+
+    events: list[dict] = []
+    for _, row in df.iterrows():
+        cid = str(row.get("Customer ID", "")).strip()
+        if customer_id and cid != customer_id:
+            continue
+        when = _event_date(row)
+        if when is None:
+            continue
+        eq = row.get("Equipment ID")
+        if _is_true(row.get("is_flagged")):
+            reasons = (row.get("reasons") or "").strip()
+            events.append({
+                "date": when, "customer_id": cid, "equipment_id": eq,
+                "category": "flag",
+                "summary": f"{eq} flagged" + (f": {reasons}" if reasons else ""),
+            })
+        if _is_true(row.get("penalty_charged")):
+            paid = _is_true(row.get("penalty_paid"))
+            events.append({
+                "date": when, "customer_id": cid, "equipment_id": eq,
+                "category": "penalty",
+                "summary": (f"Penalty charged on {eq} "
+                            + ("(paid)" if paid else "(unpaid)")),
+            })
+
+    for rem in _due_sms_reminders():
+        if customer_id and rem["customer_id"] != customer_id:
+            continue
+        erd = pd.to_datetime(rem["expected_return_date"]).date()
+        send = str(erd - pd.Timedelta(days=int(rem["lead_days"])))
+        events.append({
+            "date": send, "customer_id": rem["customer_id"],
+            "equipment_id": rem["equipment_id"], "category": "sms_reminder",
+            "summary": (f"Return reminder queued for {rem['equipment_id']} "
+                        f"(due {rem['expected_return_date']})"),
+        })
+
+    events.sort(
+        key=lambda e: (e["date"], e["category"], str(e["equipment_id"])),
+        reverse=True,
+    )
+    return events[:limit] if limit else events
