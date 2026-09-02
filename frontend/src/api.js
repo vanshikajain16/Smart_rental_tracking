@@ -137,6 +137,23 @@ export const api = {
   customerSmsReminders: (id) =>
     request(`/customer/${id}/sms-reminders`, { withAuth: true }),
 
+  // connected operators — per-asset contacts (bearer token, own asset only)
+  assetContacts: (customerId, equipmentId) =>
+    request(`/customer/${customerId}/assets/${equipmentId}/contacts`, {
+      withAuth: true,
+    }),
+  addAssetContact: (customerId, equipmentId, body) =>
+    request(`/customer/${customerId}/assets/${equipmentId}/contacts`, {
+      method: 'POST',
+      body,
+      withAuth: true,
+    }),
+  removeAssetContact: (customerId, equipmentId, contactId) =>
+    request(
+      `/customer/${customerId}/assets/${equipmentId}/contacts/${contactId}`,
+      { method: 'DELETE', withAuth: true }
+    ),
+
   // dealer (no auth)
   dealerCustomers: () => request('/dealer/customers'),
   dealerRenewalRisk: () => request('/dealer/renewal-risk'),

@@ -101,3 +101,52 @@ class RenewalRiskCustomer(BaseModel):
     health_trend_slope_per_month: float
     trend_direction: str
     renewal_risk: bool
+
+
+# --------------------------------------------------------------------------- #
+# Connected Operators - per-asset contacts
+# --------------------------------------------------------------------------- #
+class Contact(BaseModel):
+    """A person a customer can attach to one or more of their assets."""
+    contact_id: str
+    customer_id: str          # who added them
+    name: str
+    phone: str
+    email: str | None = None
+
+
+class Assignment(BaseModel):
+    """A Contact <-> Asset link with its three independent notify switches."""
+    assignment_id: str
+    equipment_id: str
+    contact_id: str
+    role: str                 # operator | site lead | site contact
+    notify_due_date: bool = True
+    notify_health: bool = True
+    notify_demand: bool = False   # account-holder-only info; off by default
+    added_by: str             # customer_id
+    created_at: str
+
+
+class ContactWithAssignment(BaseModel):
+    """One row of GET .../contacts - the Contact plus its Assignment settings."""
+    contact_id: str
+    name: str
+    phone: str
+    email: str | None = None
+    role: str
+    notify_due_date: bool
+    notify_health: bool
+    notify_demand: bool
+    assignment_id: str
+
+
+class ContactCreate(BaseModel):
+    """POST .../contacts body."""
+    name: str
+    phone: str
+    email: str | None = None
+    role: str = "operator"
+    notify_due_date: bool = True
+    notify_health: bool = True
+    notify_demand: bool = False

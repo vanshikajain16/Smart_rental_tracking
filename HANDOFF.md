@@ -108,10 +108,12 @@ backend/
     sms_alerts.py                      return-reminder logic (TODAY pinned to 2025-11-23)
   api/
     main.py                            FastAPI app, CORS, 503-on-missing-artifact handler
-    data_access.py                     ALL file reads live here (framework-agnostic)
+    data_access.py                     ALL pipeline file reads live here (framework-agnostic)
     schemas.py                         Pydantic response/request models
     auth.py                            hashing + JWT + CSV account store + /auth routes + dependency
     customer_routes.py                 /customer/*  (bearer token, own-data-only)
+    contacts.py                        Connected Operators: Contact/Assignment CSV stores + CRUD routes
+    alert_log.py                       persistent alert log (leaf module, no project imports)
     dealer_routes.py                   /dealer/*    (open, no auth)
 
 frontend/src/
@@ -121,7 +123,7 @@ frontend/src/
     Login.jsx  Signup.jsx    email/password auth forms
     CustomerDashboard.jsx    AlertsPanel + AssetCard grid
     AlertsPanel.jsx          flagged assets + pending SMS reminders
-    AssetCard.jsx            one asset (Shared Contract shape + custom_fields)
+    AssetCard.jsx            one asset (Shared Contract shape + custom_fields + Connected section)
     DealerDashboard.jsx      KPIs + RiskBreakdown + table (sort/filter/search) + ActivityFeed
     DealerKpis.jsx           6 KPI cards from /dealer/summary
     RiskBreakdown.jsx        CSS bar chart of customers per risk tier (click = set filter)
@@ -130,7 +132,7 @@ frontend/src/
   styles.css                 single stylesheet, CSS custom properties at the top
 
 scripts/run_all.py           run the whole pipeline end to end
-tests/                       test_stage1.py, test_auth.py, test_dealer.py
+tests/                       test_stage1.py, test_auth.py, test_dealer.py, test_contacts.py
 ```
 
 **Convention that matters:** the API never reads a CSV/JSON directly in a route —
@@ -193,6 +195,18 @@ if the path `{customer_id}` ≠ the token's, it's **403 "you can only access you
 | GET | `/customer/{customer_id}/alerts` | same, filtered to assets whose latest Stage 1 cycle is `is_flagged` |
 | GET | `/customer/{customer_id}/sms-reminders` | pending return reminders (Stage 5 `sms_alerts.find_due_reminders`) |
 
+### Connected Operators  (`backend/api/contacts.py`) — **same auth boundary as `/customer/*`**
+Also checks the `{equipment_id}` is one of that customer's `assets_for_customer()`
+assets (404 otherwise). A customer attaches ≤ 4 Contacts to a specific asset;
+each link (Assignment) carries `notify_due_date` / `notify_health` (default on)
+and `notify_demand` (default off, and a **no-op in dispatch** — see §6.5).
+
+| Method | Path | Returns |
+|--------|------|---------|
+| GET | `/customer/{cid}/assets/{eq}/contacts` | `list[ContactWithAssignment]` |
+| POST | `/customer/{cid}/assets/{eq}/contacts` | body `ContactCreate` `{name, phone, email?, role, notify_due_date, notify_health, notify_demand}` → `201` + the updated list. Reuses a Contact row for the same `phone`+customer; `409` on the 4-per-asset cap or a duplicate link |
+| DELETE | `/customer/{cid}/assets/{eq}/contacts/{contact_id}` | removes the Assignment (keeps the Contact row) → the updated list; `404` if not linked |
+
 ### Dealer  (`backend/api/dealer_routes.py`) — **no auth (by design)**
 | Method | Path | Returns |
 |--------|------|---------|
@@ -250,6 +264,38 @@ command that regenerates the file.
 - `App.jsx` gates the **customer view** behind a token; the **dealer view** is
   always reachable. Signup does **not** auto‑login (two‑step by design).
 
+### 6.5 Connected Operators — contacts, alert log, dispatch
+
+- **Stores** (all `data/processed/*.csv`, git‑ignored, created on first write):
+  `contacts.csv` (`contact_id, customer_id, name, phone, email`),
+  `assignments.csv` (`assignment_id, equipment_id, contact_id, role,
+  notify_due_date, notify_health, notify_demand, added_by, created_at`),
+  `alert_log.csv` (`timestamp, equipment_id, alert_type, recipient_type,
+  recipient_id, phone, message, sent_successfully`).
+- **`alert_log.py` is a leaf module** (stdlib only) so the Stage 5 script and
+  the API both use it without an import cycle. `contacts.py`'s store helpers
+  are also import‑safe (the `from fastapi import` at the top is the only
+  framework dep, and `sms_alerts.py` reuses `assignments_for_equipment()` /
+  `contact_by_id()`).
+- **Dispatch (`sms_alerts.py`):**
+  - `run(today)` — for each due reminder: SMS the customer (as before) **and**
+    every Contact on that asset with `notify_due_date` on; logs all sends.
+  - `send_health_alerts(today)` — for every Stage 1 `is_flagged` asset: log a
+    `health` row for the customer (they see it on the dashboard, no SMS
+    change) **and** SMS + log every Contact with `notify_health` on.
+  - `__main__` runs both; `scripts/run_all.py`'s Stage 5 step therefore also
+    writes `alert_log.csv`.
+- **`notify_demand` is a deliberate no‑op in dispatch.** The switch is stored
+  for a future iteration, but demand_forecast / recommendation data is
+  account‑holder‑only and must never reach a per‑asset contact over SMS.
+  `send_health_alerts()` never reads those fields — there's a comment saying so.
+- **Frontend:** `AssetCard` renders the "Connected" section only when passed
+  `manageContacts` — **`CustomerDashboard` passes it, `CustomerDrilldown`
+  (dealer) does not**, so the dealer view never calls the auth‑only contacts
+  endpoints. It uses `asset.customer_id` / `asset.equipment_id` for the calls.
+  POST/DELETE return the updated list, so the card re‑renders without a refetch;
+  the 4‑cap hides "+ Add contact" client‑side too.
+
 ---
 
 ## 7. Frontend notes
@@ -301,9 +347,10 @@ customer/dealer frontend, **no auth**, dealer view was a plain sortable table.
 | `857f3d7` | **`/dealer/summary`** (`SummaryStats`) + **`/dealer/activity-feed`** reshaped to `{date,type,message,customer_id}`, top 50, 4 sources incl. High‑risk‑customer events + **`/dealer/customer/{id}/assets`**. `data_access.penalty_charged_records()` / `unpaid_penalty_count()`. |
 | `3478b71` | Dealer KPI cards trimmed to the 6 named metrics; tier filter reordered All/Low/Medium/High; search scoped to `customer_id`. |
 | `eee5ed4` | `ActivityFeed` stripped to a **read‑only timeline** (icon · date · type · message), styled distinct from `AlertsPanel`. |
-| _this commit_ | Dealer table row → drill‑down now fetches **`/dealer/customer/{id}/assets`** and renders the assets with the **`AssetCard` grid** (same as `CustomerDashboard`), not a plain table. `assetTypes` fetched in `DealerDashboard` and passed down for `custom_fields`. Back button preserves table sort/filter/search. |
+| `7bdfd3d` | Dealer table row → drill‑down now fetches **`/dealer/customer/{id}/assets`** and renders the assets with the **`AssetCard` grid** (same as `CustomerDashboard`), not a plain table. `assetTypes` fetched in `DealerDashboard` and passed down for `custom_fields`. Back button preserves table sort/filter/search. Added `HANDOFF.md`. |
+| _this commit_ | **Connected Operators.** `contacts.py` (Contact/Assignment CSV stores + 4‑per‑asset cap + own‑asset‑only CRUD under `/customer/{cid}/assets/{eq}/contacts`), `alert_log.py` (new persistent `alert_log.csv`). `sms_alerts.run()` now also SMS's opted‑in contacts + logs every send; new `send_health_alerts()`. `notify_demand` is a stored‑but‑no‑op switch (demand data never goes to contacts). Frontend: `AssetCard` "Connected" section (chips + inline add form + remove + client‑side 4‑cap), gated by a `manageContacts` prop so the dealer drill‑down is untouched. `tests/test_contacts.py`. |
 
-40 tests pass throughout.
+48 tests pass.
 
 ---
 

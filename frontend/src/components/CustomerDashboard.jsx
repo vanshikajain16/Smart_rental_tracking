@@ -62,6 +62,7 @@ export default function CustomerDashboard({ customerId, assetTypes }) {
                     key={a.equipment_id}
                     asset={a}
                     customFields={assetTypes[a.type]?.custom_fields ?? []}
+                    manageContacts
                   />
                 ))}
               </div>

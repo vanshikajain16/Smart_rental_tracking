@@ -23,6 +23,7 @@ from fastapi.responses import JSONResponse  # noqa: E402
 
 import data_access as da  # noqa: E402
 from auth import auth_router  # noqa: E402
+from contacts import contacts_router  # noqa: E402
 from customer_routes import router as customer_router  # noqa: E402
 from dealer_routes import router as dealer_router  # noqa: E402
 
@@ -42,6 +43,7 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(customer_router)
+app.include_router(contacts_router)
 app.include_router(dealer_router)
 
 
@@ -64,6 +66,7 @@ def root():
             "/customer/{customer_id}/assets",
             "/customer/{customer_id}/alerts",
             "/customer/{customer_id}/sms-reminders",
+            "/customer/{customer_id}/assets/{equipment_id}/contacts",
             "/dealer/customers",
             "/dealer/customers/{customer_id}",
             "/dealer/customer/{customer_id}/assets",
